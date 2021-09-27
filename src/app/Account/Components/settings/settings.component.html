@@ -338,9 +338,11 @@
                                 <div class="row border-bottom pb-3 pt-3">
                                     <div class="col-md-6 border-right">
                                         <div class="form-group ">
-                                            <label>Full Name</label>
-                                            <input class="form-control" type="text" name="txtFullName" id="txtFullName"
-                                                [(ngModel)]="fullName">
+                                            <div class="has-float-label">
+                                                <input class="form-control" type="text" name="txtFullName"
+                                                    id="txtFullName" [(ngModel)]="fullName" placeholder="Full Name">
+                                                <label for="txtFullName">Full Name</label>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">Current Full Name :{{userProfile.fullName}}</div>
@@ -533,13 +535,15 @@
                                             <div class="col-md-6 border-right">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <div>
+                                                        <div class="has-float-label">
                                                             <input type="date" name="dobTxt" class="form-control pl-2"
-                                                                ngModel [value]="dateOfBirth | date:'yyyy-MM-dd'">
+                                                                id="dobtxt" ngModel
+                                                                [value]="dateOfBirth | date:'yyyy-MM-dd'">
+                                                            <label for="dobtxt">date of birth</label>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <div class="row mt-2">
                                                     <div class="col-md-4">
                                                         <div class="radio">
                                                             <label>

@@ -156,7 +156,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="row my-3" style="height:22.5px;">
+                            <div class="row"  *ngIf="isMutualLikes || isMutualLoves">
                                 <div class="col-md-6 text-center">
                                     <span *ngIf="isMutualLikes" style="fill:#1E90FF;">
                                         Mutual Like &nbsp; <svg-like></svg-like>

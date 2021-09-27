@@ -1,8 +1,76 @@
-.divColor {
+ .divColor {
     border-bottom: 7px solid #1E90FF;
   }
-  
-  
-  .navbar{
+
+  .div-bottom-color {
+    border-top: 7px solid #1E90FF;
+  }
+
+  .navbar {
     padding-top: 0.25rem;
   }
+ 
+  .navbar-nav 
+  {
+    flex-direction: row;
+  }
+
+  .navbar-nav li 
+  {
+    padding: 0 5px;
+  }
+
+  .nav-desk-top {
+    display: none;
+  }
+
+  @media (min-Width:768px) {
+    .nav-desk-top {
+     display: list-item;
+    }
+
+    .nav-mobile {
+      display: none;
+     }
+
+     .i1-logo {
+      display: inline-block;
+    }
+  }
+
+  @media (max-Width:767px) {
+    .navbar-nav {
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    .i1-logo {
+       display: none;
+     }
+
+    .navbar-nav li {
+      padding: 0 10px;
+    }
+    .navbar-nav .dropdown-menu {
+      position: absolute;
+      width: fit-content;
+      left: -125px;
+      top: 45px;
+      z-index: 2;
+     }
+  }
+
+  @media (min-Width:450px) {
+    .i1-logo {
+      display: inline-block;
+    }
+  }
+  /* @media (min-Width:320px) and (max-Width:500px){
+    .navbar-nav {
+      padding-left: 0;
+    }
+    .navbar-nav li {
+      padding: 0 5px;
+    }
+  } */
