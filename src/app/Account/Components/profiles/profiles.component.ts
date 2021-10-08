@@ -38,6 +38,7 @@ export class ProfilesComponent implements OnInit, OnDestroy {
   ActivityLevel: string = "";
   ProfStatus: string = "";
   mode: string = "";
+  isColapse=true;
   IsShowPhotosOnly = false;
   interacted: string = "";
   ProfilesCount: number = 0;
@@ -99,6 +100,9 @@ export class ProfilesComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     if (this.profileListSubscription) this.profileListSubscription.unsubscribe();
+  }
+  toggleDisplay() {
+    this.isColapse = !this.isColapse;
   }
   //#endregion
   //#region FUNCTIONS

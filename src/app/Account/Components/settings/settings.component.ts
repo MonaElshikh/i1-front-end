@@ -29,7 +29,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   unblockedObject: appProfileBlock = {} as appProfileBlock;
   limits: appLimits = {} as appLimits;
   upgrade: appActiveUpgrade = {} as appActiveUpgrade;
-  loginHistoryList: appLoginHistory[] = [];
+  // loginHistoryList: appLoginHistory[] = [];
   blockedProfilesList: appProfileBlock[] = [];
   metaTags: MetaDefinition[] = [];
   Email: appEmail = {} as appEmail;
@@ -141,26 +141,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this.getUserProfile();
     this.BindProfileBlockList();
     this.SetMetaTags();
-    this.loginHistoryList.push({
-      Os: 'Window', Browser: 'Chrome', Device: 'DeskTop', Location: 'Egypt',
-      IpAddress: '156.194.219.234',
-      Date: '10-17-2020'
-    });
-    this.loginHistoryList.push({
-      Os: 'Window', Browser: 'FireFox', Device: 'DeskTop', Location: 'Egypt',
-      IpAddress: '156.194.219.234',
-      Date: '10-17-2020'
-    });
-    this.loginHistoryList.push({
-      Os: 'Window', Browser: 'Safari', Device: 'DeskTop', Location: 'Egypt',
-      IpAddress: '156.194.219.234',
-      Date: '10-17-2020'
-    });
-    this.loginHistoryList.push({
-      Os: 'Window', Browser: 'IE', Device: 'DeskTop', Location: 'Egypt',
-      IpAddress: '156.194.219.234',
-      Date: '10-17-2020'
-    });
   }
   ngOnDestroy() {
     if (this.profileBlockSubscription) this.profileBlockSubscription.unsubscribe();

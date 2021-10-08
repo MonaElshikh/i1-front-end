@@ -54,6 +54,7 @@ export class InboxComponent implements OnInit, OnDestroy {
   readStatus = [];
   notification = [];
   threadsCount: number = 0;
+  isColapse=true;
   isStarted = false;
   isShowDetailsBox = false;
   isLoadingDetailsBox = true;
@@ -117,6 +118,9 @@ export class InboxComponent implements OnInit, OnDestroy {
     this.meta.SetPageTitle("Messages | ispace1");
     this.meta.UpdateMetaTags(this.metaTags);
     this.meta.setCanonicalURL();
+  }
+  toggleDisplay() {
+    this.isColapse = !this.isColapse;
   }
   openProfile(message?: appMessages, thread?: appMessageThreads, rowIndex?: number, uName?: string) {
     if (message) {

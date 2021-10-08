@@ -12,7 +12,7 @@
             <button class="btn btn-sm btn-secondary btn-poster rounded-pill"
                 *ngIf="showbtnEditPosterImg && profileOwner"
                 (click)="toggelEditMode('posterImage');SetProfileForm(vpForm);">Edit</button>
-            <img class="shadow rounded-circle mx-2 img-fluid"
+            <img class="shadow rounded-circle mx-2 img-fluid mobile-profile-imge"
                 style="position: absolute; z-index: 1000;height:13rem;width:13rem ;top:53%;"
                 [lazyLoad]="passportImageUrl" (mouseenter)="toggleImageEditButtons('profile','over')">
             <button class="btn btn-sm btn-secondary btn-Profile rounded-pill"
@@ -143,7 +143,7 @@
                     <span [ngStyle]="{'fill': !faved? 'gray' : 'red'}" style="stroke-width: 0;">
                         <svg-love></svg-love>
                     </span>
-                    love ({{FavsCount}})</button>
+                    Love ({{FavsCount}})</button>
             </div>
             <div class="col-md-5 pr-3">
                 <button *ngIf="!EditMode && profileOwner"

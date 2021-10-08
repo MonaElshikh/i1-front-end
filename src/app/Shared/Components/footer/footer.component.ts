@@ -10,10 +10,22 @@ export class FooterComponent implements OnInit {
   constructor(private route: Router, @Inject(PLATFORM_ID) private platformId: any) { }
   ngOnInit(): void {
   }
+  resourcesCollapse = true;
+  tagsCollapse = true;
   OpenTagsResourcesMenu(url: string) {
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0, 0);
     }
     this.route.navigate([url]);
+  }
+  toggleDisplay(box: string) {
+    switch (box) {
+      case 'tags':
+        this.tagsCollapse = !this.tagsCollapse;
+        break;
+      case 'resources':
+        this.resourcesCollapse = !this.resourcesCollapse;
+        break;
+    }
   }
 }

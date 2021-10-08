@@ -35,3 +35,37 @@
     border-radius: 10px;
     color: black;
 }
+
+@media (max-Width:768px) {
+    .mobile-div-plan {
+        text-align: center;
+        width: 100% !important;
+    }
+    .mobile-btn-plan {
+        width: fit-content !important;
+        height: auto!important;
+        padding: 7px;
+    }
+    
+    .mobile-btn-title {
+     height: auto;
+     padding: 12px !important;
+    }
+
+    .mobile-left-padding {
+        padding-left:.5rem ;
+    }
+
+    .mobile-div-padding {
+        padding-left: 1rem !important;
+        padding-top: .5rem !important;
+    }
+
+    .mobile-width {
+        width: fit-content;
+    }
+
+    .mobile-paypall-padding {
+        padding:0 25px;
+    }
+}

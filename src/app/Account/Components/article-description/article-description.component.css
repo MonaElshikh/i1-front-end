@@ -7,3 +7,18 @@
   .grayNavyLink:hover{
       color:navy;
    }
+
+   @media (max-Width:768px) {
+    .btn-toolbar {
+        justify-content: center;
+    }
+    .btn-toolbar  button {
+       margin-bottom: 10px;
+    }
+   }
+
+    @media (max-Width:999px) {
+        .pd-top-part-mobile {
+            flex-wrap: nowrap;
+        }
+     }

@@ -7,70 +7,46 @@
   }
 
   .navbar {
-    padding-top: 0.25rem;
+    flex-flow: row nowrap;
   }
  
   .navbar-nav 
   {
+    flex-grow: 1;
     flex-direction: row;
+    max-width: 100%;
   }
 
   .navbar-nav li 
   {
-    padding: 0 5px;
+    padding: 0 6px;
   }
+
+  .navbar-nav .dropdown-menu 
+  {
+    position: absolute;
+    width: fit-content;
+   }
 
   .nav-desk-top {
     display: none;
   }
 
-  @media (min-Width:768px) {
-    .nav-desk-top {
-     display: list-item;
-    }
-
+  @media (min-Width:769px) {
     .nav-mobile {
       display: none;
      }
 
-     .i1-logo {
-      display: inline-block;
+    .nav-desk-top {
+     display: list-item;
     }
   }
-
-  @media (max-Width:767px) {
-    .navbar-nav {
+  
+  @media (max-Width:768px) {
+    .nav-mobile .navbar-nav {
       justify-content: space-between;
       align-items: center;
-      margin: 0 auto;
-    }
-
-    .i1-logo {
-       display: none;
-     }
-
-    .navbar-nav li {
-      padding: 0 10px;
-    }
-    .navbar-nav .dropdown-menu {
-      position: absolute;
-      width: fit-content;
-      left: -125px;
-      top: 45px;
-      z-index: 2;
-     }
-  }
-
-  @media (min-Width:450px) {
-    .i1-logo {
-      display: inline-block;
+      width: 100%;
     }
   }
-  /* @media (min-Width:320px) and (max-Width:500px){
-    .navbar-nav {
-      padding-left: 0;
-    }
-    .navbar-nav li {
-      padding: 0 5px;
-    }
-  } */
+ 

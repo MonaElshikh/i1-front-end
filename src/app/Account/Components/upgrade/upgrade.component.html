@@ -5,36 +5,36 @@
             <div class="col-md-12 ">
                 <div class="card mb-3 border-0">
                     <div class="row p-2 mb-2">
-                        <div class="col-md-12 ">
+                        <div class="col-md-12">
                             <button
-                                class="btn btn-default text-secondary border-secondary rounded-pill float-right p-0 w-100">
+                                class="btn btn-default text-secondary border-secondary rounded-pill float-right p-0 w-100 mobile-btn-title">
                                 Please Note: Prices are subject to change at any time. It is reccomended that you lock
                                 in the low prices while they last!
                             </button>
                         </div>
                     </div>
                     <div class="card-deck ml-2">
-                        <div class="w-25">
+                        <div class="w-25 mobile-div-plan">
                             <button *ngIf="isBasic" style="font-size: 15px;"
-                                class="btn btn-default text-secondary border-secondary rounded-pill w-100 ">
+                                class="btn btn-default text-secondary border-secondary rounded-pill w-100 mobile-btn-plan">
                                 Current Plan:{{UpgradeState}}
                             </button>
                         </div>
-                        <div class="w-25">
+                        <div class="w-25 mobile-div-plan">
                             <button *ngIf="isPremuim" style="font-size: 15px;"
-                                class="btn btn-default text-secondary border-secondary rounded-pill w-100 h-100 p-2">
+                                class="btn btn-default text-secondary border-secondary rounded-pill w-100 h-100 p-2 mobile-btn-plan">
                                 <p class="m-0">Current Plan: {{UpgradeState}}</p> {{AccountType}}
                             </button>
                         </div>
-                        <div class="w-25">
+                        <div class="w-25 mobile-div-plan">
                             <button *ngIf="isPlus" style="font-size: 15px;"
-                                class="btn btn-default text-secondary border-secondary rounded-pill w-100 h-100 p-2">
+                                class="btn btn-default text-secondary border-secondary rounded-pill w-100 h-100 p-2 mobile-btn-plan">
                                 <p class="m-0">Current Plan: {{UpgradeState}}</p> {{AccountType}}
                             </button>
                         </div>
-                        <div class="w-25">
+                        <div class="w-25 mobile-div-plan">
                             <button *ngIf="isExclusive" style="font-size: 15px;"
-                                class="btn btn-default text-secondary border-secondary rounded-pill w-100 h-100 p-2">
+                                class="btn btn-default text-secondary border-secondary rounded-pill w-100 h-100 p-2 mobile-btn-plan">
                                 <p class="m-0">Current Plan: {{UpgradeState}}</p> {{AccountType}}
                             </button>
                         </div>
@@ -238,21 +238,24 @@
                     <div class="card-body p-0" [ngClass]='{ collapse : !isPaymentDetailsExpand }'>
                         <div class="row p-2">
                             <div class="col-md-2"><label class="pl-2">Payment For:</label></div>
-                            <div class="col-md-10"><label for="">{{PaymentFor}}</label></div>
+                            <div class="col-md-10"><label for="" class="mobile-left-padding">{{PaymentFor}}</label></div>
                         </div>
                         <hr>
                         <div class="row p-2">
                             <div class="col-md-2"><label class="pl-2">Payment Amount:</label></div>
                             <div class="col-md-5">
-                                <label for="">${{PaymentAmount}}</label>
+                                <label for="" class="mobile-left-padding">${{PaymentAmount}}</label>
                             </div>
                             <div class="col-md-5">
                                 <div class="row" *ngIf="showDiscountdetails">
                                     <div class="col-md-5">
-                                        <input type="text" class="form-control" [(ngModel)]="couponCode"
-                                            placeholder="Coupon Code">
+                                        <div class="has-float-label">
+                                            <input type="text" class="form-control mobile-width" id="couponCode"
+                                                [(ngModel)]="couponCode" placeholder="Coupon Code">
+                                            <label for="couponCode">Coupon Code</label>
+                                        </div>
                                     </div>
-                                    <div class="col-md-2 p-0">
+                                    <div class="col-md-2 p-0 mobile-div-padding">
                                         <button class="btn btn-sm btn-secondary" [disabled]="couponCode===''"
                                             (click)="applyCouponCode()">Apply</button>
                                     </div>
@@ -265,7 +268,7 @@
                         <hr>
                         <div class="row pt-2">
                             <div class="col-md-5"></div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 mobile-paypall-padding">
                                 <ngx-paypal [config]="payPalConfig"></ngx-paypal>
                             </div>
                             <div class="col-md-5"></div>

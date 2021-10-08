@@ -25,6 +25,7 @@ export class PostingsComponent implements OnInit, OnDestroy {
   articleList: appArticleList[] = [];
   viewMode: string;
   PostingsCount: number = 0;
+  isColapse=true;
   isGalleryView = true;
   isListView = false;
   isKeywordsCollapse = true;
@@ -76,6 +77,9 @@ export class PostingsComponent implements OnInit, OnDestroy {
     this.meta.SetPageTitle("Postings - All Postings | ispace1");
     this.meta.UpdateMetaTags(this.metaTags);
     this.meta.setCanonicalURL();
+  }
+  toggleDisplay() {
+    this.isColapse = !this.isColapse;
   }
   LoadArticles() {
     let catId = this.activeRoute.snapshot.queryParams["catid"];

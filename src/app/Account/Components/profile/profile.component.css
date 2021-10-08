@@ -1,0 +1,7 @@
+@media (max-Width:768px) {
+    .mobile-profile-imge {
+       height: 9rem !important;
+       width: 9rem !important;
+       top: 66% !important;
+    }
+}

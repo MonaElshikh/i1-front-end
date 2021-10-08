@@ -42,7 +42,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="row m-1 mt-2 border">
+                <div class="row m-1 mt-2 border pd-top-part-mobile">
                     <div class="col-md-1 pl-1 p-2">
                         <a [routerLink]="['/Profile/',article.uname]">
                             <img [src]="articleDescription.bindImageUrl('profile',article.passportImageURL)"
@@ -196,7 +196,7 @@
                                  style="stroke-width: 0;">
                                     <svg-love></svg-love>
                                 </span>
-                                love ({{articleTracksCount}})</button>
+                                Love ({{articleTracksCount}})</button>
                             <button type="button" style="width:9rem;"
                                 class="btn btn-light border border-dark rounded-pill rounded-sm  mr-2">
                                 Views ({{article.viewno}})</button>

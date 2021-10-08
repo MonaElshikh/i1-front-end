@@ -384,26 +384,33 @@
                                 </div>
                                 <div class="row border-bottom pb-3 pt-3">
                                     <div class="col-md-6 border-right">
-                                        <div class="form-group ">
-                                            <label class="form-check-label float-left" for="inlineRadio1">Old
-                                                Password</label>
-                                            <input class="form-control" type="password" name="txtOldPassword"
-                                                [(ngModel)]="oldPw" (blur)="CheckOldPw()" id="txtOldPassword">
+                                        <div class="form-group">
+                                            <div class="has-float-label">
+                                                <input class="form-control" type="password" name="txtOldPassword"
+                                                    [(ngModel)]="oldPw" (blur)="CheckOldPw()" id="txtOldPassword"
+                                                    placeholder="Old Password">
+                                                <label for="txtOldPassword">Old Password</label>
+                                            </div>
                                             <p class="text-danger" *ngIf="!rigthOldPw">{{pwError}}</p>
-                                            <label class="form-check-label float-left" for="inlineRadio1">New
-                                                Password</label>
-                                            <input class="form-control" type="password" name="txtNewPassword"
-                                                id="txtNewPassword" [(ngModel)]="newPw" (blur)="CheckNewpw()">
+                                        </div>
+                                        <div class="form-group ">
+                                            <div class="has-float-label">
+                                                <input class="form-control" type="password" name="txtNewPassword"
+                                                    placeholder="New Password" id="txtNewPassword" [(ngModel)]="newPw"
+                                                    (blur)="CheckNewpw()">
+                                                <label for="txtNewPassword">New Password</label>
+                                            </div>
                                             <p class="text-danger" *ngIf="!rightNewPw">{{pwError}}</p>
-                                            <label class="form-check-label float-left" for="inlineRadio1">Confirm
-                                                Password</label>
-                                            <input class="form-control" type="password" name="txtConfirmPassword"
-                                                [(ngModel)]="confirmNewPw" id="txtConfirmPassword"
-                                                (blur)="CheckUpdatedPw()">
+                                        </div>
+                                        <div class="form-group ">
+                                            <div class="has-float-label">
+                                                <input class="form-control" type="password" name="txtConfirmPassword"
+                                                    [(ngModel)]="confirmNewPw" id="txtConfirmPassword"
+                                                    (blur)="CheckUpdatedPw()" placeholder="Confirm Password">
+                                                <label for="txtConfirmPassword">Confirm Password</label>
+                                            </div>
                                             <p class="text-danger" *ngIf="!rigtConfirmPw">Password and
-                                                confirm
-                                                password not
-                                                match.</p>
+                                                confirm password not match.</p>
                                         </div>
                                     </div>
                                     <div class="col-md-6" style="vertical-align: middle;">Current Password :
@@ -446,21 +453,24 @@
                                 <div class="row border-bottom pb-3 pt-3">
                                     <div class="col-md-6 border-right">
                                         <div class="form-group ">
-                                            <label class="form-check-label float-left" for="inlineRadio1">New
-                                                Email
-                                                Add</label>
-                                            <input class="form-control" type="text" name="NewEmail"
-                                                [(ngModel)]="NewEmail" (blur)="CheckUniqueEmail()"
-                                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                            <div class="has-float-label">
+                                                <input class="form-control" type="text" name="NewEmail" id="NewEmail"
+                                                    [(ngModel)]="NewEmail" (blur)="CheckUniqueEmail()"
+                                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                                    placeholder="New Email Add">
+                                                <label for="NewEmail">New Email Add</label>
+                                            </div>
                                             <p class="text-danger" *ngIf="takenEmail">
                                                 Email is taken.</p>
                                         </div>
                                         <div class="form-group ">
-                                            <label>Confirm Email Add</label>
-                                            <input class="form-control" type="text" name="confirmNewEmail"
-                                                [(ngModel)]="confirmNewEmail"
-                                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                                                (blur)="CheckUpdatedEmail()">
+                                            <div class="has-float-label">
+                                                <input class="form-control" type="text" name="confirmNewEmail"
+                                                    [(ngModel)]="confirmNewEmail" id="confirmNewEmail"
+                                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                                    (blur)="CheckUpdatedEmail()" placeholder="Confirm Email Add">
+                                                <label for="confirmNewEmail">Confirm Email Add</label>
+                                            </div>
                                             <p class="text-danger" *ngIf="!rightConfirmEmail">
                                                 Email and confirm email not match.</p>
                                         </div>
@@ -636,38 +646,6 @@
                                 <div class="row mt-2">
                                     <div class="col-md-12  pr-2"><button
                                             class="btn btn-secondary btn-sm float-right">next</button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card mb-3 box-style">
-                            <div class="card-header bg-white cursor"
-                                (click)="toggleSettingsBoxes('LoginHistorySettings')">
-                                <span class="font-weight-bold"> Login History</span>
-                            </div>
-                            <div class="card-body" [ngClass]='{ collapse : isLoginHistorySettingsCollapse }'>
-                                <div class="row border-bottom pb-3">
-                                    <div class="col-md-12 ">Here you can see your login history:
-                                    </div>
-                                </div>
-                                <div class="row pt-2 pb-2 border-bottom bg-secondary">
-                                    <div class="col-md-2">Os</div>
-                                    <div class="col-md-2">Browser</div>
-                                    <div class="col-md-2">Device</div>
-                                    <div class="col-md-2">Location</div>
-                                    <div class="col-md-2">IP Address</div>
-                                    <div class="col-md-2">Date</div>
-                                </div>
-                                <div class="row pt-3 border" *ngFor="let logHistory of loginHistoryList">
-                                    <div class="col-md-2">{{logHistory.Os}}</div>
-                                    <div class="col-md-2">{{logHistory.Browser}}</div>
-                                    <div class="col-md-2">{{logHistory.Device}}</div>
-                                    <div class="col-md-2">{{logHistory.Location}}</div>
-                                    <div class="col-md-2">{{logHistory.IpAddress}}</div>
-                                    <div class="col-md-2">{{logHistory.Date}}</div>
                                 </div>
                             </div>
                         </div>

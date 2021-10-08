@@ -47,24 +47,24 @@
 
           </ul>
           <ul class="navbar-nav float-right pr-1">
-            <li class="nav-item">
+            <li class="nav-item footer-separator">
               <a class="footerLink tblFooter pr-1 pl-1" rel="noreferrer" target="_blank"
                 href="https://www.ezmethods.com/">EZ
                 solutions</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item footer-separator">
               <a class="footerLink tblFooter pr-1 pl-1" [routerLink]="['/About']">About Us</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item footer-separator">
               <a class="footerLink tblFooter pr-1 pl-1" [routerLink]="['/ContactUs']">Contact Us</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item footer-separator">
               <a class="footerLink  tblFooter pr-1 pl-1" [routerLink]="['/UserAgreement']">User Agreement</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item footer-separator">
               <a class="footerLink  tblFooter pr-1 pl-1" [routerLink]="['/PrivacyPolicy']">Privacy Policy</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item footer-separator">
               <a class="footerLink tblFooter pr-1 pl-1" [routerLink]="['/CopyrightPolicy']">Copyright Policy</a>
             </li>
             <li class="nav-item">
@@ -123,22 +123,22 @@
       <div class="row">
         <div class="col-md-12 p-0">
           <ul class="navbar-nav">
-            <li class="nav-item">
+            <li class="nav-item footer-separator">
               <a class="footerLink tblFooter" rel="noreferrer" target="_blank" href="https://www.ezmethods.com/">EZ</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item footer-separator">
               <a class="footerLink tblFooter" [routerLink]="['/About']">About</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item footer-separator">
               <a class="footerLink tblFooter" [routerLink]="['/ContactUs']">Contact</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item footer-separator">
               <a class="footerLink tblFooter" [routerLink]="['/UserAgreement']">Agreement</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item footer-separator">
               <a class="footerLink tblFooter" [routerLink]="['/PrivacyPolicy']">Privacy</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item footer-separator">
               <a class="footerLink tblFooter" [routerLink]="['/CopyrightPolicy']">Copyright</a>
             </li>
             <li class="nav-item">
@@ -170,14 +170,14 @@
     <div class="row">
       <div class="col-lg-2"></div>
       <div class="col-lg-4 pb-2">
-        <div class="card resource-box">
+        <div class="card" [ngClass]="{'resource-box' : !resourcesCollapse}">
           <div class="card-header p-2 cursor footer-bg-dark footerLink border-bottom" id="headingOne"
-            (click)="OpenTagsResourcesMenu('/Resources')">
+            (click)="toggleDisplay('resources')">
             <h6 class="m-0">
               Resources
             </h6>
           </div>
-          <div class="card-body footer-bg-dark table-hover footerLink p-0">
+          <div class="card-body table-hover p-0 footer-bg-dark footerLink collapse" [ngClass]="{'show' : !resourcesCollapse}">
             <div class="row">
               <div class="col-md-6 border-right p-1 pl-4">
                 <a class="linkFontStyle footerLink" [routerLink]="['/Just-Friends']">Just Friends</a>
@@ -241,12 +241,12 @@
       <div class="col-lg-4  pb-2">
         <div class="card">
           <div class="card-header p-2 cursor footer-bg-dark footerLink border-bottom" id="headingOne"
-            (click)="OpenTagsResourcesMenu('/Tags')">
+            (click)="toggleDisplay('tags')">
             <h6 class="m-0">
               Tags
             </h6>
           </div>
-          <div class="card-body footer-bg-dark table-hover footerLink p-0">
+          <div class="card-body footer-bg-dark footerLink able-hover p-0 collapse" [ngClass]="{'show' : !tagsCollapse}">
             <div class="row">
               <div class="col-md-6 border-right p-1 pl-4">
                 <a class="linkFontStyle footerLink" [routerLink]="['/Love-Romance']">Love & Romance</a>
