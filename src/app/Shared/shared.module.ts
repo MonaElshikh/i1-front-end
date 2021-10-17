@@ -43,6 +43,12 @@ import { MyRelationShipComponent } from './Components/my-relation-ship/my-relati
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { PasswordStrengthComponent } from './Components/password-strength/password-strength.component';
 import { StatsBoxesComponent } from './Components/stats-boxes/stats-boxes.component';
+import { SvgLoveComponent } from './Components/svg-love/svg-love.component';
+import { SvgReadComponent } from './Components/svg-read/svg-read.component';
+import { SvgRepliedComponent } from './Components/svg-replied/svg-replied.component';
+import { SvgUnreadComponent } from './Components/svg-unread/svg-unread.component';
+import { SvgUnrepliedComponent } from './Components/svg-unreplied/svg-unreplied.component';
+import { WeatherForecastComponent } from './Components/weather-forecast/weather-forecast.component';
 import { onCreateDirective } from './Directives/onCreate.directive';
 import { AuthGardService } from './Services/auth-gard.service';
 import { AuthStatusService } from './Services/auth-status.service';
@@ -51,14 +57,8 @@ import { CountryService } from './Services/country.service';
 import { ErrorHandlerService } from './Services/error-handler.service';
 import { LocalstorageService } from './Services/local-storage.service';
 import { MetaTagslService } from './Services/metaTags.service';
-import { SvgRepliedComponent } from './Components/svg-replied/svg-replied.component';
-import { SvgUnrepliedComponent } from './Components/svg-unreplied/svg-unreplied.component';
-import { SvgReadComponent } from './Components/svg-read/svg-read.component';
-import { SvgUnreadComponent } from './Components/svg-unread/svg-unread.component';
-import { WindowObjectService } from './Services/window-object.service';
 import { WeatherForecastService } from './Services/weather-forecast.service';
-import { WeatherForecastComponent } from './Components/weather-forecast/weather-forecast.component';
-import { SvgLoveComponent } from './Components/svg-love/svg-love.component';
+import { WindowObjectService } from './Services/window-object.service';
 
 @NgModule({
   declarations: [
@@ -102,7 +102,7 @@ import { SvgLoveComponent } from './Components/svg-love/svg-love.component';
     SvgReadComponent,
     SvgUnreadComponent,
     WeatherForecastComponent,
-    SvgLoveComponent,
+    SvgLoveComponent
   ],
   imports: [
     CommonModule ,

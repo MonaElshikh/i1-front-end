@@ -9,6 +9,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { appCountry } from 'Shared/models/Country';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {
   ActivityLevelList,
   ChildrenList,
@@ -391,6 +392,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   imgResultAfterCompress: string;
   orientation: DOC_ORIENTATION;
   postingList: appArticleList[] = [];
+  closeModal: string;
   placholderList = [1, 2, 3, 4];
   ageList = ['18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35'
     , '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55',
@@ -424,7 +426,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private Toster: ToastrService,
     private CountryService: CountryService,
     private localStorage: LocalstorageService,
-    private meta: MetaTagslService) {
+    private meta: MetaTagslService,
+    private modalService: NgbModal) {
     this.currentRoute = this.router.url;
     this.hosturl = environment.HostUrl;
     this.baseUrl = environment.BASE_URL + '/';
@@ -1053,6 +1056,22 @@ export class ProfileComponent implements OnInit, OnDestroy {
     console.log("completion percent> " + this.completionCompletePercent);
     console.log("needed percent> " + this.completionNeededPercent);
   }
+  profileImgPopUp(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
+      this.closeModal = `Closed with: ${res}`;
+    }, (res) => {
+      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+    });
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
   //#endregion
   //#region Profile functions
   async getUserProfile(isFromSaveImage?: boolean, isFirstLoad?: boolean) {
@@ -1128,11 +1147,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
               this.SetMetaTags();
               //Check message history
               this.CheckMessageHistoryBetweenUsers();
-              //Add profile view 
+              //Add profile view
               this.AddProfileView();
-              //Bind posting list 
+              //Bind posting list
               this.GetPostingsList();
-              //Bind photos list 
+              //Bind photos list
               this.GetProfilePhotosList();
               //Bind HighLights
               this.bindHighLightsList();
@@ -2379,7 +2398,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
             console.log("this.profileSeeking ms>> " + this.profileSeeking.ms);
             //Bind Profile seeking Group Values
             this.SetProfileSeekingGroupValues();
-            //Bind seeking variables 
+            //Bind seeking variables
             // this.BindProfileSeekingValues();
           }
         }
@@ -3149,7 +3168,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
   //#endregion
   //#endregion
-  //#endregion 
+  //#endregion
   //#region ProfileLike Functions
   SetProfileLikedFavedObject() {
     //reset the sent object

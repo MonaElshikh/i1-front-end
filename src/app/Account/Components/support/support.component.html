@@ -162,31 +162,43 @@
             }"
           >
             <div class="col-md-12">
-              <div class="row mb-1" *ngIf="thread.senderId !== profileId">
-                <div class="col-md-1 p-1">
+              <div
+                class="row"
+                style="padding: 15px 0"
+                *ngIf="thread.senderId !== profileId"
+              >
+                <div class="col-md-12" style="position: relative">
                   <img
+                    style="position: absolute; left: 8px; top: -5px"
                     src="assets/images/no-image.png"
                     class="rounded-circle imgSize"
                     alt="Logo"
                   />
-                </div>
-                <div class="col-md-11 p-1">
-                  <label class="whiteSpace">Admin: {{ thread.body }}</label>
+                  <label
+                    class="whiteSpace"
+                    style="position: relative; left: 43px; top: 4px"
+                    >Admin: {{ thread.body }}</label
+                  >
                 </div>
               </div>
-              <div class="row mb-1" *ngIf="thread.senderId === profileId">
-                <div class="col-md-11 p-1">
+              <div
+                class="row"
+                style="padding: 15px 0"
+                *ngIf="thread.senderId === profileId"
+              >
+                <div class="col-md-11">
                   <label class="whiteSpace">You: {{ thread.body }}</label>
                 </div>
-                <div class="col-md-1 p-1">
+                <div class="col-md-1" style="position: relative">
                   <img
+                    style="position: absolute; right: 8px; top: -5px"
                     [src]="supportS.setUserProfileImageUrl()"
                     class="rounded-circle imgSize"
                     alt="Logo"
                   />
                 </div>
               </div>
-              <div class="row border-top dotted">
+              <div class="row border-top dotted p-2">
                 <div class="col-md-12 small pl-1" style="color: #808080">
                   {{ thread.replyDate | date }}
                 </div>

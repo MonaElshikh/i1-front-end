@@ -1,1 +1,1 @@
-var paypal;
+export let token;

@@ -4,6 +4,12 @@
   -webkit-box-sizing: border-box;
   -moz-sizing: border-box;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+textarea {
+  max-height: 221px !important;
+  overflow: visible !important;
 }
 a {
   text-decoration: none;
@@ -67,6 +73,11 @@ hr {
 }
 .page-item.active .page-link {
   background-color: #666666;
+}
+.pagination {
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
 }
 .pagination:hover {
   background-color: #e5e5e5;
@@ -448,4 +459,35 @@ svg {
   border-radius: 0;
   height: 15px;
   font-size: 12px;
+}
+/* Start profile popup style  */
+.modal-content {
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.modal-content > img {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  border-radius: 5px;
+  background-size: cover;
+  border: solid 4px #fff;
+}
+.modal-content > button {
+  position: absolute;
+  top: -5px;
+  right: 5px;
+  z-index: 2;
+  font-size: 40px;
+  outline: 0;
+  color: #000;
+}
+/* End profile popup style  */
+/* Media section  */
+@media (max-width: 767px) {
+  ul.pagination > li a {
+    padding: 0 5px;
+  }
 }

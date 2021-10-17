@@ -192,7 +192,7 @@
                             <button type="button" style="width:9rem;"
                                 class="btn btn-light border border-dark rounded-pill rounded-sm  mr-2"
                                 (click)="ArticleTrack()" [disabled]="!authService.isLoggedIn()">
-                                <span  [ngStyle]="{'fill': !tracked? 'gray' : 'red'}" 
+                                <span  [ngStyle]="{'fill': !tracked? 'gray' : 'red'}"
                                  style="stroke-width: 0;">
                                     <svg-love></svg-love>
                                 </span>
@@ -244,7 +244,7 @@
                                             <label>Posting Body: </label>
                                         </div>
                                         <div class="col-md-9">
-                                            <textarea autosize id="articleBody" cols="10" rows="4" class="form-control"
+                                            <textarea autosize id="articleBody" cols="10"  class="form-control"
                                                 maxlength="12000" [(ngModel)]="article.description" name="articleBody"
                                                 (ngModelChange)="articleBodyRemainingChars= $event.length"></textarea>
                                         </div>
@@ -267,7 +267,7 @@
                                         </a>
                                     </div>
                                     <div class="col-md-10 pl-1 pr-0">
-                                        <textarea autosize id="articleCommenttxt"
+                                        <textarea autosize id="articleCommenttxt" 
                                             [placeholder]="commentStatus==='no'? 'Comments for this posting has been disabled' :'Write a Comment'"
                                             [disabled]="commentStatus==='no'" class="form-control" maxlength="250"
                                             [(ngModel)]="articleComment" name="articleComment"

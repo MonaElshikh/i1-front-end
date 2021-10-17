@@ -18,7 +18,7 @@ import { appProfile } from '../../../Account/models/profile';
 export class NavbarComponent implements OnInit {
   userProfile: appProfile = {} as appProfile;
   UserId = "";
-  UserName: string;
+  UserName="";
   errorMessage = "";
   profileStatus = "";
   isExpanded = false;

@@ -129,15 +129,15 @@
             </div>
             <div
               *ngIf="DeleteMesg[i]"
-              class="alert alert-primary col-md-12 p-0 pl-1 mb-0"
+              class="alert alert-primary col-md-12 p-2 mb-0"
               role="alert"
             >
               <div class="row">
-                <div class="col-md-12 text-right pr-3">
-                  Sure |
+                <div class="col-md-12 text-center" style="padding: 5px 0">
+                  Unmatch Sure?
                   <a class="alert-link cursor" (click)="DeleteMessage(message)"
                     >Yes</a
-                  >&nbsp;&nbsp;
+                  >&nbsp;|&nbsp;
                   <a class="alert-link cursor" (click)="DeleteMesg[i] = false"
                     >No</a
                   >

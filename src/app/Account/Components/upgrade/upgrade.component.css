@@ -1,71 +1,87 @@
-
-.basic-box ,
-.active-basic-box  {
-    border-top:5px solid #800080;
-    border-bottom: 5px solid #800080;
+.basic-box,
+.active-basic-box {
+  border-top: 5px solid #800080;
+  border-bottom: 5px solid #800080;
 }
-.premium-box ,
+.premium-box,
 .active-premium-box {
-    border-top:5px solid #800000;
-    border-bottom:5px solid #800000 ;
+  border-top: 5px solid #800000;
+  border-bottom: 5px solid #800000;
 }
-.plus-box ,
+.plus-box,
 .active-plus-box {
-    border-top:5px solid #FF0000; 
-    border-bottom: 5px solid #FF0000;
- 
+  border-top: 5px solid #ff0000;
+  border-bottom: 5px solid #ff0000;
 }
-.exclusive-box ,
-.active-exclusive-box 
- {
-    border-top:5px solid #FF00FF;
-    border-bottom: 5px solid #FF00FF;
+.exclusive-box,
+.active-exclusive-box {
+  border-top: 5px solid #ff00ff;
+  border-bottom: 5px solid #ff00ff;
 }
 .basic-box,
 .premium-box,
 .plus-box,
 .exclusive-box {
-    border-radius: 10px;
-    color: gray;
+  border-radius: 10px;
+  color: gray;
 }
 .active-basic-box,
 .active-premium-box,
 .active-plus-box,
 .active-exclusive-box {
-    border-radius: 10px;
-    color: black;
+  border-radius: 10px;
+  color: black;
 }
+.mobile-plans {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+}
+@media (max-width: 767px) {
+  .mobile-div-plan {
+    text-align: center;
+    width: 100% !important;
+  }
+  .mobile-btn-plan {
+    width: fit-content !important;
+    height: auto !important;
+    padding: 7px;
+  }
 
-@media (max-Width:768px) {
-    .mobile-div-plan {
-        text-align: center;
-        width: 100% !important;
-    }
-    .mobile-btn-plan {
-        width: fit-content !important;
-        height: auto!important;
-        padding: 7px;
-    }
-    
-    .mobile-btn-title {
-     height: auto;
-     padding: 12px !important;
-    }
+  .mobile-btn-title {
+    height: auto;
+    padding: 12px !important;
+  }
 
-    .mobile-left-padding {
-        padding-left:.5rem ;
-    }
+  .mobile-left-padding {
+    padding-left: 0.5rem;
+  }
 
-    .mobile-div-padding {
-        padding-left: 1rem !important;
-        padding-top: .5rem !important;
-    }
+  .mobile-div-padding {
+    padding-left: 1rem !important;
+    padding-top: 0.5rem !important;
+  }
 
-    .mobile-width {
-        width: fit-content;
-    }
+  .mobile-width {
+    width: fit-content;
+  }
 
-    .mobile-paypall-padding {
-        padding:0 25px;
-    }
+  .mobile-paypall-padding {
+    padding: 0 25px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .mobile-plans {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5px;
+  }
+}
+@media (min-width: 992px) {
+  .mobile-plans {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+  }
 }

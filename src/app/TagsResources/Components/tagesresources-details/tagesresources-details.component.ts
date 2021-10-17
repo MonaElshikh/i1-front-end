@@ -73,29 +73,29 @@ export class TagesresourcesDetailsComponent implements OnInit, OnDestroy {
     this.meta.UpdateMetaTags(this.metaTags);
     this.meta.setCanonicalURL();
   }
-  navigate(TagsResourcesObj: appTagsResources, action: string) {
-    this.id = parseInt(TagsResourcesObj.id);
-    switch (action) {
-      case 'next':
-        this.id === this.arrayLength - 1 ? this.id = 0 : this.id += 1;
-        break;
-      case 'prev':
-        this.id === 0 ? this.id = this.arrayLength - 1 : this.id -= 1;
-        break;
-    }
-    this.navigateSubscribtion = this.tagsresourceS.getList()
-      .subscribe((data) => {
-        this.tagsresourceS.parseXML(data)
-          .then((data) => {
-            this.articles = data;
-            this.title = this.articles[this.id].title;
-            this.route.navigate([this.url + this.title.split(' ').join('-')]);
-            this.SetMetaTags();
-          });
-      }, (error: AppErrorHandler) => {
-        throw error;
-      });
-  }
+  // navigate(TagsResourcesObj: appTagsResources, action: string) {
+  //   this.id = parseInt(TagsResourcesObj.id);
+  //   switch (action) {
+  //     case 'next':
+  //       this.id === this.arrayLength - 1 ? this.id = 0 : this.id += 1;
+  //       break;
+  //     case 'prev':
+  //       this.id === 0 ? this.id = this.arrayLength - 1 : this.id -= 1;
+  //       break;
+  //   }
+  //   this.navigateSubscribtion = this.tagsresourceS.getList()
+  //     .subscribe((data) => {
+  //       this.tagsresourceS.parseXML(data)
+  //         .then((data) => {
+  //           this.articles = data;
+  //           this.title = this.articles[this.id].title;
+  //           this.route.navigate([this.url + this.title.split(' ').join('-')]);
+  //           this.SetMetaTags();
+  //         });
+  //     }, (error: AppErrorHandler) => {
+  //       throw error;
+  //     });
+  // }
   openArticle(article: appTagsResources) {
     this.route.navigate([this.url, article.title.split(' ').join('-')]);
     this.SetMetaTags();

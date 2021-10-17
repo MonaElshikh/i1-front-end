@@ -9,6 +9,7 @@ import { WeatherForecastComponent } from 'Shared/Components/weather-forecast/wea
 import { AuthGardService } from 'Shared/Services/auth-gard.service';
 import { AuthStatusService } from 'Shared/Services/auth-status.service';
 import { DeactivateGuard } from 'Shared/Services/can-deactivate-guard.service';
+import { QuotesSayingsAuthorDetailsComponent } from 'TagsResources/Components/quotes-sayings-author-details/quotes-sayings-author-details.component';
 import { QuotesSayingsAuthorComponent } from 'TagsResources/Components/quotes-sayings-author/quotes-sayings-author.component';
 
 import { ArticleDescriptionComponent } from './Account/Components/article-description/article-description.component';
@@ -205,6 +206,7 @@ const routes: Routes = [
   { path: 'Abbreviations-Acronyms', component: AbbreviationsAcronymsComponent },
   { path: 'Quotes-Sayings/:title', component: QuotesSayingsDetailsComponent },
   { path: 'Quotes-Sayings', component: QuotesSayingsComponent },
+  { path: 'Quotes-Sayings-author/:title', component: QuotesSayingsAuthorDetailsComponent },
   { path: 'Quotes-Sayings-author', component: QuotesSayingsAuthorComponent },
   { path: 'Life-Style/:title', component: LifeStyleDetailsComponent },
   { path: 'Life-Style', component: LifeStyleComponent },

@@ -17,7 +17,7 @@
   display: none;
 }
 .resource-box {
-  height: 333.67px;
+  height: 296px;
 }
 
 .footer-separator {
@@ -30,6 +30,10 @@
   width: 1px;
   color: white;
   height: 100%;
+}
+.navbar-nav > li.nav-item.footer-separator {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 @media (max-width: 768px) {
   .second-row {

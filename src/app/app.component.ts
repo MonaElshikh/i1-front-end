@@ -2,7 +2,6 @@ import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject, Subscription } from 'rxjs';
-import { AuthService } from 'Shared/Services/auth.service';
 import { LocalstorageService } from 'Shared/Services/local-storage.service';
 
 @Component({
@@ -34,7 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
       }
       if (AppComponent.isBrowser) { window.scrollTo(0, 0); }
     });
-   
+
   }
   ngOnDestroy(): void {
     this.routerSubscription.unsubscribe();

@@ -9,20 +9,20 @@
   .navbar {
     flex-flow: row nowrap;
   }
- 
-  .navbar-nav 
+
+  .navbar-nav
   {
     flex-grow: 1;
     flex-direction: row;
     max-width: 100%;
   }
 
-  .navbar-nav li 
+  .navbar-nav li
   {
-    padding: 0 6px;
+    padding: 0 3px;
   }
 
-  .navbar-nav .dropdown-menu 
+  .navbar-nav .dropdown-menu
   {
     position: absolute;
     width: fit-content;
@@ -41,7 +41,7 @@
      display: list-item;
     }
   }
-  
+
   @media (max-Width:768px) {
     .nav-mobile .navbar-nav {
       justify-content: space-between;
@@ -49,4 +49,3 @@
       width: 100%;
     }
   }
- 

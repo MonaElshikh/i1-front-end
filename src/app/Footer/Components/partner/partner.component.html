@@ -2,26 +2,43 @@
   <div class="col-md-3 pt-0">
     <app-footer-left-menu></app-footer-left-menu>
   </div>
-  <div class="col-md-9"  *ngIf="!DataLoading">
+  <div class="col-md-9" *ngIf="!DataLoading">
     <h5 class="header-style">Partners</h5>
     <div *ngFor="let partner of partenersList">
-      <div class="card">
+      <div class="card mb-2">
         <div class="card-header">
-          {{partner.name}}
+          <h6>{{ partner.title }}</h6>
         </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-2">
-              <img src="{{partner.image}}" class="squaire mx-2" alt="">
+        <div class="card-body pt-0 pb-0">
+          <div class="row" style="align-items: center">
+            <div class="col-md-2 p-0">
+              <img
+                src="{{ partner.imageLink }}"
+                alt="{{ partner.imageName }}"
+                class="squaire mx-2"
+              />
             </div>
             <div class="col-md-10">
-              <a class="card-text small blueLink" href="{{partner.link}}">
-                Gold Partners', image: 'assets/images/ez.jpg', link: 'Buy any set of books from EZ Solutions and get $20
-                off when you use the coupon code "ez20of"
+              <a class="card-text small blueLink" href="{{ partner.textLink }}">
+                {{ partner.text }}
               </a>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><h6>Guest Posts / Sponsored Posts</h6></div>
+      <div class="card-body">
+        <p>
+          Options #1: Guest Posts - If you wish to have a guest post to write
+          articles for us, contact us with all your details.
+        </p>
+        <p>
+          Options #2: Sponsored Posts - If you wish to have a spondored post to
+          promote your products and services with us, contact us so that we can
+          get started.
+        </p>
       </div>
     </div>
   </div>
