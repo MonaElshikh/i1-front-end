@@ -7,11 +7,6 @@ import { TagsResourcesParentService } from './tags-resources-parent.service';
 })
 export class QuotesSayingsByAuthorService extends TagsResourcesParentService {
   constructor(private _http: HttpClient, http: HttpClient) {
-    super(http, 'assets/xmls/Quotes-Sayings-Author-Name.xml');
-  }
-  getAuthorQuotes() {
-    return this._http.get('assets/xmls/Authors-Quotes.xml', {
-      responseType: 'text',
-    });
+    super(http, 'assets/xmls/Authors-Quotes.xml');
   }
 }

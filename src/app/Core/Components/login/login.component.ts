@@ -15,6 +15,7 @@ import { LocalstorageService } from 'Shared/Services/local-storage.service';
 import { MetaTagslService } from 'Shared/Services/metaTags.service';
 import * as glob from 'Shared/models/global';
 import { appRegister } from '../../models/register';
+import { AppComponent } from 'app/app.component';
 
 @Component({
   selector: 'app-login',
@@ -83,7 +84,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subscribtion = (await this.authService.create(form.value)).subscribe(
       (result: any) => {
         if (result) {
-          // glob.token = result.token;
           this.localStorage.setItem('token', result.token);
           this.jwtHelper = this.authService.currentUser;
           if (this.jwtHelper) {

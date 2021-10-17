@@ -1215,8 +1215,15 @@
                     type="text"
                     class="form-control"
                     name="hometown"
+                    maxlength="100"
                     [(ngModel)]="userProfile.hometown"
+                    (ngModelChange)="hometownRemainingChars = $event.length"
                   />
+                  <app-chars-counter
+                    [usedChars]="hometownRemainingChars"
+                    [maxChars]="100"
+                  >
+                  </app-chars-counter>
                 </div>
               </div>
               <hr />
@@ -1637,6 +1644,11 @@
                     [(ngModel)]="userProfile.city"
                     (ngModelChange)="cityRemainingChars = $event.length"
                   />
+                  <app-chars-counter
+                    [usedChars]="cityRemainingChars"
+                    [maxChars]="20"
+                  >
+                  </app-chars-counter>
                 </div>
               </div>
               <hr />

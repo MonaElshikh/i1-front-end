@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { appTagsResources } from '../models/tags-resources';
+import { appKeywordQuotes, appTagsResources } from '../models/tags-resources';
 import * as xml2js from 'xml2js';
 import { environment } from '../../../environments/environment';
 import {
@@ -28,6 +28,7 @@ import {
   MarriageWedding,
   OpenRelationship,
   QuotesSayings,
+  QuotesSayingsAuthor,
   RelationshipCommitment,
   SexIntimacy,
   ShortRelationship,
@@ -35,6 +36,7 @@ import {
   SpousesCouples,
   VirtualRelationship,
 } from 'Shared/models/general-lists';
+import { Subscription } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -161,12 +163,12 @@ export class TagsResourcesParentService {
       parser.parseString(data, function (err, result) {
         var obj = result.Items;
         for (k in obj.Item) {
-          if (counter === 100) {
+          if (counter === 500) {
             break;
           }
           var item = obj.Item[k];
           arr.push({
-            keywords: item.keywords[0],
+            keywords: item.keywords ? item.keywords[0] : 'Time',
             quote: item.quote[0],
             author: item.author[0],
           });
@@ -189,7 +191,7 @@ export class TagsResourcesParentService {
       parser.parseString(data, function (err, result) {
         var obj = result.Items;
         for (k in obj.Item) {
-          if (counter === 100) {
+          if (counter === 500) {
             break;
           }
           var item = obj.Item[k];
@@ -324,6 +326,12 @@ export class TagsResourcesParentService {
         this.imageUrl =
           QuotesSayings[Math.floor(Math.random() * QuotesSayings.length)];
         break;
+      case 'Quotes-Sayings-author':
+        this.imageUrl =
+          QuotesSayingsAuthor[
+            Math.floor(Math.random() * QuotesSayingsAuthor.length)
+          ];
+        break;
       case 'Relationship-Commitment':
         this.imageUrl =
           RelationshipCommitment[
@@ -429,6 +437,9 @@ export class TagsResourcesParentService {
       case 'Quotes-Sayings':
         this.imagesUrls = QuotesSayings;
         break;
+      case 'Quotes-Sayings-author':
+        this.imagesUrls = QuotesSayingsAuthor;
+        break;
       case 'Relationship-Commitment':
         this.imagesUrls = RelationshipCommitment;
         break;
@@ -459,6 +470,13 @@ export class TagsResourcesParentService {
       }
     }
     return this.articlesList;
+  }
+  uniqBy(a, key) {
+    let seen = new Set();
+    return a.filter((item) => {
+      let k = key(item);
+      return seen.has(k) ? false : seen.add(k);
+    });
   }
   getByTitle(articles, articleTitle: string) {
     for (var i = 0; i < articles.length; i++) {

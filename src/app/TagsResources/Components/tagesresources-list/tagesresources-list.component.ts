@@ -10,11 +10,11 @@ import { appTagsResources } from '../../models/tags-resources';
 @Component({
   selector: 'app-tagesresources-list',
   templateUrl: './tagesresources-list.component.html',
-  styleUrls: ['./tagesresources-list.component.css']
+  styleUrls: ['./tagesresources-list.component.css'],
 })
 export class TagesresourcesListComponent implements OnInit {
   metaTags: MetaDefinition[] = [];
-  @Input() articlesList: Array<appTagsResources> = [];
+  @Input() articlesList: appTagsResources[] = [];
   @Input() url: string = '';
   @Input() header: string = '';
   @Input() lbl1: string = '';
@@ -22,27 +22,37 @@ export class TagesresourcesListComponent implements OnInit {
   @Input() DataLoading: boolean;
   images: string[] = [];
   placholderList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-  PageTitle = "";
-  pageOfItems: Array<appTagsResources> = [];
+  PageTitle = '';
+  pageOfItems: appTagsResources[] = [];
   constructor(
-    private route: Router
-    , private meta: MetaTagslService
-    , private tagresoursS: LoveRomanceService
-    , @Inject(PLATFORM_ID) private platformId: any
-  ) { }
+    private route: Router,
+    private meta: MetaTagslService,
+    private tagresoursS: LoveRomanceService,
+    @Inject(PLATFORM_ID) private platformId: any
+  ) {}
   ngOnInit(): void {
     this.SetMetaTags();
   }
   //set images array,meta tags and page title & meta tags
   SetMetaTags() {
-    console.log("meta from list");
-    let cat = this.url.replace("/", "").replace("/", "");
+    let cat = this.url.replace('/', '').replace('/', '');
+    console.log(`category name > ${cat}`);
     this.images = this.tagresoursS.getImagesListsByCat(cat);
-    this.PageTitle = cat.replace("-", " & ") + " – Articles, Blogs, Comments, Discussions, Postings | ispace1";
+    this.PageTitle =
+      cat.replace('-', ' & ') +
+      ' – Articles, Blogs, Comments, Discussions, Postings | ispace1';
     this.metaTags = [
       { name: 'title', content: this.PageTitle },
-      { name: 'description', content: "Articles, Blogs, Comments, Discussions, Postings related to " + cat.replace("-", " & ") },
-      { name: 'metaImage', content: "http://ispaceone.com/" + this.tagresoursS.getRandomImage(cat) }
+      {
+        name: 'description',
+        content:
+          'Articles, Blogs, Comments, Discussions, Postings related to ' +
+          cat.replace('-', ' & '),
+      },
+      {
+        name: 'metaImage',
+        content: 'http://ispaceone.com/' + this.tagresoursS.getRandomImage(cat),
+      },
     ];
     this.meta.SetPageTitle(this.PageTitle);
     this.meta.UpdateMetaTags(this.metaTags);
@@ -51,7 +61,7 @@ export class TagesresourcesListComponent implements OnInit {
   openArticle(article: appTagsResources) {
     this.route.navigate([this.url, article.title.split(' ').join('-')]);
   }
-  onChangePage(pageOfItems: Array<appTagsResources>) {
+  onChangePage(pageOfItems: appTagsResources[]) {
     // update current page of items
     this.pageOfItems = pageOfItems;
     if (isPlatformBrowser(this.platformId)) {
