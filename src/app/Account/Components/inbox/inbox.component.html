@@ -201,58 +201,6 @@
       <div class="row">
         <div class="col-md-12">
           <div class="card border">
-            <div class="card-header p-0 pl-3 pr-1">
-              <div class="row">
-                <div class="col-md-11 p-1 text-center">
-                  <textarea
-                    autosize
-                    class="form-control"
-                    maxlength="500"
-                    [(ngModel)]="messageBody"
-                    [placeholder]="sendMessageTo"
-                    (ngModelChange)="remainingText = $event.length"
-                  ></textarea>
-                </div>
-                <div
-                  class="
-                    col-md-1
-                    p-1
-                    text-right
-                    d-flex
-                    flex-wrap
-                    align-items-center
-                    cursor
-                  "
-                >
-                  <span class="pl-2 my-auto">
-                    <app-chars-counter
-                      [usedChars]="remainingText"
-                      [maxChars]="500"
-                    >
-                    </app-chars-counter>
-                  </span>
-                  <button
-                    (click)="CheckSpamMessage()"
-                    class="btn btn-primary btn-sm pr-1 mb-2"
-                    [disabled]="messageBody === ''"
-                  >
-                    Send
-                  </button>
-                </div>
-              </div>
-              <div class="row" *ngIf="isMutualLikes || isMutualLoves">
-                <div class="col-md-6 text-center">
-                  <span *ngIf="isMutualLikes" style="fill: #1e90ff">
-                    Mutual Like &nbsp; <svg-like></svg-like>
-                  </span>
-                </div>
-                <div class="col-md-6 text-center">
-                  <span *ngIf="isMutualLoves" style="fill: red">
-                    Mutual Love &nbsp; <svg-love></svg-love>
-                  </span>
-                </div>
-              </div>
-            </div>
             <div class="card-body list-scrollY pt-2">
               <div
                 class="row border rounded mb-2"
@@ -307,6 +255,48 @@
                       {{ readStatus[i] }}
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer p-0 pl-3">
+              <div class="row send-mesg-box" >
+                <div class="text-center send-mesg-box-left" >
+                  <textarea
+                    autosize
+                    class="form-control"
+                    maxlength="500"
+                    [(ngModel)]="messageBody"
+                    [placeholder]="sendMessageTo"
+                    (ngModelChange)="remainingText = $event.length"
+                  ></textarea>
+                </div>
+                <div class="cursor send-mesg-box-right">
+                  <span class="pl-2 my-auto">
+                    <app-chars-counter
+                      [usedChars]="remainingText"
+                      [maxChars]="500"
+                    >
+                    </app-chars-counter>
+                  </span>
+                  <button
+                    (click)="CheckSpamMessage()"
+                    class="btn btn-primary btn-sm pr-1 mb-2"
+                    [disabled]="messageBody === ''"
+                  >
+                    Send
+                  </button>
+                </div>
+              </div>
+              <div class="row" *ngIf="isMutualLikes || isMutualLoves">
+                <div class="col-md-6 text-center">
+                  <span *ngIf="isMutualLikes" style="fill: #1e90ff">
+                    Mutual Like &nbsp; <svg-like></svg-like>
+                  </span>
+                </div>
+                <div class="col-md-6 text-center">
+                  <span *ngIf="isMutualLoves" style="fill: red">
+                    Mutual Love &nbsp; <svg-love></svg-love>
+                  </span>
                 </div>
               </div>
             </div>

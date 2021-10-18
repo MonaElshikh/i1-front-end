@@ -260,9 +260,9 @@ export class InboxComponent implements OnInit, OnDestroy {
       .subscribe((result: any) => {
         if (result) {
           this.messageList = result;
-          console.log("message list length> " + this.messageList.length);
-          console.log("mutual likes 1 > " + this.messageList[0].mutuallikes);
-          console.log("mutual likes 2 > " + this.messageList[3].mutuallikes);
+          // console.log("message list length> " + this.messageList.length);
+          // console.log("mutual likes 1 > " + this.messageList[0].mutuallikes);
+          // console.log("mutual likes 2 > " + this.messageList[3].mutuallikes);
 
           //check list length to set pageing option.
           this.messageList.length > this.PageSize ? this.isPaging = true : this.isPaging = false;

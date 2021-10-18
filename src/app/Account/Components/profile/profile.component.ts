@@ -565,6 +565,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.ProfileViewSubscription.unsubscribe();
     this.CheckFormDirty();
   }
+  Upgrade() {
+    this.router.navigate(['/Upgrade']);
+  }
   //#endregion
   //#region General functions
   //fun to check long text length and show part of it by defult.
@@ -1174,7 +1177,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     console.log('completion percent> ' + this.completionCompletePercent);
     console.log('needed percent> ' + this.completionNeededPercent);
   }
-  profileImgPopUp(content) {
+  openPopUp(content) {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
       .result.then(
@@ -3201,7 +3204,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.resource.ReceiverId
     );
   }
-  SendMessage() {
+  SendMessage(modalPopup?: any) {
     this.SetThreadEndpoints();
     this.MessageSubscription = this.messagesService
       .CheckNewThread(this.resource)
@@ -3223,7 +3226,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
                   console.log('credit count > ' + this.CreditMesg.length);
                   if (
                     this.CreditMesg.length === 0 ||
-                    this.CreditMesg.length < this.DailyLimit
+                    this.CreditMesg.length < 3//this.DailyLimit
                   ) {
                     this.NewMessageSubscription = this.messagesService
                       .AddNewMessage(
@@ -3270,7 +3273,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
                     console.log('used all ur credit');
                     this.isUsedFullMesgCredit = true;
                     this.messageBody = '';
-                    this.Toster.error('You usesd all your credits.');
+                    // this.Toster.error('You usesd all your credits.');
+                    this.openPopUp(modalPopup);
                     return false;
                   }
                 }

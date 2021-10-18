@@ -63,7 +63,6 @@ export class LoveRomanceComponent implements OnInit, OnDestroy {
         this.loveRomanceService.parseXML(data)
           .then((data) => {
             this.articlesList = data;
-
           });
       });
   }

@@ -79,6 +79,28 @@ hr {
   align-items: center;
   max-width: 100%;
 }
+.pagination > li.first-item,
+.pagination > li.last-item {
+  display: none;
+}
+.pagination > li.previous-item,
+.pagination > li.next-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination > li.previous-item a,
+.pagination > li.next-item a {
+  font-size: 0;
+}
+.pagination > li.previous-item a::after {
+  content: "<<";
+  font-size: 14px;
+}
+.pagination > li.next-item a::after {
+  content: ">>";
+  font-size: 14px;
+}
 .pagination:hover {
   background-color: #e5e5e5;
 }

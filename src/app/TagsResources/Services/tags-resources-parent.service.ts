@@ -163,7 +163,7 @@ export class TagsResourcesParentService {
       parser.parseString(data, function (err, result) {
         var obj = result.Items;
         for (k in obj.Item) {
-          if (counter === 500) {
+          if (counter === 100) {
             break;
           }
           var item = obj.Item[k];
@@ -191,7 +191,7 @@ export class TagsResourcesParentService {
       parser.parseString(data, function (err, result) {
         var obj = result.Items;
         for (k in obj.Item) {
-          if (counter === 500) {
+          if (counter === 100) {
             break;
           }
           var item = obj.Item[k];
