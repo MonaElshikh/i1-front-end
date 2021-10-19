@@ -1164,6 +1164,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.userProfile.messenger !== ''
       ? (TxtValues += textPercentage)
       : (TxtValues = TxtValues);
+    this.userProfile.other !== ''
+      ? (TxtValues += textPercentage)
+      : (TxtValues = TxtValues);
     console.log('Net TxtValues: ' + TxtValues);
     if (TxtValues > 25) {
       TxtValues = 25;
@@ -1422,7 +1425,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   showMoreProfiles() {
     this.showExtraProfiles = !this.showExtraProfiles;
   }
-  BlockProfile() {
+  BlockProfile(modalPopup?: any) {
     this.isUsedFullReportCredit = false;
     this.CheckCreditsSubscription = this.profileService
       .GetProfileBlockCredit(this.profileService.getProfileId())
@@ -1462,12 +1465,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
               });
           } else {
             this.isUsedFullBlockCredit = true;
+            this.openPopUp(modalPopup);
             return false;
           }
         }
       });
   }
-  ReportProfile() {
+  ReportProfile(modalPopup?: any) {
     this.isUsedFullBlockCredit = false;
     this.CheckCreditsSubscription = this.profileService
       .GetProfileReportCredit(this.profileService.getProfileId())
@@ -1508,6 +1512,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
               });
           } else {
             this.isUsedFullReportCredit = true;
+            this.openPopUp(modalPopup);
             return false;
           }
         }
@@ -3226,7 +3231,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
                   console.log('credit count > ' + this.CreditMesg.length);
                   if (
                     this.CreditMesg.length === 0 ||
-                    this.CreditMesg.length < 3//this.DailyLimit
+                    this.CreditMesg.length < this.DailyLimit
                   ) {
                     this.NewMessageSubscription = this.messagesService
                       .AddNewMessage(
@@ -3868,7 +3873,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         }
       });
   }
-  AddPhoto() {
+  AddPhoto(modalPopup?: any) {
     this.CheckCreditsSubscription = this.profileService
       .GetProfilePhotosCredit(this.profileService.getProfileId())
       .subscribe((result: any) => {
@@ -3882,7 +3887,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
           } else {
             this.isProfilePhotoEdit = false;
             this.isAddingPhotos = false;
-            this.Toster.error('Limits Alert: You usesd all your credits.');
+            this.openPopUp(modalPopup);
+            // this.Toster.error('Limits Alert: You usesd all your credits.');
           }
         }
       });
@@ -4052,7 +4058,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         break;
     }
   }
-  async ProfileLikeFav(favOrLike: string) {
+  async ProfileLikeFav(favOrLike: string, modalPopup?: any) {
     switch (favOrLike) {
       case 'like':
         this.CheckCreditsSubscription = (
@@ -4084,7 +4090,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
                 }
               );
             } else {
-              this.Toster.error('You usesd all your credits.');
+              this.openPopUp(modalPopup);
+              // this.Toster.error('You usesd all your credits.');
               return false;
             }
           }
@@ -4120,7 +4127,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
                 }
               );
             } else {
-              this.Toster.error('You usesd all your credits.');
+              // this.Toster.error('You usesd all your credits.');
+              this.openPopUp(modalPopup);
               return false;
             }
           }

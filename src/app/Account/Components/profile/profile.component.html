@@ -295,7 +295,7 @@
           style="width: 10rem"
           [disabled]="profileOwner || !authService.isLoggedIn()"
           class="btn btn-light mr-2 border border-dark"
-          (click)="ProfileLikeFav('like')"
+          (click)="ProfileLikeFav('like',limitsModal)"
         >
           <span [ngStyle]="{ fill: !liked ? 'gray' : '#1E90FF' }">
             <svg-like></svg-like>
@@ -307,7 +307,7 @@
           style="width: 10rem"
           [disabled]="profileOwner || !authService.isLoggedIn()"
           class="btn btn-light border border-dark"
-          (click)="ProfileLikeFav('fav')"
+          (click)="ProfileLikeFav('fav',limitsModal)"
         >
           <span
             [ngStyle]="{ fill: !faved ? 'gray' : 'red' }"
@@ -590,7 +590,7 @@
                   "
                   style="width: 7rem"
                   [disabled]="isAddingPhotos"
-                  (click)="AddPhoto(); SetProfileForm(vpForm)"
+                  (click)="AddPhoto(limitsModal); SetProfileForm(vpForm)"
                 >
                   Add photo
                 </button>
@@ -4974,10 +4974,10 @@
               <a class="small" [routerLink]="currentRoute"
                 >{{ hosturl }}{{ currentRoute }}
               </a>
-              <a class="cursor" *ngIf="!profileOwner" (click)="BlockProfile()">
+              <a class="cursor" *ngIf="!profileOwner" (click)="BlockProfile(limitsModal)">
                 <small> | Block Profile</small></a
               >
-              <a class="cursor" *ngIf="!profileOwner" (click)="ReportProfile()">
+              <a class="cursor" *ngIf="!profileOwner" (click)="ReportProfile(limitsModal)">
                 <small> | Report Profile</small></a
               >
             </div>
