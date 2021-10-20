@@ -1180,6 +1180,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     console.log('completion percent> ' + this.completionCompletePercent);
     console.log('needed percent> ' + this.completionNeededPercent);
   }
+  //Start popup section
   openPopUp(content) {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
@@ -1201,6 +1202,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       return `with: ${reason}`;
     }
   }
+  //End popup section
   //#endregion
   //#region Profile functions
   async getUserProfile(isFromSaveImage?: boolean, isFirstLoad?: boolean) {

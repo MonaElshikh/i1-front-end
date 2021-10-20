@@ -1,11 +1,5 @@
 import { isPlatformBrowser, Location } from '@angular/common';
-import {
-  Component,
-  Inject,
-  OnDestroy,
-  OnInit,
-  PLATFORM_ID,
-} from '@angular/core';
+import { Component, ElementRef, Inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { MetaDefinition } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'Account/Services/profile-service.service';
@@ -13,7 +7,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { LocalstorageService } from 'Shared/Services/local-storage.service';
 import { MetaTagslService } from 'Shared/Services/metaTags.service';
-import { WindowObjectService } from 'Shared/Services/window-object.service';
 
 import { appMessages, appMessageThreads } from '../../models/messages';
 import { MessagesService } from '../../Services/messages.service';
@@ -24,6 +17,7 @@ import { MessagesService } from '../../Services/messages.service';
   styleUrls: ['./inbox.component.css'],
 })
 export class InboxComponent implements OnInit, OnDestroy {
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
   //#region Declarations
   messageBody: string;
   messageList: appMessages[] = [];
@@ -98,13 +92,13 @@ export class InboxComponent implements OnInit, OnDestroy {
     private meta: MetaTagslService,
     private toster: ToastrService,
     private loc: Location,
-    private windowobj: WindowObjectService,
     public profileService: ProfileService,
     @Inject(PLATFORM_ID) private platformId: any
   ) {}
   ngOnInit(): void {
     this.BindMessagesList(true);
     this.SetMetaTags();
+    this.scrollToBottom();
   }
   ngOnDestroy() {
     if (this.MessageSubscription) this.MessageSubscription.unsubscribe();
@@ -113,8 +107,18 @@ export class InboxComponent implements OnInit, OnDestroy {
     if (this.FlagMessageSubscription)
       this.FlagMessageSubscription.unsubscribe();
   }
+
   //#endregion
   //#region  Functions
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+  scrollToBottom(): void {
+    try {
+      this.myScrollContainer.nativeElement.scrollTop =
+        this.myScrollContainer.nativeElement.scrollHeight;
+    } catch (err) {}
+  }
   //open profile when click on profile image in left panel mesg list, right panel mesg threads and top right part photos
   SetMetaTags() {
     this.metaTags = [
@@ -238,13 +242,13 @@ export class InboxComponent implements OnInit, OnDestroy {
   }
   openMessageDetails(message: appMessages, rowIndex) {
     //scroll down
-    if (isPlatformBrowser(this.platformId)) {
-      window.scrollTo({
-        left: 0,
-        top: document.body.scrollHeight - 300,
-        behavior: 'smooth',
-      });
-    }
+    // if (isPlatformBrowser(this.platformId)) {
+    //   window.scrollTo({
+    //     left: 0,
+    //     top: document.body.scrollHeight,
+    //     behavior: 'smooth',
+    //   });
+    // }
     //Update message read status
     if (message.lastReceiverId === +this.messagesService.getProfileId()) {
       const mesg = { ReceiverId: message.lastReceiverId, ThreadId: message.id };

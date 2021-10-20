@@ -18,13 +18,12 @@ import { MetaTagslService } from 'Shared/Services/metaTags.service';
   styleUrls: ['./upgrade.component.css']
 })
 export class UpgradeComponent implements OnInit, OnDestroy {
-  //#region DECARATION 
+  //#region DECARATION
   isExpiredMembership: boolean;
   ShowJustUpgradeButton = false;
   isUpgradeHistoryExpand = false;
   isAdditionalProductsExpand = false;
   isPaymentDetailsExpand = false;
-  isContributionHistoryExpand = false;
   showArticleBackRecords = false;
   showTrustSealRecords = false;
   isUpgrade = false;
@@ -131,24 +130,15 @@ export class UpgradeComponent implements OnInit, OnDestroy {
         this.isUpgradeHistoryExpand = !this.isUpgradeHistoryExpand;
         this.isAdditionalProductsExpand = false;
         this.isPaymentDetailsExpand = false;
-        this.isContributionHistoryExpand = false;
         break;
       case 'AdditionalProducts':
         this.isAdditionalProductsExpand = !this.isAdditionalProductsExpand;
         this.isUpgradeHistoryExpand = false;
         this.isPaymentDetailsExpand = false;
-        this.isContributionHistoryExpand = false;
         break;
       case 'PaymentDetails':
         this.isPaymentDetailsExpand = !this.isPaymentDetailsExpand;
         this.isAdditionalProductsExpand = false;
-        this.isUpgradeHistoryExpand = false;
-        this.isContributionHistoryExpand = false;
-        break;
-      case 'ContributionHistory':
-        this.isContributionHistoryExpand = !this.isContributionHistoryExpand;
-        this.isAdditionalProductsExpand = false;
-        this.isPaymentDetailsExpand = false;
         this.isUpgradeHistoryExpand = false;
         break;
     }

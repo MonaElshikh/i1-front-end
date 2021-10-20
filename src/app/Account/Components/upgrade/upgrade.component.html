@@ -539,35 +539,6 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card mb-3 box-style">
-          <div
-            class="card-header bg-white cursor"
-            (click)="toggleUpgradeBoxes('ContributionHistory')"
-          >
-            <span class="font-weight-bold">Contribution History</span>
-          </div>
-          <div
-            class="card-body"
-            [ngClass]="{ collapse: !isContributionHistoryExpand }"
-          >
-            <table class="table table-bordered">
-              <tr>
-                <th>Date</th>
-                <th>Payment Type</th>
-                <th>Amount</th>
-              </tr>
-              <tr>
-                <td><label>11-12-2020</label></td>
-                <td><label>credit</label></td>
-                <td><label>30$</label></td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="mb-2">
       <app-contribution></app-contribution>
     </div>

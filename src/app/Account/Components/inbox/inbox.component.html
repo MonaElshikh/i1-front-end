@@ -201,10 +201,10 @@
       <div class="row">
         <div class="col-md-12">
           <div class="card border">
-            <div class="card-body list-scrollY pt-2">
+            <div class="card-body list-scrollY pt-2" #scrollMe [scrollTop]="scrollMe.scrollHeight">
               <div
                 class="row border rounded mb-2"
-                style="width: 65%"
+                style="width: 90%"
                 *ngFor="let thread of messageThreadsList; index as i"
                 [ngClass]="{
                   'float-right myThreadbg': isThreadOwner[i],
@@ -296,7 +296,7 @@
                   </button>
                 </div>
               </div>
-              <div class="row" *ngIf="isMutualLikes || isMutualLoves">
+              <div class="row mesg-Mutuals" *ngIf="isMutualLikes || isMutualLoves">
                 <div class="col-md-6 text-center">
                   <span *ngIf="isMutualLikes" style="fill: #1e90ff">
                     Mutual Like &nbsp; <svg-like></svg-like>

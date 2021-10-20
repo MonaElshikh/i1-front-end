@@ -295,7 +295,7 @@
           style="width: 10rem"
           [disabled]="profileOwner || !authService.isLoggedIn()"
           class="btn btn-light mr-2 border border-dark"
-          (click)="ProfileLikeFav('like',limitsModal)"
+          (click)="ProfileLikeFav('like', limitsModal)"
         >
           <span [ngStyle]="{ fill: !liked ? 'gray' : '#1E90FF' }">
             <svg-like></svg-like>
@@ -307,7 +307,7 @@
           style="width: 10rem"
           [disabled]="profileOwner || !authService.isLoggedIn()"
           class="btn btn-light border border-dark"
-          (click)="ProfileLikeFav('fav',limitsModal)"
+          (click)="ProfileLikeFav('fav', limitsModal)"
         >
           <span
             [ngStyle]="{ fill: !faved ? 'gray' : 'red' }"
@@ -4974,10 +4974,18 @@
               <a class="small" [routerLink]="currentRoute"
                 >{{ hosturl }}{{ currentRoute }}
               </a>
-              <a class="cursor" *ngIf="!profileOwner" (click)="BlockProfile(limitsModal)">
+              <a
+                class="cursor"
+                *ngIf="!profileOwner"
+                (click)="BlockProfile(limitsModal)"
+              >
                 <small> | Block Profile</small></a
               >
-              <a class="cursor" *ngIf="!profileOwner" (click)="ReportProfile(limitsModal)">
+              <a
+                class="cursor"
+                *ngIf="!profileOwner"
+                (click)="ReportProfile(limitsModal)"
+              >
                 <small> | Report Profile</small></a
               >
             </div>
@@ -4998,7 +5006,10 @@
               </button>
             </div>
             <div class="modal-body" style="width: 100%">
-              <h6>You are out of credits.</h6>
+              <h6>
+                You have run out of credits, either wait or upgrade to a higher
+                account if available.
+              </h6>
             </div>
             <div
               class="modal-footer"
@@ -5013,25 +5024,17 @@
                 class="btn btn-secondary"
                 (click)="modal.dismiss('Cross click')"
               >
-                Close
+                Skip
               </button>
               <button
                 class="btn btn-primary"
-                (click)="modal.dismiss('Cross click'); Upgrade();"
+                (click)="modal.dismiss('Cross click'); Upgrade()"
               >
                 Upgrade
               </button>
             </div>
           </ng-template>
           <!-- End Limits  popup -->
-          <!-- <div
-            class="row"
-            *ngIf="isUsedFullBlockCredit || isUsedFullReportCredit"
-          >
-            <p class="text-danger pl-3">
-              Limits Alert: You usesd all your credits.
-            </p>
-          </div> -->
         </div>
       </div>
       <div class="col-md-3">

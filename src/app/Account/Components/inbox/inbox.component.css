@@ -66,6 +66,11 @@
   overflow: hidden;
   margin-right: 5px;
 }
+.mesg-Mutuals {
+  flex-wrap: nowrap !important;
+  align-items: center;
+  padding-bottom: 10px;
+}
 @media (max-width: 768px) {
   .display-flex {
     display: none;
