@@ -276,7 +276,7 @@
                   [(ngModel)]="userProfile.photoTagline"
                 />
               </div>
-              <div class="col-md-1 p-2 my-auto">
+              <div class="col-md-1 p-2 my-auto text-right">
                 <app-chars-counter
                   [usedChars]="photoTagLineRemainingChars"
                   [maxChars]="100"
@@ -403,7 +403,7 @@
                 ></textarea>
               </div>
               <div class="col-md-1 p-0 pl-1">
-                <div class="short-div float-left p-2 my-auto">
+                <div class="short-div float-left p-2 my-auto text-right">
                   <app-chars-counter
                     [usedChars]="messageRemainingChars"
                     [maxChars]="500"
@@ -730,7 +730,7 @@
                 </div>
               </div>
               <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
+                <div class="col-md-12 pr-3 my-auto text-right">
                   <app-chars-counter
                     [usedChars]="summaryRemainingChars"
                     [maxChars]="1000"
@@ -1218,11 +1218,13 @@
                     [(ngModel)]="userProfile.hometown"
                     (ngModelChange)="hometownRemainingChars = $event.length"
                   />
-                  <app-chars-counter
-                    [usedChars]="hometownRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="hometownRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -1643,11 +1645,13 @@
                     [(ngModel)]="userProfile.city"
                     (ngModelChange)="cityRemainingChars = $event.length"
                   />
-                  <app-chars-counter
-                    [usedChars]="cityRemainingChars"
-                    [maxChars]="20"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="cityRemainingChars"
+                      [maxChars]="20"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -1680,9 +1684,8 @@
                   ></textarea>
                 </div>
               </div>
-              <hr />
               <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
+                <div class="col-md-12 pr-3 my-auto text-right">
                   <app-chars-counter
                     [usedChars]="morePersonalRemainingChars"
                     [maxChars]="1000"
@@ -1856,15 +1859,13 @@
                         specializationRemainingChars = $event.length
                       "
                     />
-                  </div>
-                </div>
-                <div class="row p-0 m-0">
-                  <div class="col-md-12 pr-3 my-auto">
-                    <app-chars-counter
-                      [usedChars]="specializationRemainingChars"
-                      [maxChars]="100"
-                    >
-                    </app-chars-counter>
+                    <div class="text-right">
+                      <app-chars-counter
+                        [usedChars]="specializationRemainingChars"
+                        [maxChars]="100"
+                      >
+                      </app-chars-counter>
+                    </div>
                   </div>
                 </div>
                 <hr />
@@ -1879,15 +1880,13 @@
                       [(ngModel)]="userProfile.hschool"
                       (ngModelChange)="highSchoolRemainingChars = $event.length"
                     />
-                  </div>
-                </div>
-                <div class="row p-0 m-0">
-                  <div class="col-md-12 pr-3 my-auto">
-                    <app-chars-counter
-                      [usedChars]="highSchoolRemainingChars"
-                      [maxChars]="100"
-                    >
-                    </app-chars-counter>
+                    <div class="text-right">
+                      <app-chars-counter
+                        [usedChars]="highSchoolRemainingChars"
+                        [maxChars]="100"
+                      >
+                      </app-chars-counter>
+                    </div>
                   </div>
                 </div>
                 <hr />
@@ -1904,15 +1903,13 @@
                         undergradCollegeRemainingChars = $event.length
                       "
                     />
-                  </div>
-                </div>
-                <div class="row p-0 m-0">
-                  <div class="col-md-12 pr-3 my-auto">
-                    <app-chars-counter
-                      [usedChars]="undergradCollegeRemainingChars"
-                      [maxChars]="100"
-                    >
-                    </app-chars-counter>
+                    <div class="text-right">
+                      <app-chars-counter
+                        [usedChars]="undergradCollegeRemainingChars"
+                        [maxChars]="100"
+                      >
+                      </app-chars-counter>
+                    </div>
                   </div>
                 </div>
                 <hr />
@@ -1927,15 +1924,13 @@
                       [(ngModel)]="userProfile.gradschool"
                       (ngModelChange)="gradSchoolRemainingChars = $event.length"
                     />
-                  </div>
-                </div>
-                <div class="row p-0 m-0">
-                  <div class="col-md-12 pr-3 my-auto">
-                    <app-chars-counter
-                      [usedChars]="gradSchoolRemainingChars"
-                      [maxChars]="100"
-                    >
-                    </app-chars-counter>
+                    <div class="text-right">
+                      <app-chars-counter
+                        [usedChars]="gradSchoolRemainingChars"
+                        [maxChars]="100"
+                      >
+                      </app-chars-counter>
+                    </div>
                   </div>
                 </div>
                 <hr />
@@ -1950,15 +1945,13 @@
                       [(ngModel)]="userProfile.postgrade"
                       (ngModelChange)="postGradRemainingChars = $event.length"
                     />
-                  </div>
-                </div>
-                <div class="row p-0 m-0">
-                  <div class="col-md-12 pr-3 my-auto">
-                    <app-chars-counter
-                      [usedChars]="postGradRemainingChars"
-                      [maxChars]="100"
-                    >
-                    </app-chars-counter>
+                    <div class="text-right">
+                      <app-chars-counter
+                        [usedChars]="postGradRemainingChars"
+                        [maxChars]="100"
+                      >
+                      </app-chars-counter>
+                    </div>
                   </div>
                 </div>
                 <hr />
@@ -1980,7 +1973,7 @@
                   </div>
                 </div>
                 <div class="row p-0 m-0">
-                  <div class="col-md-12 pr-3 my-auto">
+                  <div class="col-md-12 pr-3 my-auto text-right">
                     <app-chars-counter
                       [usedChars]="moreEducationRemainingChars"
                       [maxChars]="100"
@@ -2638,15 +2631,13 @@
                     [(ngModel)]="userProfile.memeberof"
                     (ngModelChange)="memberOfRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
-                  <app-chars-counter
-                    [usedChars]="memberOfRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="memberOfRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -2661,15 +2652,13 @@
                     [(ngModel)]="userProfile.skill"
                     (ngModelChange)="keySkillsRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
-                  <app-chars-counter
-                    [usedChars]="keySkillsRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="keySkillsRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -2686,15 +2675,13 @@
                       mainAcheavmentRemainingChars = $event.length
                     "
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
-                  <app-chars-counter
-                    [usedChars]="mainAcheavmentRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="mainAcheavmentRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -2711,15 +2698,13 @@
                       coreCertificationRemainingChars = $event.length
                     "
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
-                  <app-chars-counter
-                    [usedChars]="coreCertificationRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="coreCertificationRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -2736,15 +2721,13 @@
                       currentEmployerRemainingChars = $event.length
                     "
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
-                  <app-chars-counter
-                    [usedChars]="currentEmployerRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="currentEmployerRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -2759,15 +2742,13 @@
                     [(ngModel)]="userProfile.pemp"
                     (ngModelChange)="pastEmployerRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
-                  <app-chars-counter
-                    [usedChars]="pastEmployerRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="pastEmployerRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -2789,7 +2770,7 @@
                 </div>
               </div>
               <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
+                <div class="col-md-12 pr-3 my-auto text-right">
                   <app-chars-counter
                     [usedChars]="moreProfessionRemainingChars"
                     [maxChars]="1000"
@@ -3005,15 +2986,13 @@
                     [(ngModel)]="userProfile.interest"
                     (ngModelChange)="interestsRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
-                  <app-chars-counter
-                    [usedChars]="interestsRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="interestsRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -3028,15 +3007,13 @@
                     [(ngModel)]="userProfile.hobbies"
                     (ngModelChange)="hobbiesRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
-                  <app-chars-counter
-                    [usedChars]="hobbiesRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="hobbiesRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -3051,15 +3028,13 @@
                     [(ngModel)]="userProfile.favoriteMusic"
                     (ngModelChange)="favMusicRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
-                  <app-chars-counter
-                    [usedChars]="favMusicRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="favMusicRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -3074,15 +3049,13 @@
                     [(ngModel)]="userProfile.favoriteMovies"
                     (ngModelChange)="favMoviesRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
-                  <app-chars-counter
-                    [usedChars]="favMoviesRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="favMoviesRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -3097,15 +3070,13 @@
                     [(ngModel)]="userProfile.favoriteReads"
                     (ngModelChange)="favrReadsRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3">
-                  <app-chars-counter
-                    [usedChars]="favrReadsRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="favrReadsRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -3120,15 +3091,13 @@
                     [(ngModel)]="userProfile.favoriteSports"
                     (ngModelChange)="favSportsRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3">
-                  <app-chars-counter
-                    [usedChars]="favSportsRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="favSportsRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -3143,15 +3112,13 @@
                     [(ngModel)]="userProfile.favoriteCuisines"
                     (ngModelChange)="favCuisinesRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3">
-                  <app-chars-counter
-                    [usedChars]="favCuisinesRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="favCuisinesRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -3166,15 +3133,13 @@
                     [(ngModel)]="userProfile.favoriteDressStyle"
                     (ngModelChange)="favDressRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3">
-                  <app-chars-counter
-                    [usedChars]="favDressRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="favDressRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -3189,15 +3154,13 @@
                     [(ngModel)]="userProfile.favoriteOutings"
                     (ngModelChange)="favOutingsRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3">
-                  <app-chars-counter
-                    [usedChars]="favOutingsRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="favOutingsRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -3219,7 +3182,7 @@
                 </div>
               </div>
               <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3">
+                <div class="col-md-12 pr-3 text-right">
                   <app-chars-counter
                     [usedChars]="moreInterestsRemainingChars"
                     [maxChars]="1000"
@@ -3471,7 +3434,7 @@
                     [(ngModel)]="MoreCf.aCustomLabel1"
                     (ngModelChange)="morelbl1RemainingChars = $event.length"
                   />
-                  <div class="pt-1 my-auto">
+                  <div class="text-right">
                     <app-chars-counter
                       [usedChars]="morelbl1RemainingChars"
                       [maxChars]="16"
@@ -3491,7 +3454,7 @@
                     [(ngModel)]="MoreCf.aCustomText1"
                     (ngModelChange)="moreVlaue1RemainingChars = $event.length"
                   ></textarea>
-                  <div class="pt-1 my-auto">
+                  <div class="text-right">
                     <app-chars-counter
                       [usedChars]="moreVlaue1RemainingChars"
                       [maxChars]="1000"
@@ -3511,7 +3474,7 @@
                     [(ngModel)]="MoreCf.aCustomLabel2"
                     (ngModelChange)="morelbl2RemainingChars = $event.length"
                   />
-                  <div class="pt-1 my-auto">
+                  <div class="text-right">
                     <app-chars-counter
                       [usedChars]="morelbl2RemainingChars"
                       [maxChars]="16"
@@ -3531,7 +3494,7 @@
                     [(ngModel)]="MoreCf.aCustomText2"
                     (ngModelChange)="moreVlaue2RemainingChars = $event.length"
                   ></textarea>
-                  <div class="pt-1 my-auto">
+                  <div class="pt-1 my-auto text-right">
                     <app-chars-counter
                       [usedChars]="moreVlaue2RemainingChars"
                       [maxChars]="1000"
@@ -3551,7 +3514,7 @@
                     [(ngModel)]="MoreCf.aCustomLabel3"
                     (ngModelChange)="morelbl3RemainingChars = $event.length"
                   />
-                  <div class="pt-1 my-auto">
+                  <div class="pt-1 my-auto text-right">
                     <app-chars-counter
                       [usedChars]="morelbl3RemainingChars"
                       [maxChars]="16"
@@ -3571,7 +3534,7 @@
                     [(ngModel)]="MoreCf.aCustomText3"
                     (ngModelChange)="moreVlaue3RemainingChars = $event.length"
                   ></textarea>
-                  <div class="pt-1 my-auto">
+                  <div class="pt-1 my-auto text-right">
                     <app-chars-counter
                       [usedChars]="moreVlaue3RemainingChars"
                       [maxChars]="1000"
@@ -3591,7 +3554,7 @@
                     [(ngModel)]="MoreCf.aCustomLabel4"
                     (ngModelChange)="morelbl4RemainingChars = $event.length"
                   />
-                  <div class="pt-1 my-auto">
+                  <div class="pt-1 my-auto text-right">
                     <app-chars-counter
                       [usedChars]="morelbl4RemainingChars"
                       [maxChars]="16"
@@ -3611,7 +3574,7 @@
                     [(ngModel)]="MoreCf.aCustomText4"
                     (ngModelChange)="moreVlaue4RemainingChars = $event.length"
                   ></textarea>
-                  <div class="pt-1 my-auto">
+                  <div class="pt-1 my-auto text-right">
                     <app-chars-counter
                       [usedChars]="moreVlaue4RemainingChars"
                       [maxChars]="1000"
@@ -3631,7 +3594,7 @@
                     [(ngModel)]="MoreCf.aCustomLabel5"
                     (ngModelChange)="morelbl5RemainingChars = $event.length"
                   />
-                  <div class="pt-1 my-auto">
+                  <div class="pt-1 my-auto text-right">
                     <app-chars-counter
                       [usedChars]="morelbl5RemainingChars"
                       [maxChars]="16"
@@ -3651,7 +3614,7 @@
                     [(ngModel)]="MoreCf.aCustomText5"
                     (ngModelChange)="moreVlaue5RemainingChars = $event.length"
                   ></textarea>
-                  <div class="pt-1 my-auto">
+                  <div class="pt-1 my-auto text-right">
                     <app-chars-counter
                       [usedChars]="moreVlaue5RemainingChars"
                       [maxChars]="1000"
@@ -3671,7 +3634,7 @@
                     [(ngModel)]="MoreCf.aCustomLabel6"
                     (ngModelChange)="morelbl6RemainingChars = $event.length"
                   />
-                  <div class="pt-1 my-auto">
+                  <div class="pt-1 my-auto text-right">
                     <app-chars-counter
                       [usedChars]="morelbl6RemainingChars"
                       [maxChars]="16"
@@ -3691,7 +3654,7 @@
                     [(ngModel)]="MoreCf.aCustomText6"
                     (ngModelChange)="moreVlaue6RemainingChars = $event.length"
                   ></textarea>
-                  <div class="pt-1 my-auto">
+                  <div class="pt-1 my-auto text-right">
                     <app-chars-counter
                       [usedChars]="moreVlaue6RemainingChars"
                       [maxChars]="1000"
@@ -3711,7 +3674,7 @@
                     [(ngModel)]="MoreCf.aCustomLabel7"
                     (ngModelChange)="morelbl7RemainingChars = $event.length"
                   />
-                  <div class="pt-1 my-auto">
+                  <div class="pt-1 my-auto text-right">
                     <app-chars-counter
                       [usedChars]="morelbl7RemainingChars"
                       [maxChars]="16"
@@ -3731,7 +3694,7 @@
                     [(ngModel)]="MoreCf.aCustomText7"
                     (ngModelChange)="moreVlaue7RemainingChars = $event.length"
                   ></textarea>
-                  <div class="pt-1 my-auto">
+                  <div class="pt-1 my-auto text-right">
                     <app-chars-counter
                       [usedChars]="moreVlaue7RemainingChars"
                       [maxChars]="1000"
@@ -3751,7 +3714,7 @@
                     [(ngModel)]="MoreCf.aCustomLabel8"
                     (ngModelChange)="morelbl8RemainingChars = $event.length"
                   />
-                  <div class="pt-1 my-auto">
+                  <div class="pt-1 my-auto text-right">
                     <app-chars-counter
                       [usedChars]="morelbl8RemainingChars"
                       [maxChars]="16"
@@ -3771,7 +3734,7 @@
                     [(ngModel)]="MoreCf.aCustomText8"
                     (ngModelChange)="moreVlaue8RemainingChars = $event.length"
                   ></textarea>
-                  <div class="pt-1 my-auto">
+                  <div class="pt-1 my-auto text-right">
                     <app-chars-counter
                       [usedChars]="moreVlaue8RemainingChars"
                       [maxChars]="1000"
@@ -3865,15 +3828,13 @@
                     [(ngModel)]="userProfile.phone"
                     (ngModelChange)="phoneRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
-                  <app-chars-counter
-                    [usedChars]="phoneRemainingChars"
-                    [maxChars]="50"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="phoneRemainingChars"
+                      [maxChars]="50"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -3888,15 +3849,13 @@
                     [(ngModel)]="userProfile.contactMail"
                     (ngModelChange)="contactMailRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3">
-                  <app-chars-counter
-                    [usedChars]="contactMailRemainingChars"
-                    [maxChars]="50"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="contactMailRemainingChars"
+                      [maxChars]="50"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -3911,15 +3870,13 @@
                     [(ngModel)]="userProfile.website"
                     (ngModelChange)="websiteRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
-                  <app-chars-counter
-                    [usedChars]="websiteRemainingChars"
-                    [maxChars]="50"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="websiteRemainingChars"
+                      [maxChars]="50"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -3934,15 +3891,12 @@
                     [(ngModel)]="userProfile.messenger"
                     (ngModelChange)="messangerRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
-                  <app-chars-counter
-                    [usedChars]="messangerRemainingChars"
-                    [maxChars]="50"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="messangerRemainingChars"
+                      [maxChars]="50">
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
               <hr />
@@ -3957,15 +3911,13 @@
                     [(ngModel)]="userProfile.other"
                     (ngModelChange)="otherRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
-                  <app-chars-counter
-                    [usedChars]="otherRemainingChars"
-                    [maxChars]="50"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="otherRemainingChars"
+                      [maxChars]="50"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
             </div>
@@ -4953,15 +4905,13 @@
                     [(ngModel)]="userProfile.tag"
                     (ngModelChange)="tagRemainingChars = $event.length"
                   />
-                </div>
-              </div>
-              <div class="row p-0 m-0">
-                <div class="col-md-12 pr-3 my-auto">
-                  <app-chars-counter
-                    [usedChars]="tagRemainingChars"
-                    [maxChars]="100"
-                  >
-                  </app-chars-counter>
+                  <div class="text-right">
+                    <app-chars-counter
+                      [usedChars]="tagRemainingChars"
+                      [maxChars]="100"
+                    >
+                    </app-chars-counter>
+                  </div>
                 </div>
               </div>
             </div>

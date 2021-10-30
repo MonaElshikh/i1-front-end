@@ -81,6 +81,12 @@
   .row-mobile {
     flex-wrap: nowrap;
   }
+  .row-mobile .tn-mobile {
+    width: 70px;
+  }
+  .row-mobile .un-mobile {
+    flex: 1;
+  }
 }
 @media (min-width: 768px) {
   .btn-toggle {

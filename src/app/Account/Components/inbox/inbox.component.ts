@@ -1,7 +1,16 @@
 import { isPlatformBrowser, Location } from '@angular/common';
-import { Component, ElementRef, Inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  OnDestroy,
+  OnInit,
+  PLATFORM_ID,
+  ViewChild,
+} from '@angular/core';
 import { MetaDefinition } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IsLikedService } from 'Account/Services/is-liked.service';
 import { ProfileService } from 'Account/Services/profile-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
@@ -25,11 +34,7 @@ export class InboxComponent implements OnInit, OnDestroy {
   partnerThread: appMessages = {} as appMessages;
   partnerRowInde: number = 0;
   filteredMessageList: appMessages[] = [];
-  flaggedMesgsList: appMessages[] = [];
-  ReadMesgList: appMessages[] = [];
-  UnreadMesgList: appMessages[] = [];
-  RepliedMesgList: appMessages[] = [];
-  UnrepliedMesgList: appMessages[] = [];
+  filteredArray: appMessages[] = [];
   messageThreadsList: appMessageThreads[] = [];
   MesgsCount: appMessageThreads[] = [];
   spamMessage: appMessageThreads[] = [];
@@ -78,10 +83,13 @@ export class InboxComponent implements OnInit, OnDestroy {
   HighlightRow: Number;
   ClickedRow: any;
   remainingText: number = 0;
+  ProfileLikedFavedSentObject = { userId: 0, profileUserId: 0, isLiked: 0 };
   MessageSubscription: Subscription;
   FlagMessageSubscription: Subscription;
   ConfirmSubscription: Subscription;
   subscription: Subscription;
+  LikeUnLikeFavUnFav: Subscription;
+
   //#endregion
   //#region Events
   constructor(
@@ -93,6 +101,7 @@ export class InboxComponent implements OnInit, OnDestroy {
     private toster: ToastrService,
     private loc: Location,
     public profileService: ProfileService,
+    private IsLikedService: IsLikedService,
     @Inject(PLATFORM_ID) private platformId: any
   ) {}
   ngOnInit(): void {
@@ -106,6 +115,7 @@ export class InboxComponent implements OnInit, OnDestroy {
     if (this.subscription) this.subscription.unsubscribe();
     if (this.FlagMessageSubscription)
       this.FlagMessageSubscription.unsubscribe();
+    if (this.LikeUnLikeFavUnFav) this.LikeUnLikeFavUnFav.unsubscribe();
   }
 
   //#endregion
@@ -316,10 +326,14 @@ export class InboxComponent implements OnInit, OnDestroy {
       }
     });
   }
-  SetPaging(size: number) {
+  SetPaging(size: number, filteredArray?: appMessages[]) {
     this.filteredMessageList.length = 0;
     for (let i = 0; i < size; i++) {
-      this.filteredMessageList.push(this.messageList[i]);
+      if (filteredArray) {
+        this.filteredMessageList.push(filteredArray[i]);
+      } else {
+        this.filteredMessageList.push(this.messageList[i]);
+      }
     }
     this.ShowHideMoreLess();
   }
@@ -400,6 +414,8 @@ export class InboxComponent implements OnInit, OnDestroy {
     });
   }
   ReplyMessage() {
+    //check First reply
+    this.checkFirstReply(this.CurrentMessage.id);
     this.RepliedMessage = {} as appMessageThreads;
     this.RepliedMessage.threadId = this.CurrentMessage.id;
     this.RepliedMessage.message = this.messageBody
@@ -460,6 +476,41 @@ export class InboxComponent implements OnInit, OnDestroy {
         }
       });
   }
+  checkFirstReply(id) {
+    let count = 0;
+    if (this.messageThreadsList && this.messageThreadsList.length > 0) {
+      //these 2 users have mesgs thread.
+      for (let i = 0; i < this.messageThreadsList.length; i++) {
+        if (
+          +this.messagesService.getProfileId() ===
+          this.messageThreadsList[i].senderId
+        ) {
+          count++;
+          console.log('not first reply');
+        }
+      }
+      if (count === 0) {
+        console.log('First reply');
+        //first reply
+        //add Like profile
+        this.ProfileLikedFavedSentObject.isLiked = 1;
+        this.LikeUnLikeFavUnFav = this.IsLikedService.LikeUnLike(
+          this.SetProfileLikedFavedObject(this.messageThreadsList[0].senderId)
+        ).subscribe((result) => {
+          if (result) {
+            console.log('profile like added');
+          }
+        });
+      }
+    }
+  }
+  SetProfileLikedFavedObject(id) {
+    //set the sent object
+    this.ProfileLikedFavedSentObject.profileUserId = id;
+    this.ProfileLikedFavedSentObject.userId =
+      +this.messagesService.getProfileId();
+    return this.ProfileLikedFavedSentObject;
+  }
   //fun to relaod the component.
   reloadCurrentRoute() {
     let currentUrl = this.router.url;
@@ -493,44 +544,54 @@ export class InboxComponent implements OnInit, OnDestroy {
         });
     });
   }
-  FilterMessageList(filter: string) {
+  FilterMessageList(event) {
+    console.log(`selected value : ${event.target.value}`);
     //apply filters
-    switch (filter) {
+    switch (event.target.value) {
       case 'View All':
-        console.log(filter);
-        this.filteredMessageList = this.messageList;
+        this.CallPaging = true;
+        this.BindMessagesList();
         break;
       case 'Starred':
-        this.filteredMessageList = this.messageList.filter(
-          (x) => x.flagIds.indexOf(this.messagesService.getProfileId()) !== -1
+        this.filteredArray = this.messageList.filter(
+          (x) =>
+            x.flagIds !== '' &&
+            x.flagIds.indexOf(this.messagesService.getProfileId()) !== -1
         );
-        console.log(this.filteredMessageList.length);
-        console.log(this.filteredMessageList[0]);
-        console.log(this.filteredMessageList[1]);
+        this.SetPaging(this.filteredArray.length, this.filteredArray);
+        console.log(
+          `flaged array length : ${this.filteredArray.length}    |   flaged array item 1 Ids
+               1- ${this.filteredArray[0].id} |
+               2- ${this.filteredArray[1].id}`
+        );
         break;
       case 'Replied':
-        this.filteredMessageList = this.messageList.filter(
+        this.filteredArray = this.messageList.filter(
           (x) => x.lastReceiverId === +this.messagesService.getProfileId()
         );
+        this.SetPaging(this.filteredArray.length, this.filteredArray);
         break;
       case 'Unreplied':
-        this.filteredMessageList = this.messageList.filter(
+        this.filteredArray = this.messageList.filter(
           (x) => x.lastReceiverId !== +this.messagesService.getProfileId()
         );
+        this.SetPaging(this.filteredArray.length, this.filteredArray);
         break;
       case 'Read':
-        this.filteredMessageList = this.messageList.filter(
+        this.filteredArray = this.messageList.filter(
           (x) =>
             x.lastReceiverId !== +this.messagesService.getProfileId() ||
             x.readIds === +this.messagesService.getProfileId()
         );
+        this.SetPaging(this.filteredArray.length, this.filteredArray);
         break;
       case 'Unread':
-        this.filteredMessageList = this.messageList.filter(
+        this.filteredArray = this.messageList.filter(
           (x) =>
             x.lastReceiverId === +this.messagesService.getProfileId() &&
             x.readIds === 0
         );
+        this.SetPaging(this.filteredArray.length, this.filteredArray);
         break;
     }
   }

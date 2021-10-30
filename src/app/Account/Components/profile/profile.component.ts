@@ -184,7 +184,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   PhotosList = [{ image: '', thumbImage: '', alt: '', title: '' }];
   resource = { SenderId: 0, ReceiverId: 0 };
   profileViewObject = { UserId: 0, ShowenProfileUserId: 0 };
-  isSpamMessage: boolean;
+  isSpamMessage = false;
   isUsedFullMesgCredit: boolean;
   isUsedFullPhotoCredit: boolean;
   isUsedFullBlockCredit: boolean;
@@ -828,6 +828,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
           this.isSeekingCollapse = !this.isSeekingCollapse;
           break;
         case 'ShowAll':
+          console.log(`show all ${boxName}`);
           this.isSummaryCollapse = false;
           this.isPersonalCollapse = false;
           this.isEducationCollapse = false;
@@ -839,6 +840,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
           this.isContactInfoCollapse = false;
           break;
         case 'HideAll':
+          console.log(`hide all ${boxName}`);
           this.isSummaryCollapse = true;
           this.isPersonalCollapse = true;
           this.isEducationCollapse = true;
@@ -855,7 +857,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   toggleBoxes(event) {
     if (this.authService.isLoggedIn()) {
       this.toggleShowProfileBtn = !this.toggleShowProfileBtn;
-      if (event.srcElement.innerHTML === 'Show Full Profile ') {
+      console.log(`button text ${event.srcElement.innerHTML}`);
+      if (event.srcElement.innerText.trim() === 'Show Full Profile') {
         this.toggle('ShowAll');
       } else {
         this.toggle('HideAll');
@@ -3309,13 +3312,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
           console.log('Message delete status updated successfully');
         }
       });
-    //send the messagel
+    //cehck if first reply
+    this.checkFirstReply(threadId);
+    //send the message
     this.RepliedMessage = {} as appMessageThreads;
     this.RepliedMessage.threadId = threadId;
     this.RepliedMessage.message = this.messageBody;
-    this.RepliedMessage.senderId = +this.messagesService.getUserId();
+    this.RepliedMessage.senderId = +this.messagesService.getProfileId();
     this.RepliedMessage.sname = this.localStorage.getItem('Sname');
-    this.RepliedMessage.receiverId = this.userProfile.user_Id;
+    this.RepliedMessage.receiverId = this.userProfile.id;
     this.RepliedMessage.rname = this.userProfile.sname;
     this.MessageThreadSubscription = this.messagesService
       .ReplyMessage(this.RepliedMessage)
@@ -3325,31 +3330,66 @@ export class ProfileComponent implements OnInit, OnDestroy {
       });
   }
   CheckSpamMessage(threadId) {
+    let spamCount = 0;
     this.MessageSubscription = this.messagesService
       .CheckIfSpam(threadId)
       .subscribe((result: any) => {
         if (result) {
           this.spamMessage = result;
-          if (this.spamMessage.length >= 5) {
+          if (this.spamMessage.length === 5) {
             for (var i = 0; i < this.spamMessage.length; i++) {
               if (
-                this.spamMessage[i].senderId !=
-                +this.messagesService.getUserId()
+                this.spamMessage[i].senderId ===
+                +this.messagesService.getProfileId()
               ) {
-                this.isSpamMessage = false;
-              } else {
-                this.isSpamMessage = true;
+                spamCount += 1;
               }
             }
+            if (spamCount === 5) {
+              this.isSpamMessage = true;
+            } else {
+              this.isSpamMessage = false;
+            }
+          }
+          if (!this.isSpamMessage) {
+            this.ReplyMessage(threadId);
           } else {
-            this.isSpamMessage = false;
+            this.messageBody = '';
+            this.Toster.error(
+              'Please Wait for the other party to reply first.'
+            );
           }
         }
-        if (!this.isSpamMessage) {
-          this.ReplyMessage(threadId);
-        } else {
-          this.messageBody = '';
-          this.Toster.error('Please Wait for the other party to reply first.');
+      });
+  }
+  checkFirstReply(id) {
+    let count = 0;
+    let threadsList: appMessageThreads[] = [];
+    this.MessageThreadSubscription = this.messagesService
+      .GetMessageThreads(id)
+      .subscribe((result: any) => {
+        threadsList = result;
+        if (threadsList && threadsList.length > 0) {
+          //these 2 users have mesgs thread.
+          for (let i = 0; i < threadsList.length; i++) {
+            if (
+              +this.messagesService.getProfileId() === threadsList[i].senderId
+            ) {
+              count++;
+            }
+          }
+          if (count === 0) {
+            //first reply
+            //add Like profile
+            this.ProfileLikedFavedSentObject.isLiked = 1;
+            this.LikeUnLikeFavUnFav = this.IsLikedService.LikeUnLike(
+              this.SetProfileLikedFavedObject()
+            ).subscribe((result) => {
+              if (result) {
+                console.log('profile like added');
+              }
+            });
+          }
         }
       });
   }
@@ -3954,18 +3994,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
   //#endregion
   //#region ProfileLike Functions
   SetProfileLikedFavedObject() {
-    //reset the sent object
-    this.ProfileLikedFavedSentObject = {
-      profileUserId: 0,
-      userId: 0,
-      isLiked: 0,
-    };
     //set the sent object
     this.ProfileLikedFavedSentObject.profileUserId = this.userProfile.id;
-    if (this.authService.isLoggedIn()) {
-      this.ProfileLikedFavedSentObject.userId =
-        +this.localStorage.getItem('ProfileId');
-    }
+    this.ProfileLikedFavedSentObject.userId =
+      +this.profileService.getProfileId();
     return this.ProfileLikedFavedSentObject;
   }
   async CheckLikesFavs(favOrLike: string) {
@@ -4080,7 +4112,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
                 this.ProfileLikedFavedSentObject.isLiked = 0;
               }
               this.LikeUnLikeFavUnFav = this.IsLikedService.LikeUnLike(
-                this.ProfileLikedFavedSentObject
+                this.SetProfileLikedFavedObject()
               ).subscribe(
                 (result) => {
                   console.log('Success');

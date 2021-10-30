@@ -395,34 +395,7 @@
                   <svg-profiles></svg-profiles>
                 </span>
               </div>
-              <div class="short-div">Profiles</div>
-            </div>
-          </div>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          style="cursor: pointer"
-          (click)="toggle(); this.updateMessageCount(); this.UpdateIntCount()"
-          [routerLink]="['/Postings']"
-          (mouseleave)="postingsOver = false"
-          (mouseenter)="postingsOver = true"
-        >
-          <div class="row">
-            <div class="col-md-12">
-              <div class="short-div text-center">
-                <span
-                  [ngStyle]="{
-                    fill: !postingsOver
-                      ? 'rgba(255,255,255,.5)'
-                      : 'rgba(255,255,255,.75)'
-                  }"
-                >
-                  <svg-postings></svg-postings>
-                </span>
-              </div>
-              <div class="short-div">Postings</div>
+              <div class="short-div">My Search</div>
             </div>
           </div>
         </a>
@@ -451,9 +424,19 @@
                   <svg-profile></svg-profile>
                 </span>
               </div>
-              <div class="short-div">Profile</div>
+              <div class="short-div">My Profile</div>
             </div>
           </div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="navbar-brand cursor m-0" *ngIf="authService.isLoggedIn()">
+          <img
+            [src]="authService.setUserProfileImageUrl()"
+            class="rounded-circle imgSize"
+            alt="Logo"
+            (click)="BindAccountData(); goProfile()"
+          />
         </a>
       </li>
       <li class="nav-item">
@@ -487,7 +470,7 @@
                   >{{ authService.GetMesgCount() }}</span
                 >
               </div>
-              <div class="short-div">Messages</div>
+              <div class="short-div">My Messages</div>
             </div>
           </div>
         </a>
@@ -531,40 +514,7 @@
                   >{{ authService.GetInterestsCount() }}</span
                 >
               </div>
-              <div class="short-div">Interests</div>
-            </div>
-          </div>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link cursor"
-          [routerLink]="['/MyPostings']"
-          (click)="this.updateMessageCount(); this.UpdateIntCount()"
-          (mouseleave)="myPostingOver = false"
-          (mouseenter)="myPostingOver = true"
-          [ngClass]="{ disabled: !authService.isLoggedIn() }"
-        >
-          <div class="row">
-            <div class="col-md-12">
-              <div class="short-div text-center">
-                <span
-                  *ngIf="
-                    !myPostingOver ||
-                    (myPostingOver && !authService.isLoggedIn())
-                  "
-                  style="fill: rgba(255, 255, 255, 0.5)"
-                >
-                  <svg-post></svg-post>
-                </span>
-                <span
-                  *ngIf="myPostingOver && authService.isLoggedIn()"
-                  style="fill: rgba(255, 255, 255, 0.75)"
-                >
-                  <svg-post></svg-post>
-                </span>
-              </div>
-              <div class="short-div text-center">My Postings</div>
+              <div class="short-div">My Interests</div>
             </div>
           </div>
         </a>

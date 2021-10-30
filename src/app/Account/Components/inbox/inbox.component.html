@@ -8,13 +8,14 @@
         class="list-group shadow bg-white pb-1 display-flex"
         [ngClass]="{ show: !isColapse }"
       >
-        <select class="form-control">
+        <select class="form-control" (change)="FilterMessageList($event)">
           <option>View All</option>
           <option>Read</option>
           <option>Unread</option>
           <option>Replied</option>
           <option>Unreplied</option>
           <option>Starred</option>
+          <!-- (change)="FilterMessageList($event)" -->
         </select>
         <div
           class="media border p-1 m-1 list-scrollY"
@@ -38,7 +39,7 @@
                     isColapse = true
                   "
                 >
-                  <div class="col-md-3">
+                  <div class="col-md-3 tn-mobile">
                     <img
                       [src]="messagesService.bindImageUrl('profile', photos[i])"
                       class="mr-3 imgSize rounded-circle"
@@ -46,7 +47,7 @@
                       (click)="openProfile(message, null, i, '')"
                     />
                   </div>
-                  <div class="col-md-9 pl-0">
+                  <div class="col-md-9 pl-0 un-mobile">
                     <div class="h-50 text-truncate">
                       <span
                         [ngClass]="{ 'font-weight-bold': unreadMessages[i] }"
@@ -201,7 +202,11 @@
       <div class="row">
         <div class="col-md-12">
           <div class="card border">
-            <div class="card-body list-scrollY pt-2" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+            <div
+              class="card-body list-scrollY pt-2"
+              #scrollMe
+              [scrollTop]="scrollMe.scrollHeight"
+            >
               <div
                 class="row border rounded mb-2"
                 style="width: 90%"
@@ -296,7 +301,10 @@
                   </button>
                 </div>
               </div>
-              <div class="row mesg-Mutuals" *ngIf="isMutualLikes || isMutualLoves">
+              <div
+                class="row mesg-Mutuals"
+                *ngIf="isMutualLikes || isMutualLoves"
+              >
                 <div class="col-md-6 text-center">
                   <span *ngIf="isMutualLikes" style="fill: #1e90ff">
                     Mutual Like &nbsp; <svg-like></svg-like>
