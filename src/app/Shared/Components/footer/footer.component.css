@@ -19,7 +19,24 @@
 .resource-box {
   height: 296px;
 }
-
+.left-up-down-arrow {
+  display: block;
+  position: absolute;
+  fill: white;
+  left: 0;
+  top: 5px;
+  cursor: pointer;
+  z-index: 2222;
+}
+.right-up-down-arrow {
+  display: block;
+  position: absolute;
+  fill: white;
+  right: 0;
+  top: 5px;
+  cursor: pointer;
+  z-index: 2222;
+}
 .footer-separator {
   position: relative;
 }
@@ -80,5 +97,13 @@
 
   .resource-box {
     height: auto;
+  }
+}
+@media (max-width: 1200px) {
+  .left-up-down-arrow {
+    left: 0;
+  }
+  .right-up-down-arrow {
+    right: 0;
   }
 }

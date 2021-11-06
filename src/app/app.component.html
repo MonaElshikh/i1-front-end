@@ -1,12 +1,12 @@
 <body>
-  <app-navbar></app-navbar>
+  <app-navbar *ngIf="!isAdmin"></app-navbar>
   <div class="container">
     <router-outlet></router-outlet>
   </div>
-  <app-footer></app-footer>
-  <div class="row footer-bg-dark" *ngIf="isHome">
+  <app-footer *ngIf="!isAdmin"></app-footer>
+  <div class="row footer-bg-dark" *ngIf="isHome && !isAdmin">
     <div class="col-lg-2"></div>
-    <div class="col-lg-8 pb-3" style="color: #fefefe">
+    <div class="col-lg-8 pb-3 mt-2" style="color: #fefefe">
       <h6 class="dottedBorder p-2">
         <small>
           ispace1, friends, love, romance, relationship, dating, affair,

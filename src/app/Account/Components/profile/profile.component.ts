@@ -1070,9 +1070,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.userProfile.sector !== ''
       ? (DllValues += dllPercentage)
       : (DllValues = DllValues);
-    this.userProfile.industry !== ''
-      ? (DllValues += dllPercentage)
-      : (DllValues = DllValues);
     this.userProfile.profStatus !== ''
       ? (DllValues += dllPercentage)
       : (DllValues = DllValues);
@@ -1861,9 +1858,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.seekingSector != ''
       ? (this.ProfileSeekingObject.sector = this.seekingSector)
       : (this.ProfileSeekingObject.sector = '');
-    this.seekingIndustry != ''
-      ? (this.ProfileSeekingObject.industry = this.seekingIndustry)
-      : (this.ProfileSeekingObject.industry = '');
     this.seekingprofStatus != ''
       ? (this.ProfileSeekingObject.status = this.seekingprofStatus)
       : (this.ProfileSeekingObject.status = '');
@@ -3113,9 +3107,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.profileSeeking.income != ''
         ? (this.seekingIncome = this.profileSeeking.income)
         : (this.seekingIncome = '');
-      this.profileSeeking.industry != ''
-        ? (this.seekingIndustry = this.profileSeeking.industry)
-        : (this.seekingIndustry = '');
       this.profileSeeking.status != ''
         ? (this.seekingprofStatus = this.profileSeeking.status)
         : (this.seekingprofStatus = '');
@@ -4105,12 +4096,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
             console.log('Likes credit count>> ' + result.length);
             console.log('Likes Limits count>> ' + this.DailyLimit);
             if (result.length < this.DailyLimit) {
-              this.liked = !this.liked;
-              if (this.liked) {
-                this.ProfileLikedFavedSentObject.isLiked = 1;
-              } else {
-                this.ProfileLikedFavedSentObject.isLiked = 0;
-              }
+              this.liked = true;
+              this.ProfileLikedFavedSentObject.isLiked = 1;
               this.LikeUnLikeFavUnFav = this.IsLikedService.LikeUnLike(
                 this.SetProfileLikedFavedObject()
               ).subscribe(
@@ -4125,7 +4112,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
               );
             } else {
               this.openPopUp(modalPopup);
-              // this.Toster.error('You usesd all your credits.');
               return false;
             }
           }
@@ -4142,12 +4128,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
             console.log('Favs Daily Count>> ' + result.length);
             console.log('Likes Limits count>> ' + this.DailyLimit);
             if (result.length < this.DailyLimit) {
-              this.faved = !this.faved;
-              if (this.faved) {
-                this.ProfileLikedFavedSentObject.isLiked = 1;
-              } else {
-                this.ProfileLikedFavedSentObject.isLiked = 0;
-              }
+              this.faved = true;
+              this.ProfileLikedFavedSentObject.isLiked = 1;
               this.LikeUnLikeFavUnFav = this.IsFavedService.FavUnFav(
                 this.ProfileLikedFavedSentObject
               ).subscribe(

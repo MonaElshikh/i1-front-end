@@ -293,7 +293,7 @@
         <button
           type="button"
           style="width: 10rem"
-          [disabled]="profileOwner || !authService.isLoggedIn()"
+          [disabled]="profileOwner || !authService.isLoggedIn() || liked"
           class="btn btn-light mr-2 border border-dark"
           (click)="ProfileLikeFav('like', limitsModal)"
         >
@@ -305,7 +305,7 @@
         <button
           type="button"
           style="width: 10rem"
-          [disabled]="profileOwner || !authService.isLoggedIn()"
+          [disabled]="profileOwner || !authService.isLoggedIn() || faved"
           class="btn btn-light border border-dark"
           (click)="ProfileLikeFav('fav', limitsModal)"
         >
@@ -1991,7 +1991,6 @@
             profileOwner ||
             userProfile.profesional ||
             userProfile.sector ||
-            userProfile.industry ||
             userProfile.profStatus ||
             userProfile.income ||
             userProfile.memeberof ||
@@ -2035,15 +2034,6 @@
                 </div>
               </div>
               <hr *ngIf="userProfile.sector" />
-              <div class="row container p-1 m-0" *ngIf="userProfile.industry">
-                <div class="col-md-3 LabelFont">Industry</div>
-                <div class="col-md-9">
-                  <label id="lblmyIndustry">
-                    {{ userProfile.industry }}
-                  </label>
-                </div>
-              </div>
-              <hr *ngIf="userProfile.industry" />
               <div class="row container p-1 m-0" *ngIf="userProfile.status">
                 <div class="col-md-3 LabelFont">Status</div>
                 <div class="col-md-9">
@@ -2321,258 +2311,6 @@
                     <option value="Business Establishment">
                       Business Establishment
                     </option>
-                  </select>
-                </div>
-              </div>
-              <hr />
-              <div class="row container p-1 m-0">
-                <div class="col-md-3 LabelFont">Industry</div>
-                <div class="col-md-9">
-                  <select
-                    id="myIdustryOptions"
-                    class="form-control"
-                    [(ngModel)]="userProfile.industry"
-                    name="industry"
-                  >
-                    <option selected="selected" value="Select One">
-                      Select One
-                    </option>
-                    <option value="Accounting">Accounting</option>
-                    <option value="Administrative Services">
-                      Administrative Services
-                    </option>
-                    <option value="Advertising / Marketing">
-                      Advertising / Marketing
-                    </option>
-                    <option value="Agriculture / Farming">
-                      Agriculture / Farming
-                    </option>
-                    <option value="Airline / Aviation">
-                      Airline / Aviation
-                    </option>
-                    <option value="Alternate Medicine">
-                      Alternate Medicine
-                    </option>
-                    <option value="Architecture/Planning">
-                      Architecture/Planning
-                    </option>
-                    <option value="Armed Forces">Armed Forces</option>
-                    <option value="Arts / Crafts">Arts / Crafts</option>
-                    <option value="Astrology Services">
-                      Astrology Services
-                    </option>
-                    <option value="Automobile / Automotive">
-                      Automobile / Automotive
-                    </option>
-                    <option value="Aviation / Aerospace">
-                      Aviation / Aerospace
-                    </option>
-                    <option value="Banking">Banking</option>
-                    <option value="Biotechnology">Biotechnology</option>
-                    <option value="Capital Markets">Capital Markets</option>
-                    <option value="Chemicals">Chemicals</option>
-                    <option value="Computer Applications">
-                      Computer Applications
-                    </option>
-                    <option value="Computer Gaming">Computer Gaming</option>
-                    <option value="Computer Hardware">Computer Hardware</option>
-                    <option value="Computer Networking">
-                      Computer Networking
-                    </option>
-                    <option value="Computer Security">Computer Security</option>
-                    <option value="Computer Software">Computer Software</option>
-                    <option value="Construction">Construction</option>
-                    <option value="Consulting Services">
-                      Consulting Services
-                    </option>
-                    <option value="Consumer Products">Consumer Products</option>
-                    <option value="Consumer Services">Consumer Services</option>
-                    <option value="Cosmetics">Cosmetics</option>
-                    <option value="Dairy">Dairy</option>
-                    <option value="Designing Services">
-                      Designing Services
-                    </option>
-                    <option value="Education Management">
-                      Education Management
-                    </option>
-                    <option value="Energy">Energy</option>
-                    <option value="Engineering / Technology">
-                      Engineering / Technology
-                    </option>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Environment Services">
-                      Environment Services
-                    </option>
-                    <option value="Event Management">Event Management</option>
-                    <option value="Fashion / Apparel">Fashion / Apparel</option>
-                    <option value="Financial Services">
-                      Financial Services
-                    </option>
-                    <option value="Fishery">Fishery</option>
-                    <option value="Fitness / Wellness">
-                      Fitness / Wellness
-                    </option>
-                    <option value="Food / Beverages">Food / Beverages</option>
-                    <option value="Fund Raising">Fund Raising</option>
-                    <option value="Furniture">Furniture</option>
-                    <option value="Gambling / Casinos">
-                      Gambling / Casinos
-                    </option>
-                    <option value="Government Administration">
-                      Government Administration
-                    </option>
-                    <option value="Government Relations">
-                      Government Relations
-                    </option>
-                    <option value="Graphic Design">Graphic Design</option>
-                    <option value="Higher Education">Higher Education</option>
-                    <option value="Hospital / Health Care">
-                      Hospital / Health Care
-                    </option>
-                    <option value="Hospitality (Hotel/Restaurant)">
-                      Hospitality (Hotel/Restaurant)
-                    </option>
-                    <option value="Human Resources">Human Resources</option>
-                    <option value="Import / Export">Import / Export</option>
-                    <option value="Individual &amp; Family Services">
-                      Individual &amp; Family Services
-                    </option>
-                    <option value="Information Services">
-                      Information Services
-                    </option>
-                    <option value="Information Technology">
-                      Information Technology
-                    </option>
-                    <option value="Insurance">Insurance</option>
-                    <option value="International Affairs">
-                      International Affairs
-                    </option>
-                    <option value="International Trade">
-                      International Trade
-                    </option>
-                    <option value="Internet Services">Internet Services</option>
-                    <option value="Investment Banking">
-                      Investment Banking
-                    </option>
-                    <option value="Investment Management">
-                      Investment Management
-                    </option>
-                    <option value="Judiciary">Judiciary</option>
-                    <option value="Law Enforcement">Law Enforcement</option>
-                    <option value="Law Practice">Law Practice</option>
-                    <option value="Legal Services">Legal Services</option>
-                    <option value="Legislative Services">
-                      Legislative Services
-                    </option>
-                    <option value="Libraries">Libraries</option>
-                    <option value="Logistics and Supply Chain">
-                      Logistics and Supply Chain
-                    </option>
-                    <option value="Luxury Goods">Luxury Goods</option>
-                    <option value="Machinery / Equipment">
-                      Machinery / Equipment
-                    </option>
-                    <option value="Management Consulting">
-                      Management Consulting
-                    </option>
-                    <option value="Manufacturing">Manufacturing</option>
-                    <option value="Marine">Marine</option>
-                    <option value="Market Research">Market Research</option>
-                    <option value="Media / Broadcasting">
-                      Media / Broadcasting
-                    </option>
-                    <option value="Medical Practice">Medical Practice</option>
-                    <option value="Medicine / Health Sciences">
-                      Medicine / Health Sciences
-                    </option>
-                    <option value="Military / Defense">
-                      Military / Defense
-                    </option>
-                    <option value="Mining / Metals">Mining / Metals</option>
-                    <option value="Mobile Technology">Mobile Technology</option>
-                    <option value="Motion Picture">Motion Picture</option>
-                    <option value="Music">Music</option>
-                    <option value="Nanotechnology">Nanotechnology</option>
-                    <option value="Non-Profit Organization Management">
-                      Non-Profit Organization Management
-                    </option>
-                    <option value="Office Supplies">Office Supplies</option>
-                    <option value="Online Media">Online Media</option>
-                    <option value="Online Services">Online Services</option>
-                    <option value="Outsourcing / Offshoring">
-                      Outsourcing / Offshoring
-                    </option>
-                    <option value="Packaging">Packaging</option>
-                    <option value="Paper &amp; Forest Products">
-                      Paper &amp; Forest Products
-                    </option>
-                    <option value="Performing Arts">Performing Arts</option>
-                    <option value="Petrochemicals">Petrochemicals</option>
-                    <option value="Pharmaceuticals">Pharmaceuticals</option>
-                    <option value="Philanthropy">Philanthropy</option>
-                    <option value="Photography">Photography</option>
-                    <option value="Plastics">Plastics</option>
-                    <option value="Political Organization">
-                      Political Organization
-                    </option>
-                    <option value="Pottery / Glass &amp; Ceramics">
-                      Pottery / Glass &amp; Ceramics
-                    </option>
-                    <option value="Poultry">Poultry</option>
-                    <option value="Primary/Secondary Education">
-                      Primary/Secondary Education
-                    </option>
-                    <option value="Printing">Printing</option>
-                    <option value="Private Equity">Private Equity</option>
-                    <option value="Program Development">
-                      Program Development
-                    </option>
-                    <option value="Public Policy">Public Policy</option>
-                    <option value="Public Relations">Public Relations</option>
-                    <option value="Public Safety">Public Safety</option>
-                    <option value="Publishing">Publishing</option>
-                    <option value="Railroad">Railroad</option>
-                    <option value="Real Estate">Real Estate</option>
-                    <option value="Recreational Facilities &amp; Services">
-                      Recreational Facilities &amp; Services
-                    </option>
-                    <option value="Recruiting / Staffing">
-                      Recruiting / Staffing
-                    </option>
-                    <option value="Religious Services">
-                      Religious Services
-                    </option>
-                    <option value="Research">Research</option>
-                    <option value="Restaurant">Restaurant</option>
-                    <option value="Retail">Retail</option>
-                    <option value="Security Services">Security Services</option>
-                    <option value="Semiconductors">Semiconductors</option>
-                    <option value="Shipbuilding">Shipbuilding</option>
-                    <option value="Social Services">Social Services</option>
-                    <option value="Sports">Sports</option>
-                    <option value="Telecommunications">
-                      Telecommunications
-                    </option>
-                    <option value="Textiles">Textiles</option>
-                    <option value="Think Tanks">Think Tanks</option>
-                    <option value="Tobacco">Tobacco</option>
-                    <option value="Trading">Trading</option>
-                    <option value="Training / Coaching">
-                      Training / Coaching
-                    </option>
-                    <option value="Transportation / Shipping">
-                      Transportation / Shipping
-                    </option>
-                    <option value="Travel / Tourism">Travel / Tourism</option>
-                    <option value="Utilities">Utilities</option>
-                    <option value="Venture Capital">Venture Capital</option>
-                    <option value="Veterinary">Veterinary</option>
-                    <option value="Warehousing">Warehousing</option>
-                    <option value="Wholesale">Wholesale</option>
-                    <option value="Wine / Spirits">Wine / Spirits</option>
-                    <option value="Wireless Services">Wireless Services</option>
-                    <option value="Writing / Editing">Writing / Editing</option>
-                    <option value="Other">Other</option>
                   </select>
                 </div>
               </div>
@@ -4117,18 +3855,6 @@
                 </div>
               </div>
               <hr *ngIf="profileSeeking.sector" />
-              <div
-                class="row container p-1 m-0"
-                *ngIf="profileSeeking.industry"
-              >
-                <div class="col-md-3 LabelFont">Industry</div>
-                <div class="col-md-9">
-                  <label id="lblseekingindustry" class="valueFont">{{
-                    profileSeeking.industry
-                  }}</label>
-                </div>
-              </div>
-              <hr *ngIf="profileSeeking.industry" />
               <div class="row container p-1 m-0" *ngIf="profileSeeking.status">
                 <div class="col-md-3 LabelFont">Status</div>
                 <div class="col-md-9">
@@ -4737,32 +4463,6 @@
                       />
                       <label class="form-check-label">
                         {{ sector }}
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <hr />
-              <div class="row container p-1 m-0">
-                <div class="col-md-3 LabelFont">Industry</div>
-                <div class="col-md-9">
-                  <div class="border scroll pl-1">
-                    <div
-                      class="form-check m-2"
-                      *ngFor="let industry of IndustryList"
-                    >
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value="{{ industry }}"
-                        [checked]="
-                          profileSeeking !== undefined &&
-                          profileSeeking.industry.indexOf(industry) !== -1
-                        "
-                        (change)="changeSelection('seekingIndustry', $event)"
-                      />
-                      <label class="form-check-label">
-                        {{ industry }}
                       </label>
                     </div>
                   </div>

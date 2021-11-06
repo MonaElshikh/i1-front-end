@@ -8,6 +8,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from 'Shared/shared.module';
+import { AdminModule } from './Admin/admin.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { TagsResourcesModule } from './TagsResources/tags-resources.module';
     FooterModule,
     TagsResourcesModule,
     CoreModule,
+    AdminModule,
     HttpClientModule,
     BrowserAnimationsModule,
     BrowserTransferStateModule,
@@ -38,7 +40,7 @@ import { TagsResourcesModule } from './TagsResources/tags-resources.module';
       closeButton: true,
       autoDismiss:true
     }),
-    
+
   ],
   providers:[
     NgxImageCompressService,

@@ -1,0 +1,85 @@
+<div class="main-div">
+  <span class="btn-toggle cursor" (click)="toggleDisplay()">
+    <svg-list-view></svg-list-view>
+  </span>
+  <div class="list-group mb-3 display-flex" [ngClass]="{ show: !isColapse }">
+    <a
+      class="list-group-item list-group-item-action"
+      [routerLink]="['/Admin-Login']"
+      [routerLinkActive]="['activeNode']"
+      >PROFILES</a
+    >
+    <a
+      class="list-group-item list-group-item-action"
+      [routerLink]="['/Admin-Memberships']"
+      [routerLinkActive]="['activeNode']"
+      >MEMBERSHIPS</a
+    >
+    <a
+      class="list-group-item list-group-item-action"
+      [routerLink]="['/Admin-Login']"
+      [routerLinkActive]="['activeNode']"
+      >UPGRADS</a
+    >
+    <a
+      class="list-group-item list-group-item-action"
+      [routerLink]="['/Admin-Login']"
+      [routerLinkActive]="['activeNode']"
+      >CONTRIBUTIONS</a
+    >
+    <a
+      class="list-group-item list-group-item-action"
+      [routerLink]="['/Admin-Login']"
+      [routerLinkActive]="['activeNode']"
+      >ADDITIONAL PRODUCTS</a
+    >
+    <a
+      class="list-group-item list-group-item-action"
+      [routerLink]="['/Admin-Limits']"
+      [routerLinkActive]="['activeNode']"
+      >LIMITS SETTINGS</a
+    >
+    <a
+      class="list-group-item list-group-item-action"
+      [routerLink]="['/Admin-Login']"
+      [routerLinkActive]="['activeNode']"
+      >MESSAGE BROADCAST</a
+    >
+    <a
+      class="list-group-item list-group-item-action"
+      [routerLink]="['/Admin-Login']"
+      [routerLinkActive]="['activeNode']"
+      >NEW TICKET</a
+    >
+    <a
+      class="list-group-item list-group-item-action"
+      [routerLink]="['/Admin-Login']"
+      [routerLinkActive]="['activeNode']"
+      >INBOX</a
+    >
+    <a
+      class="list-group-item list-group-item-action"
+      [routerLink]="['/Admin-Login']"
+      [routerLinkActive]="['activeNode']"
+      >ADD CATEGORY</a
+    >
+    <a
+      class="list-group-item list-group-item-action"
+      [routerLink]="['/Admin-Login']"
+      [routerLinkActive]="['activeNode']"
+      >POSTED ARTICLES</a
+    >
+    <a
+      class="list-group-item list-group-item-action"
+      [routerLink]="['/Admin-Login']"
+      [routerLinkActive]="['activeNode']"
+      >ARTICLE COMMENTS</a
+    >
+    <a
+      class="list-group-item list-group-item-action"
+      [routerLink]="['/Admin-Login']"
+      [routerLinkActive]="['activeNode']"
+      >POST ANNOUNCEMENT</a
+    >
+  </div>
+</div>

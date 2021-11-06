@@ -46,7 +46,6 @@ export interface appProfile {
   edu_info: string;
   profesional: string;
   occup: string;
-  industry: string;
   memeberof: string;
   cemp: string;
   pemp: string;
@@ -241,7 +240,6 @@ export interface appProfileSeeking {
   highestEdu: string;
   profession: string;
   sector: string;
-  industry: string;
   status: string;
   activityLevel: string;
   country: string;

@@ -13,9 +13,8 @@ import { appEmail } from 'Shared/models/email';
 import { AuthService } from 'Shared/Services/auth.service';
 import { LocalstorageService } from 'Shared/Services/local-storage.service';
 import { MetaTagslService } from 'Shared/Services/metaTags.service';
-import * as glob from 'Shared/models/global';
+
 import { appRegister } from '../../models/register';
-import { AppComponent } from 'app/app.component';
 
 @Component({
   selector: 'app-login',

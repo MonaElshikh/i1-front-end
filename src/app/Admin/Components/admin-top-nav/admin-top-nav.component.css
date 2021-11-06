@@ -1,0 +1,19 @@
+nav > ul {
+  list-style: none;
+}
+nav > ul > li {
+  padding: 0 15px;
+}
+nav > ul > li:not(:first-child) a {
+  cursor: pointer;
+  color: #495057;
+}
+nav > ul > li:not(:first-child) a:hover {
+  color: #1e90ff;
+}
+nav > ul > i:first-child span {
+  color: #495057;
+}
+nav > ul > li:first-child a {
+  color: #1e90ff;
+}

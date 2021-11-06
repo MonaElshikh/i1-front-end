@@ -1,0 +1,10 @@
+.admin-signin {
+  width: 60%;
+  max-width: 100%;
+  padding: 15px;
+  margin: 0 auto;
+}
+.card-body {
+  background-color: #f4f4f4;
+  padding: 10px 0;
+}

@@ -21,6 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
   title: string;
   url = '';
   isHome = false;
+  isAdmin = false;
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
     private router: Router,
@@ -34,10 +35,19 @@ export class AppComponent implements OnInit, OnDestroy {
       if (!(evt instanceof NavigationEnd)) {
         return;
       }
+      console.log(`current url >> ${this.router.url}`);
       if (this.router.url === '/') {
         this.isHome = true;
       } else {
         this.isHome = false;
+      }
+      if (this.router.url.indexOf('Admin') !== -1) {
+        this.isAdmin = true;
+        console.log(
+          `admin is here >> the url is : ${this.router.url} | is Admin:  ${this.isAdmin}`
+        );
+      } else {
+        this.isAdmin = false;
       }
       if (AppComponent.isBrowser) {
         window.scrollTo(0, 0);

@@ -4,12 +4,15 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+  styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent implements OnInit {
-  constructor(private route: Router, @Inject(PLATFORM_ID) private platformId: any) { }
-  ngOnInit(): void {
-  }
+  isFooterExpand = true;
+  constructor(
+    private route: Router,
+    @Inject(PLATFORM_ID) private platformId: any
+  ) {}
+  ngOnInit(): void {}
   resourcesCollapse = true;
   tagsCollapse = true;
   OpenTagsResourcesMenu(url: string) {
@@ -18,14 +21,16 @@ export class FooterComponent implements OnInit {
     }
     this.route.navigate([url]);
   }
-  toggleDisplay(box: string) {
-    switch (box) {
-      case 'tags':
-        this.tagsCollapse = !this.tagsCollapse;
-        break;
-      case 'resources':
-        this.resourcesCollapse = !this.resourcesCollapse;
-        break;
-    }
+
+  toggleDisplay() {
+    this.isFooterExpand = !this.isFooterExpand;
+    // switch (box) {
+    //   case 'tags':
+    //     this.tagsCollapse = !this.tagsCollapse;
+    //     break;
+    //   case 'resources':
+    //     this.resourcesCollapse = !this.resourcesCollapse;
+    //     break;
+    // }
   }
 }
