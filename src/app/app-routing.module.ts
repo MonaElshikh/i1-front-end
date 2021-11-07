@@ -23,6 +23,7 @@ import { ProfilesComponent } from './Account/Components/profiles/profiles.compon
 import { SettingsComponent } from './Account/Components/settings/settings.component';
 import { UpgradeComponent } from './Account/Components/upgrade/upgrade.component';
 import { WallComponent } from './Account/Components/wall/wall.component';
+import { AdminEditProfileComponent } from './Admin/Components/admin-edit-profile/admin-edit-profile.component';
 import { AdminHomeComponent } from './Admin/Components/admin-home/admin-home.component';
 import { AdminLimitsComponent } from './Admin/Components/admin-limits/admin-limits.component';
 import { AdminLoginComponent } from './Admin/Components/admin-login/admin-login.component';
@@ -315,7 +316,7 @@ const routes: Routes = [
   { path: 'Admin-Home', component: AdminHomeComponent },
   { path: 'Admin-Limits', component: AdminLimitsComponent },
   { path: 'Admin-Memberships', component: AdminMembershipsComponent },
-
+  { path: 'Admin-EditProfile', component: AdminEditProfileComponent },
 
   { path: 'Admin-Login', component: AdminLoginComponent },
   { path: 'Error', component: ErrorComponent },

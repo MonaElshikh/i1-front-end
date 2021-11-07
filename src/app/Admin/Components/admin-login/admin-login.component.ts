@@ -29,24 +29,16 @@ export class AdminLoginComponent implements OnInit {
   }
   async signIn(form: NgForm) {
     this.isClicked = true;
-    console.log(
-      `admin form data >> userId: ${form.value['UserId']} |password:  ${form.value['Password']}`
-    );
     this.subscription = (await this.adminService.create(form.value)).subscribe(
       (result: any) => {
         if (result) {
           this.adminsObjsct = result[0];
-          console.log(
-            ` admins 1:
-              ${this.adminsObjsct.userId} | ${this.adminsObjsct.password}
-              ------------------------------------------------------------------
-             `
-          );
           this.localStorage.setItem('adminUserId', this.adminsObjsct.userId);
           this.localStorage.setItem(
             'adminPassword',
             this.adminsObjsct.password
           );
+          this.localStorage.setItem('isMain', this.adminsObjsct.isMain);
           this.route.navigate(['/Admin-Home']);
         }
       },

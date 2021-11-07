@@ -7,8 +7,9 @@ import { AdminHomeComponent } from './Components/admin-home/admin-home.component
 import { AdminLimitsComponent } from './Components/admin-limits/admin-limits.component';
 import { AdminMembershipsComponent } from './Components/admin-memberships/admin-memberships.component';
 import { AdminTopNavComponent } from './Components/admin-top-nav/admin-top-nav.component';
+import { AdminEditProfileComponent } from './Components/admin-edit-profile/admin-edit-profile.component';
 @NgModule({
-  declarations: [AdminLoginComponent, AdminLeftMenuComponent, AdminHomeComponent, AdminLimitsComponent, AdminMembershipsComponent, AdminTopNavComponent],
+  declarations: [AdminLoginComponent, AdminLeftMenuComponent, AdminHomeComponent, AdminLimitsComponent, AdminMembershipsComponent, AdminTopNavComponent, AdminEditProfileComponent],
   imports: [SharedModule, RouterModule.forChild([])],
 })
 export class AdminModule {}

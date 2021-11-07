@@ -17,4 +17,13 @@ export class AdminService extends DataService {
   ) {
     super(http, environment.BASE_URL + '/AdminLogin', localStorage);
   }
+  getAllAdmins() {
+    return this._http.get(environment.BASE_URL + '/GetUpdateAdmins');
+  }
+  updateAdmin(admin: any) {
+    return this._http.post(environment.BASE_URL + '/GetUpdateAdmins', admin);
+  }
+  deleteAdmin(id: any) {
+    return this._http.get(environment.BASE_URL + '/DeleteAdmin/' + id);
+  }
 }

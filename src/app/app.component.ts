@@ -22,12 +22,17 @@ export class AppComponent implements OnInit, OnDestroy {
   url = '';
   isHome = false;
   isAdmin = false;
+  isFooterExpand = true;
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
     private router: Router,
     private localStorage: LocalstorageService
   ) {
     AppComponent.isBrowser.next(isPlatformBrowser(this.platformId));
+  }
+
+  toggleDisplay() {
+    this.isFooterExpand = !this.isFooterExpand;
   }
   ngOnInit(): void {
     // CODE TO SCROLL TOP WHEN NAVIGATION

@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent implements OnInit {
-  isFooterExpand = true;
   constructor(
     private route: Router,
     @Inject(PLATFORM_ID) private platformId: any
@@ -22,15 +21,4 @@ export class FooterComponent implements OnInit {
     this.route.navigate([url]);
   }
 
-  toggleDisplay() {
-    this.isFooterExpand = !this.isFooterExpand;
-    // switch (box) {
-    //   case 'tags':
-    //     this.tagsCollapse = !this.tagsCollapse;
-    //     break;
-    //   case 'resources':
-    //     this.resourcesCollapse = !this.resourcesCollapse;
-    //     break;
-    // }
-  }
 }

@@ -3,7 +3,7 @@
     <li>
       <span>Welcome</span> <a> {{ adminName }}</a>
     </li>
-    <li><a>Edit</a></li>
+    <li><a [routerLink]="['/Admin-EditProfile']">Edit</a></li>
     <li (click)="adminLogout()">
       <a>LogOut</a>
     </li>
