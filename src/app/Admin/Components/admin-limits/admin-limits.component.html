@@ -1,1 +1,169 @@
-<p>admin-limits works!</p>
+<div class="row">
+  <div class="col-md-7"></div>
+  <div class="col-md-5">
+    <app-admin-top-nav></app-admin-top-nav>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <app-admin-left-menu></app-admin-left-menu>
+  </div>
+  <div class="col-md-9">
+    <!-- <p>{{ limits | json }}</p> -->
+    <h5 class="header-style">Limits Settings</h5>
+    <form #limitsForm="ngForm" (ngSubmit)="SaveLimits(limitsForm)">
+      <div class="card mb-4">
+        <div class="card-header"><h6>Transactions</h6></div>
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-md-4">
+              <label for="regular-transaction">
+                Regular Transactions limit
+              </label>
+            </div>
+            <div class="col-md-8">
+              <input
+                type="text"
+                [(ngModel)]="limits.personalRegularRequestLimit"
+                id="regular-transaction"
+                name="regular-transaction"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4">
+              <label for="regular-transaction">
+                Premium Transactions limit
+              </label>
+            </div>
+            <div class="col-md-8">
+              <input
+                type="text"
+                [(ngModel)]="limits.personalPremiumRequestLimit"
+                id="premium-transaction"
+                name="premium-transaction"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4">
+              <label for="regular-transaction">
+                Featured Transactions limit
+              </label>
+            </div>
+            <div class="col-md-8">
+              <input
+                type="text"
+                [(ngModel)]="limits.personalFeaturedRequestLimit"
+                id="featured-transaction"
+                name="featured-transaction"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-4">
+        <div class="card-header"><h6>Articles</h6></div>
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-md-4">
+              <label for="regular-transaction"> Regular Articles limit </label>
+            </div>
+            <div class="col-md-8">
+              <input
+                type="text"
+                [(ngModel)]="limits.personalRegularArticleLimit"
+                id="regular-articles"
+                name="regular-articles"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4">
+              <label for="regular-transaction"> Premium Articles limit </label>
+            </div>
+            <div class="col-md-8">
+              <input
+                type="text"
+                [(ngModel)]="limits.personalPremiumArticleLimit"
+                id="premium-articles"
+                name="premium-articles"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4">
+              <label for="regular-transaction"> Featured Articles limit </label>
+            </div>
+            <div class="col-md-8">
+              <input
+                type="text"
+                [(ngModel)]="limits.personalFeaturedArticleLimit"
+                id="featured-articles"
+                name="featured-articles"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-4">
+        <div class="card-header"><h6>Photos</h6></div>
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-md-4">
+              <label for="regular-transaction"> Regular Photos limit </label>
+            </div>
+            <div class="col-md-8">
+              <input
+                type="text"
+                [(ngModel)]="limits.regularalphotosNo"
+                id="regular-photos"
+                name="regular-photos"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4">
+              <label for="regular-transaction"> Premium Photos limit </label>
+            </div>
+            <div class="col-md-8">
+              <input
+                type="text"
+                [(ngModel)]="limits.premiumphotosNo"
+                id="premium-photos"
+                name="premium-photos"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4">
+              <label for="regular-transaction"> Featured Photos limit </label>
+            </div>
+            <div class="col-md-8">
+              <input
+                type="text"
+                [(ngModel)]="limits.featuredphotosNo"
+                id="featured-photos"
+                name="featured-photos"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
