@@ -9,7 +9,6 @@
     <app-admin-left-menu></app-admin-left-menu>
   </div>
   <div class="col-md-9">
-    <!-- <p>{{ limits | json }}</p> -->
     <h5 class="header-style">Limits Settings</h5>
     <form #limitsForm="ngForm" (ngSubmit)="SaveLimits(limitsForm)">
       <div class="card mb-4">
@@ -23,11 +22,12 @@
             </div>
             <div class="col-md-8">
               <input
-                type="text"
+                type="number"
                 [(ngModel)]="limits.personalRegularRequestLimit"
                 id="regular-transaction"
                 name="regular-transaction"
                 class="form-control"
+                required
               />
             </div>
           </div>
@@ -39,11 +39,12 @@
             </div>
             <div class="col-md-8">
               <input
-                type="text"
+                type="number"
                 [(ngModel)]="limits.personalPremiumRequestLimit"
                 id="premium-transaction"
                 name="premium-transaction"
                 class="form-control"
+                required
               />
             </div>
           </div>
@@ -55,11 +56,12 @@
             </div>
             <div class="col-md-8">
               <input
-                type="text"
+                type="number"
                 [(ngModel)]="limits.personalFeaturedRequestLimit"
                 id="featured-transaction"
                 name="featured-transaction"
                 class="form-control"
+                required
               />
             </div>
           </div>
@@ -74,11 +76,12 @@
             </div>
             <div class="col-md-8">
               <input
-                type="text"
+                type="number"
                 [(ngModel)]="limits.personalRegularArticleLimit"
                 id="regular-articles"
                 name="regular-articles"
                 class="form-control"
+                required
               />
             </div>
           </div>
@@ -88,11 +91,12 @@
             </div>
             <div class="col-md-8">
               <input
-                type="text"
+                type="number"
                 [(ngModel)]="limits.personalPremiumArticleLimit"
                 id="premium-articles"
                 name="premium-articles"
                 class="form-control"
+                required
               />
             </div>
           </div>
@@ -102,11 +106,12 @@
             </div>
             <div class="col-md-8">
               <input
-                type="text"
+                type="number"
                 [(ngModel)]="limits.personalFeaturedArticleLimit"
                 id="featured-articles"
                 name="featured-articles"
                 class="form-control"
+                required
               />
             </div>
           </div>
@@ -121,11 +126,12 @@
             </div>
             <div class="col-md-8">
               <input
-                type="text"
+                type="number"
                 [(ngModel)]="limits.regularalphotosNo"
                 id="regular-photos"
                 name="regular-photos"
                 class="form-control"
+                required
               />
             </div>
           </div>
@@ -135,11 +141,12 @@
             </div>
             <div class="col-md-8">
               <input
-                type="text"
+                type="number"
                 [(ngModel)]="limits.premiumphotosNo"
                 id="premium-photos"
                 name="premium-photos"
                 class="form-control"
+                required
               />
             </div>
           </div>
@@ -149,11 +156,12 @@
             </div>
             <div class="col-md-8">
               <input
-                type="text"
+                type="number"
                 [(ngModel)]="limits.featuredphotosNo"
                 id="featured-photos"
                 name="featured-photos"
                 class="form-control"
+                required
               />
             </div>
           </div>

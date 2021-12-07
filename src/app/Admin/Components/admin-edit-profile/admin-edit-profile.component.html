@@ -10,146 +10,155 @@
   </div>
   <div class="col-md-9 mt-2 p-0">
     <h5 class="header-style">Edit Profile</h5>
-    <table class="table table-bordered !important">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">User name</th>
-          <th scope="col">Password</th>
-          <th scope="col" colspan="4">Privileges</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          [ngClass]="{
-            selectedRecord: selected[i],
-            unSelectedRecord: !selected[i]
-          }"
-          *ngFor="let admin of adminsList; index as i"
-          class="cursor"
-        >
-          <!--Add mode-->
-          <td *ngIf="!edits[i]">{{ admin.userId }}</td>
-          <td *ngIf="!edits[i]">{{ admin.password }}</td>
-          <td *ngIf="!edits[i]">
-            <span *ngIf="admin.view == 1" style="color: green">&#10004; </span>
-            <span *ngIf="admin.view == 0" style="color: red !important"
-              >&#10006;</span
-            >
-            View
-          </td>
-          <td *ngIf="!edits[i]">
-            <span *ngIf="admin.add == 1" style="color: green">&#10004; </span>
-            <span *ngIf="admin.add == 0" style="color: red !important"
-              >&#10006;</span
-            >
-            Add
-          </td>
-          <td *ngIf="!edits[i]">
-            <span *ngIf="admin.edit == 1" style="color: green">&#10004; </span>
-            <span *ngIf="admin.edit == 0" style="color: red !important"
-              >&#10006;</span
-            >
-            Edit
-          </td>
-          <td *ngIf="!edits[i]">
-            <span *ngIf="admin.delete == 1" style="color: green"
-              >&#10004;
-            </span>
-            <span *ngIf="admin.delete == 0" style="color: red !important"
-              >&#10006;</span
-            >
-            Delete
-          </td>
-          <td *ngIf="isMain && !edits[i]" style="width: 180px">
-            <button
-              class="btn btn-sm btn-secondary mx-2"
-              (click)="edits[i] = true"
-            >
+    <div class="table-responsive-sm">
+      <table class="table table-bordered !important">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">User name</th>
+            <th scope="col">Password</th>
+            <th scope="col" colspan="4">Privileges</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            [ngClass]="{
+              selectedRecord: selected[i],
+              unSelectedRecord: !selected[i]
+            }"
+            *ngFor="let admin of adminsList; index as i"
+            class="cursor"
+          >
+            <!--Add mode-->
+            <td *ngIf="!edits[i]">{{ admin.userId }}</td>
+            <td *ngIf="!edits[i]">{{ admin.password }}</td>
+            <td *ngIf="!edits[i]">
+              <span *ngIf="admin.view == 1" style="color: green"
+                >&#10004;
+              </span>
+              <span *ngIf="admin.view == 0" style="color: red !important"
+                >&#10006;</span
+              >
+              View
+            </td>
+            <td *ngIf="!edits[i]">
+              <span *ngIf="admin.add == 1" style="color: green">&#10004; </span>
+              <span *ngIf="admin.add == 0" style="color: red !important"
+                >&#10006;</span
+              >
+              Add
+            </td>
+            <td *ngIf="!edits[i]">
+              <span *ngIf="admin.edit == 1" style="color: green"
+                >&#10004;
+              </span>
+              <span *ngIf="admin.edit == 0" style="color: red !important"
+                >&#10006;</span
+              >
               Edit
-            </button>
-            <button
-              class="btn btn-sm btn-secondary"
-              (click)="modifyAdmin(admin, 'delete')"
-            >
+            </td>
+            <td *ngIf="!edits[i]">
+              <span *ngIf="admin.delete == 1" style="color: green"
+                >&#10004;
+              </span>
+              <span *ngIf="admin.delete == 0" style="color: red !important"
+                >&#10006;</span
+              >
               Delete
-            </button>
-          </td>
-          <!--Edit mode-->
-          <td *ngIf="edits[i]">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="User Name"
-              [(ngModel)]="admin.userId"
-            />
-          </td>
-          <td *ngIf="edits[i]">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Password"
-              [(ngModel)]="admin.password"
-            />
-          </td>
-          <td *ngIf="edits[i]">
-            <div class="form-check m-2">
+            </td>
+            <td *ngIf="isMain && !edits[i]" style="width: 180px">
+              <button
+                class="btn btn-sm btn-secondary mx-2"
+                (click)="edits[i] = true"
+              >
+                Edit
+              </button>
+              <button
+                class="btn btn-sm btn-secondary"
+                (click)="modifyAdmin(admin, 'delete')"
+              >
+                Delete
+              </button>
+            </td>
+            <!--Edit mode-->
+            <td *ngIf="edits[i]">
               <input
-                class="form-check-input"
-                type="checkbox"
-                [checked]="admin.view == 1"
-                (change)="changeState($event, admin, 'view')"
+                type="text"
+                class="form-control"
+                placeholder="User Name"
+                [(ngModel)]="admin.userId"
               />
-              <label class="form-check-label"> View </label>
-            </div>
-          </td>
-          <td *ngIf="edits[i]">
-            <div class="form-check m-2">
+            </td>
+            <td *ngIf="edits[i]">
               <input
-                class="form-check-input"
-                type="checkbox"
-                [checked]="admin.add == 1"
-                (change)="changeState($event, admin, 'add')"
+                type="text"
+                class="form-control"
+                placeholder="Password"
+                [(ngModel)]="admin.password"
               />
-              <label class="form-check-label"> Add </label>
-            </div>
-          </td>
-          <td *ngIf="edits[i]">
-            <div class="form-check m-2">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                [checked]="admin.edit == 1"
-                (change)="changeState($event, admin, 'edit')"
-              />
-              <label class="form-check-label"> Edit </label>
-            </div>
-          </td>
-          <td *ngIf="edits[i]">
-            <div class="form-check m-2">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                [checked]="admin.delete == 1"
-                (change)="changeState($event, admin, 'delete')"
-              />
-              <label class="form-check-label"> Delete </label>
-            </div>
-          </td>
-          <td *ngIf="edits[i]" style="width: 180px">
-            <button
-              class="btn btn-sm btn-secondary mx-2"
-              (click)="modifyAdmin(admin, 'update'); edits[i] = false"
-            >
-              Update
-            </button>
-            <button class="btn btn-sm btn-secondary" (click)="edits[i] = false">
-              Cancel
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            </td>
+            <td *ngIf="edits[i]">
+              <div class="form-check m-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [checked]="admin.view == 1"
+                  (change)="changeState($event, admin, 'view')"
+                />
+                <label class="form-check-label"> View </label>
+              </div>
+            </td>
+            <td *ngIf="edits[i]">
+              <div class="form-check m-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [checked]="admin.add == 1"
+                  (change)="changeState($event, admin, 'add')"
+                />
+                <label class="form-check-label"> Add </label>
+              </div>
+            </td>
+            <td *ngIf="edits[i]">
+              <div class="form-check m-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [checked]="admin.edit == 1"
+                  (change)="changeState($event, admin, 'edit')"
+                />
+                <label class="form-check-label"> Edit </label>
+              </div>
+            </td>
+            <td *ngIf="edits[i]">
+              <div class="form-check m-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [checked]="admin.delete == 1"
+                  (change)="changeState($event, admin, 'delete')"
+                />
+                <label class="form-check-label"> Delete </label>
+              </div>
+            </td>
+            <td *ngIf="edits[i]" style="width: 180px">
+              <button
+                class="btn btn-sm btn-secondary mx-2"
+                (click)="modifyAdmin(admin, 'update'); edits[i] = false"
+              >
+                Update
+              </button>
+              <button
+                class="btn btn-sm btn-secondary"
+                (click)="edits[i] = false"
+              >
+                Cancel
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="row" *ngIf="isMain">
       <div class="col-md-10"></div>
       <div class="col-md-2">

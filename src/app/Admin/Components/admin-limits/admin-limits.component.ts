@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { appLimits } from 'Shared/models/LimitsAndUpgrade';
 import { LimitsAndUpgradeService } from 'Shared/Services/limits-upgrade.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-limits',
@@ -13,7 +14,10 @@ export class AdminLimitsComponent implements OnInit, OnDestroy {
   limits: appLimits = {} as appLimits;
   limitsObject: appLimits = {} as appLimits;
   LimitsSubscription: Subscription;
-  constructor(private LimitsAndUpgradeService: LimitsAndUpgradeService) {}
+  constructor(
+    private LimitsAndUpgradeService: LimitsAndUpgradeService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.getAllLimits();
@@ -58,13 +62,16 @@ export class AdminLimitsComponent implements OnInit, OnDestroy {
                  personalRegularRequestLimit: ${this.limitsObject.personalRegularRequestLimit}
                  personalPremiumRequestLimit: ${this.limitsObject.personalPremiumRequestLimit}
                  personalFeaturedRequestLimit: ${this.limitsObject.personalFeaturedRequestLimit}`);
-
-    this.LimitsSubscription = (
-      await this.LimitsAndUpgradeService.create(this.limitsObject)
-    ).subscribe((result: any) => {
-      if (result) {
-        console.log(`saved`);
-      }
-    });
+    if (form.valid) {
+      this.LimitsSubscription = (
+        await this.LimitsAndUpgradeService.create(this.limitsObject)
+      ).subscribe((result: any) => {
+        if (result) {
+          this.toastr.success('Data Saved Successfully');
+        }
+      });
+    } else {
+      this.toastr.error('Something got wrong');
+    }
   }
 }

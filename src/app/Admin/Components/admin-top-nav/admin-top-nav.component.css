@@ -17,3 +17,8 @@ nav > ul > i:first-child span {
 nav > ul > li:first-child a {
   color: #1e90ff;
 }
+@media (min-width: 200px) and (max-width: 1440px) {
+  .navbar-expand-lg .navbar-nav {
+    flex-direction: row !important;
+  }
+}

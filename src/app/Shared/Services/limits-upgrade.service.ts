@@ -14,6 +14,9 @@ export class LimitsAndUpgradeService extends DataService {
   ) {
     super(http, environment.BASE_URL + '/AdminSettings', localStorage);
   }
+  GetMainMemberships() {
+    return this._http.get(environment.BASE_URL + '/GetAllmemberships');
+  }
   GetProfilePaymentInfo(profileId) {
     return this._http.get(
       environment.BASE_URL + '/ProfilePayment/' + profileId
@@ -35,5 +38,11 @@ export class LimitsAndUpgradeService extends DataService {
   }
   RequestUpgrade(upgrade: any) {
     return this._http.post(environment.BASE_URL + '/RequestUpgrade', upgrade);
+  }
+  AddMembershipPricing(membershipPlan) {
+    return this._http.post(
+      environment.BASE_URL + '/AddMembershipPricing',
+      membershipPlan
+    );
   }
 }
