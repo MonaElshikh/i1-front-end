@@ -154,7 +154,12 @@
                   >
                     Edit
                   </button>
-                  <button class="btn btn-sm btn-secondary">Delete</button>
+                  <button
+                    class="btn btn-sm btn-secondary"
+                    (click)="deleteMemberShipPlan(basicMember.id)"
+                  >
+                    Delete
+                  </button>
                 </td>
                 <!--Edit mode-->
                 <td *ngIf="basicEdits[i]">
@@ -260,7 +265,10 @@
                 <td *ngIf="basicEdits[i]" style="width: 180px">
                   <button
                     class="btn btn-sm btn-secondary mx-2"
-                    (click)="basicEdits[i] = false"
+                    (click)="
+                      updateMembershipPricing(basicMember);
+                      basicEdits[i] = false
+                    "
                   >
                     Update
                   </button>
@@ -421,7 +429,12 @@
                   >
                     Edit
                   </button>
-                  <button class="btn btn-sm btn-secondary">Delete</button>
+                  <button
+                    class="btn btn-sm btn-secondary"
+                    (click)="deleteMemberShipPlan(premMember.id)"
+                  >
+                    Delete
+                  </button>
                 </td>
                 <!--Edit mode-->
                 <td *ngIf="premiumEdits[i]">
@@ -497,7 +510,10 @@
                 <td *ngIf="premiumEdits[i]" style="width: 180px">
                   <button
                     class="btn btn-sm btn-secondary mx-2"
-                    (click)="premiumEdits[i] = false"
+                    (click)="
+                      updateMembershipPricing(premMember);
+                      premiumEdits[i] = false
+                    "
                   >
                     Update
                   </button>
@@ -661,7 +677,12 @@
                   >
                     Edit
                   </button>
-                  <button class="btn btn-sm btn-secondary">Delete</button>
+                  <button
+                    class="btn btn-sm btn-secondary"
+                    (click)="deleteMemberShipPlan(featuredMember.id)"
+                  >
+                    Delete
+                  </button>
                 </td>
                 <!--Edit mode-->
                 <td *ngIf="featuredEdits[i]">
@@ -767,7 +788,10 @@
                 <td *ngIf="featuredEdits[i]" style="width: 180px">
                   <button
                     class="btn btn-sm btn-secondary mx-2"
-                    (click)="featuredEdits[i] = false"
+                    (click)="
+                      updateMembershipPricing(featuredMember);
+                      featuredEdits[i] = false
+                    "
                   >
                     Update
                   </button>

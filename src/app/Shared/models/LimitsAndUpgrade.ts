@@ -73,3 +73,27 @@ export interface appMembership {
   discount: number;
   coponCodeUsage: string;
 }
+export interface appPostedArticles {
+  id: number;
+  catId: number;
+  category: string;
+  header: string;
+  description: string;
+  status: string;
+  time_created: Date;
+  author: string;
+  viewno: number;
+  userId: number;
+  avgrate: number;
+  reporting: number;
+  statusSuspended: string;
+  image: string;
+  featureLimitDate: Date;
+  premLimitDate: Date;
+  featureLimit: number;
+  premiumLimit: number;
+  isActive: boolean;
+  onllinStatus: string;
+  lockUnlock: number;
+  isFromArticlePackCredits: number;
+}

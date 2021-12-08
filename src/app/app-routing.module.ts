@@ -28,6 +28,7 @@ import { AdminHomeComponent } from './Admin/Components/admin-home/admin-home.com
 import { AdminLimitsComponent } from './Admin/Components/admin-limits/admin-limits.component';
 import { AdminLoginComponent } from './Admin/Components/admin-login/admin-login.component';
 import { AdminMembershipsComponent } from './Admin/Components/admin-memberships/admin-memberships.component';
+import { AdminPostedArticlesComponent } from './Admin/Components/admin-posted-articles/admin-posted-articles.component';
 import { AboutComponent } from './Footer/Components/about/about.component';
 import { AdvertisingComponent } from './Footer/Components/advertising/advertising.component';
 import { AnnouncementsComponent } from './Footer/Components/announcements/announcements.component';
@@ -317,6 +318,8 @@ const routes: Routes = [
   { path: 'Admin-Limits', component: AdminLimitsComponent },
   { path: 'Admin-Memberships', component: AdminMembershipsComponent },
   { path: 'Admin-EditProfile', component: AdminEditProfileComponent },
+  { path: 'Admin-PostedArticles', component: AdminPostedArticlesComponent },
+
 
   { path: 'Admin-Login', component: AdminLoginComponent },
   { path: 'Error', component: ErrorComponent },

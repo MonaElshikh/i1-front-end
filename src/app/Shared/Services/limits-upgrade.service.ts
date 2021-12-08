@@ -45,4 +45,18 @@ export class LimitsAndUpgradeService extends DataService {
       membershipPlan
     );
   }
+  UpdateMembershipPricing(memberShipPlan: any) {
+    return this._http.post(
+      environment.BASE_URL + '/UpdateMembershipPricing',
+      memberShipPlan
+    );
+  }
+  DeleteMemberShipPricing(id: any) {
+    return this._http.get(
+      environment.BASE_URL + '/DeleteMembershipPricing/' + id
+    );
+  }
+  GetPostedArticlesForAdmin() {
+    return this._http.get(environment.BASE_URL + '/PostedArticles');
+  }
 }

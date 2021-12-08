@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { resourceUsage } from 'process';
 import { Subscription } from 'rxjs';
 import {
   appMainMemberships,
@@ -36,7 +38,8 @@ export class AdminMembershipsComponent implements OnInit, OnDestroy {
   featuredPlanId = 0;
   constructor(
     private LimitsAndUpgradeService: LimitsAndUpgradeService,
-    private localStorage: LocalstorageService
+    private localStorage: LocalstorageService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -158,5 +161,25 @@ export class AdminMembershipsComponent implements OnInit, OnDestroy {
           });
         break;
     }
+  }
+  updateMembershipPricing(updatedObject: appMembership) {
+    this.UpgradeSubscription =
+      this.LimitsAndUpgradeService.UpdateMembershipPricing(
+        updatedObject
+      ).subscribe((result: any) => {
+        if (result) {
+          this.getAllMemberships();
+        }
+      });
+  }
+  deleteMemberShipPlan(id: any) {
+    this.UpgradeSubscription =
+      this.LimitsAndUpgradeService.DeleteMemberShipPricing(id).subscribe(
+        (result: any) => {
+          if (result) {
+            this.getAllMemberships();
+          }
+        }
+      );
   }
 }
