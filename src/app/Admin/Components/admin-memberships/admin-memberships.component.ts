@@ -98,15 +98,20 @@ export class AdminMembershipsComponent implements OnInit, OnDestroy {
     switch (planName) {
       case 'basic':
         this.basicMembershipObject.memberShipId = this.basicPlalnId;
-        console.log(`duraton: ${this.basicMembershipObject.duration}`);
-        console.log(`price: ${this.basicMembershipObject.price}`);
-        console.log(`curancy: ${this.basicMembershipObject.curancy}`);
-        console.log(`coupon: ${this.basicMembershipObject.couponCode}`);
-        console.log(`discount: ${this.basicMembershipObject.discount}`);
-        console.log(`percentage: ${this.basicMembershipObject.percentamount}`);
-        console.log(
-          `coupon-usage: ${this.basicMembershipObject.coponCodeUsage}`
-        );
+        this.basicMembershipObject.curancy === undefined
+          ? (this.basicMembershipObject.curancy = '$')
+          : (this.basicMembershipObject.curancy =
+              this.basicMembershipObject.curancy);
+        this.basicMembershipObject.couponCode !== undefined &&
+        this.basicMembershipObject.coponCodeUsage === undefined
+          ? (this.basicMembershipObject.coponCodeUsage = 'Once')
+          : (this.basicMembershipObject.coponCodeUsage =
+              this.basicMembershipObject.coponCodeUsage);
+        this.basicMembershipObject.discount !== undefined &&
+        this.basicMembershipObject.percentamount === undefined
+          ? (this.basicMembershipObject.percentamount = '%')
+          : (this.basicMembershipObject.percentamount =
+              this.basicMembershipObject.percentamount);
         this.UpgradeSubscription =
           this.LimitsAndUpgradeService.AddMembershipPricing(
             this.basicMembershipObject
@@ -118,17 +123,20 @@ export class AdminMembershipsComponent implements OnInit, OnDestroy {
         break;
       case 'premium':
         this.premiumMembershipObject.memberShipId = this.premiumPlanId;
-        console.log(`duraton: ${this.premiumMembershipObject.duration}`);
-        console.log(`price: ${this.premiumMembershipObject.price}`);
-        console.log(`curancy: ${this.premiumMembershipObject.curancy}`);
-        console.log(`coupon: ${this.premiumMembershipObject.couponCode}`);
-        console.log(`discount: ${this.premiumMembershipObject.discount}`);
-        console.log(
-          `percentage: ${this.premiumMembershipObject.percentamount}`
-        );
-        console.log(
-          `coupon-usage: ${this.premiumMembershipObject.coponCodeUsage}`
-        );
+        this.premiumMembershipObject.curancy === undefined
+          ? (this.premiumMembershipObject.curancy = '$')
+          : (this.premiumMembershipObject.curancy =
+              this.premiumMembershipObject.curancy);
+        this.premiumMembershipObject.couponCode !== undefined &&
+        this.premiumMembershipObject.coponCodeUsage === undefined
+          ? (this.premiumMembershipObject.coponCodeUsage = 'Once')
+          : (this.premiumMembershipObject.coponCodeUsage =
+              this.premiumMembershipObject.coponCodeUsage);
+        this.premiumMembershipObject.discount !== undefined &&
+        this.premiumMembershipObject.percentamount === undefined
+          ? (this.premiumMembershipObject.percentamount = '%')
+          : (this.premiumMembershipObject.percentamount =
+              this.premiumMembershipObject.percentamount);
         this.UpgradeSubscription =
           this.LimitsAndUpgradeService.AddMembershipPricing(
             this.premiumMembershipObject
@@ -140,17 +148,20 @@ export class AdminMembershipsComponent implements OnInit, OnDestroy {
         break;
       case 'featured':
         this.featuredMembershipObject.memberShipId = this.featuredPlanId;
-        console.log(`duraton: ${this.featuredMembershipObject.duration}`);
-        console.log(`price: ${this.featuredMembershipObject.price}`);
-        console.log(`curancy: ${this.featuredMembershipObject.curancy}`);
-        console.log(`coupon: ${this.featuredMembershipObject.couponCode}`);
-        console.log(`discount: ${this.featuredMembershipObject.discount}`);
-        console.log(
-          `percentage: ${this.featuredMembershipObject.percentamount}`
-        );
-        console.log(
-          `coupon-usage: ${this.featuredMembershipObject.coponCodeUsage}`
-        );
+        this.featuredMembershipObject.curancy === undefined
+          ? (this.featuredMembershipObject.curancy = '$')
+          : (this.featuredMembershipObject.curancy =
+              this.featuredMembershipObject.curancy);
+        this.featuredMembershipObject.couponCode !== undefined &&
+        this.featuredMembershipObject.coponCodeUsage === undefined
+          ? (this.featuredMembershipObject.coponCodeUsage = 'Once')
+          : (this.featuredMembershipObject.coponCodeUsage =
+              this.featuredMembershipObject.coponCodeUsage);
+        this.featuredMembershipObject.discount !== undefined &&
+        this.featuredMembershipObject.percentamount === undefined
+          ? (this.featuredMembershipObject.percentamount = '%')
+          : (this.featuredMembershipObject.percentamount =
+              this.featuredMembershipObject.percentamount);
         this.UpgradeSubscription =
           this.LimitsAndUpgradeService.AddMembershipPricing(
             this.featuredMembershipObject

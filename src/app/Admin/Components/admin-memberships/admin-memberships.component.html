@@ -28,7 +28,7 @@
                 class="form-control"
                 [(ngModel)]="basicMembershipObject.duration"
               >
-                <option value="1 Month" selected>1 Month</option>
+                <option value="1 Month">1 Month</option>
                 <option value="2 Month">2 Month</option>
                 <option value="3 Month">3 Month</option>
                 <option value="4 Month">4 Month</option>
@@ -55,7 +55,7 @@
                 class="form-control"
                 [(ngModel)]="basicMembershipObject.curancy"
               >
-                <option value="$" selected>$</option>
+                <option value="$">$</option>
                 <option value="EURO">EURO</option>
                 <option value="GBP">GBP</option>
                 <option value="INR">INR</option>
@@ -79,7 +79,7 @@
                 class="form-control"
                 [(ngModel)]="basicMembershipObject.coponCodeUsage"
               >
-                <option value="once" selected>Once</option>
+                <option value="once">Once</option>
                 <option value="unlimited">Unlimited</option>
               </select>
             </div>
@@ -102,14 +102,20 @@
                 class="form-control"
                 [(ngModel)]="basicMembershipObject.percentamount"
               >
-                <option value="%" selected>%</option>
+                <option value="%">%</option>
                 <option value="amt">Amt</option>
               </select>
             </div>
           </div>
           <div class="row mb-2">
             <div class="col-md-12 text-right">
-              <button type="submit" class="btn btn-primary">Add</button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!basicForm.valid"
+              >
+                Add
+              </button>
             </div>
           </div>
         </form>
@@ -301,9 +307,10 @@
                 name="duration"
                 id="durationddl"
                 class="form-control"
+                required
                 [(ngModel)]="premiumMembershipObject.duration"
               >
-                <option value="1 Month" selected>1 Month</option>
+                <option value="1 Month">1 Month</option>
                 <option value="2 Month">2 Month</option>
                 <option value="3 Month">3 Month</option>
                 <option value="4 Month">4 Month</option>
@@ -330,7 +337,7 @@
                 class="form-control"
                 [(ngModel)]="premiumMembershipObject.curancy"
               >
-                <option value="$" selected>$</option>
+                <option value="$">$</option>
                 <option value="EURO">EURO</option>
                 <option value="GBP">GBP</option>
                 <option value="INR">INR</option>
@@ -354,7 +361,7 @@
                 class="form-control"
                 [(ngModel)]="premiumMembershipObject.coponCodeUsage"
               >
-                <option value="once" selected>Once</option>
+                <option value="once">Once</option>
                 <option value="unlimited">Unlimited</option>
               </select>
             </div>
@@ -377,14 +384,20 @@
                 class="form-control"
                 [(ngModel)]="premiumMembershipObject.percentamount"
               >
-                <option value="%" selected>%</option>
+                <option value="%">%</option>
                 <option value="amt">Amt</option>
               </select>
             </div>
           </div>
           <div class="row mb-2">
             <div class="col-md-12 text-right">
-              <button type="submit" class="btn btn-primary">Add</button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!premiumForm.valid"
+              >
+                Add
+              </button>
             </div>
           </div>
         </form>
@@ -546,9 +559,10 @@
                 name="duration"
                 id="durationddl"
                 class="form-control"
+                required
                 [(ngModel)]="featuredMembershipObject.duration"
               >
-                <option value="1 Month" selected>1 Month</option>
+                <option value="1 Month">1 Month</option>
                 <option value="2 Month">2 Month</option>
                 <option value="3 Month">3 Month</option>
                 <option value="4 Month">4 Month</option>
@@ -575,7 +589,7 @@
                 class="form-control"
                 [(ngModel)]="featuredMembershipObject.curancy"
               >
-                <option value="$" selected>$</option>
+                <option value="$">$</option>
                 <option value="EURO">EURO</option>
                 <option value="GBP">GBP</option>
                 <option value="INR">INR</option>
@@ -599,7 +613,7 @@
                 class="form-control"
                 [(ngModel)]="featuredMembershipObject.coponCodeUsage"
               >
-                <option value="once" selected>Once</option>
+                <option value="once">Once</option>
                 <option value="unlimited">Unlimited</option>
               </select>
             </div>
@@ -622,14 +636,20 @@
                 class="form-control"
                 [(ngModel)]="featuredMembershipObject.percentamount"
               >
-                <option value="%" selected>%</option>
+                <option value="%">%</option>
                 <option value="amt">Amt</option>
               </select>
             </div>
           </div>
           <div class="row mb-2">
             <div class="col-md-12 text-right">
-              <button type="submit" class="btn btn-primary">Add</button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!featuredForm.valid"
+              >
+                Add
+              </button>
             </div>
           </div>
         </form>
