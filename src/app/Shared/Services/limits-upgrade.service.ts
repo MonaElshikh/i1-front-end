@@ -59,4 +59,13 @@ export class LimitsAndUpgradeService extends DataService {
   GetPostedArticlesForAdmin() {
     return this._http.get(environment.BASE_URL + '/PostedArticles');
   }
+  DeletePostedArticles(id: any) {
+    return this._http.get(environment.BASE_URL + '/PostedArticles/' + id);
+  }
+  UpdatePostedArticleStatus(postedArticle: any) {
+    return this._http.post(
+      environment.BASE_URL + '/PostedArticles',
+      postedArticle
+    );
+  }
 }

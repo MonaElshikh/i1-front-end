@@ -40,7 +40,32 @@
               {{ article.isFromArticlePackCredits === 0 ? "Basic" : "Premium" }}
             </td>
             <td>
-              <button class="btn btn-sm btn-secondary">Delete</button>
+              <button
+                class="btn btn-sm btn-secondary btn-action mb-2 "
+                (click)="DeletePostedArticles(article.id)"
+              >
+                Delete
+              </button>
+              <button
+                *ngIf="
+                  article.onllinStatus === 'Pending' ||
+                  article.onllinStatus === 'Rejected'
+                "
+                class="btn btn-sm btn-secondary btn-action mb-2"
+                (click)="UpdatePostedArticleStatus(article, 'Approved')"
+              >
+                Approve
+              </button>
+              <button
+                *ngIf="
+                  article.onllinStatus === 'Pending' ||
+                  article.onllinStatus === 'Approved'
+                "
+                class="btn btn-sm btn-secondary btn-action mb-2"
+                (click)="UpdatePostedArticleStatus(article, 'Rejected')"
+              >
+                Reject
+              </button>
             </td>
           </tr>
         </tbody>

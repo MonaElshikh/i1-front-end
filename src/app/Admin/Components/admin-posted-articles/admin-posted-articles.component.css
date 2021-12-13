@@ -1,3 +1,6 @@
 .wrapper-table {
   overflow: auto;
 }
+.btn-action {
+  width: 71px;
+}

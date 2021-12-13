@@ -39,7 +39,26 @@ export class AdminPostedArticlesComponent implements OnInit, OnDestroy {
         }
       });
   }
-
+  DeletePostedArticles(id: any) {
+    this.postedArticlesSubscription = this.AdminService.DeletePostedArticles(
+      id
+    ).subscribe((result: any) => {
+      if (result) {
+        this.getPostedArticles();
+      }
+    });
+  }
+  UpdatePostedArticleStatus(article: appPostedArticles, status: string) {
+    article.onllinStatus = status;
+    this.postedArticlesSubscription =
+      this.AdminService.UpdatePostedArticleStatus(article).subscribe(
+        (result: any) => {
+          if (result) {
+            this.getPostedArticles();
+          }
+        }
+      );
+  }
   onChangePage(pageOfItems: appPostedArticles[]) {
     // update current page of items
     this.pageOfItems = pageOfItems;
