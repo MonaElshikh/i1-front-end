@@ -85,7 +85,7 @@ export interface appPostedArticles {
   viewno: number;
   userId: number;
   avgrate: number;
-  reporting: number;
+  reporting: string;
   statusSuspended: string;
   image: string;
   featureLimitDate: Date;

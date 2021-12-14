@@ -10,38 +10,122 @@
   </div>
   <div class="col-md-9">
     <h5 class="header-style">Posted Articles</h5>
+    <div class="row mb-4">
+      <div class="col-md-2">
+        Category
+        <select
+          class="form-control"
+          id="postingCategoriesOptions"
+          name="category"
+          [(ngModel)]="categoryParam"
+        >
+          <option>Love & Romance</option>
+          <option>Friends & Acquaintances</option>
+          <option>Dating & Courtship</option>
+          <option>Hookups & Affairs</option>
+          <option>Infidelity & Cheating</option>
+          <option>Sex & Intimacy</option>
+          <option>Heartbreaks & Breakups</option>
+          <option>Marriage & Matrimony</option>
+          <option>Relationship & Commitment</option>
+          <option>Attraction & Crushes</option>
+          <option>Singles & Unattached</option>
+          <option>Flirting & Seducing</option>
+          <option>Harmony & Compatibility</option>
+          <option>Chemistry & Connection</option>
+          <option>Spouses & Couples</option>
+          <option>Gays & Lesbians</option>
+          <option>Extra & Extra</option>
+          <option>Entertainment</option>
+          <option>Lifestyle</option>
+          <option>Movies</option>
+          <option>Music</option>
+          <option>Others</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        Author
+        <input type="text" class="form-control" [(ngModel)]="authorParam" />
+      </div>
+
+      <div class="col-md-2">
+        Date <input type="date" class="form-control" [(ngModel)]="dateParam" />
+      </div>
+      <div class="col-md-2">
+        Header
+        <input type="text" class="form-control" [(ngModel)]="headerParam" />
+      </div>
+      <div class="col-md-2">
+        Description
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="descriptionParam"
+        />
+      </div>
+      <div class="col-md-2">
+        Status
+        <select
+          class="form-control"
+          id="postings Status"
+          name="status"
+          [(ngModel)]="statusParam"
+        >
+          <option value="Active">Active</option>
+          <option value="InActive">InActive</option>
+          <option value="Normal">Normal</option>
+          <option value="Abused">Abused</option>
+          <option value="Approved">Approved</option>
+          <option value="Rejected">Rejected</option>
+          <option value="1">Locked</option>
+          <option value="0">Unlocked</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mt-3 mb-3">
+      <div class="col-md-12 text-right">
+        <button class="btn btn-sm btn-secondary mr-3" (click)="Search()">
+          Search
+        </button>
+        <button class="btn btn-sm btn-secondary" (click)="Search(true)">
+          Reset
+        </button>
+      </div>
+    </div>
     <div class="table-responsive-sm wrapper-table">
       <table class="table table-sm table-bordered !important">
         <thead class="thead-dark">
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Header</th>
-            <th scope="col">Author</th>
-            <th scope="col">Date</th>
             <th scope="col">Category</th>
+            <th scope="col">Author</th>
+            <th scope="col">Header</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
             <th scope="col">Views</th>
             <th scope="col">Status</th>
+            <th scope="col">Reporting</th>
             <th scope="col">Online Status</th>
-            <th scope="col">Type</th>
+            <th scope="col">LockUnlock</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let article of pageOfItems; index as i" class="cursor">
             <td>{{ article.id }}</td>
-            <td>{{ article.header }}</td>
-            <td>{{ article.author }}</td>
-            <td>{{ article.time_created | date }}</td>
             <td>{{ article.category }}</td>
+            <td>{{ article.author }}</td>
+            <td>{{ article.header }}</td>
+            <td>{{ article.description.substr(0, 30) + "..." }}</td>
+            <td>{{ article.time_created | date }}</td>
             <td>{{ article.viewno | number }}</td>
             <td>{{ article.status }}</td>
+            <td>{{ article.reporting }}</td>
             <td>{{ article.onllinStatus }}</td>
-            <td>
-              {{ article.isFromArticlePackCredits === 0 ? "Basic" : "Premium" }}
-            </td>
+            <td>{{ article.lockUnlock === 0 ? "Unlocked" : "Locked" }}</td>
             <td>
               <button
-                class="btn btn-sm btn-secondary btn-action mb-2 "
+                class="btn btn-sm btn-secondary btn-action mb-2"
                 (click)="DeletePostedArticles(article.id)"
               >
                 Delete
@@ -66,6 +150,34 @@
               >
                 Reject
               </button>
+              <button
+                *ngIf="article.reporting === 'Normal'"
+                class="btn btn-sm btn-secondary btn-action mb-2"
+                (click)="UpdatePostedArticleReporting(article, 'Abused')"
+              >
+                Abuse
+              </button>
+              <button
+                *ngIf="article.reporting === 'Abused'"
+                class="btn btn-sm btn-secondary btn-action mb-2"
+                (click)="UpdatePostedArticleReporting(article, 'Normal')"
+              >
+                UnAbuse
+              </button>
+              <button
+                *ngIf="article.lockUnlock === 0"
+                class="btn btn-sm btn-secondary btn-action mb-2"
+                (click)="UpdatePostedArticleLock(article, 1)"
+              >
+                Lock
+              </button>
+              <button
+                *ngIf="article.lockUnlock === 1"
+                class="btn btn-sm btn-secondary btn-action mb-2"
+                (click)="UpdatePostedArticleLock(article, 0)"
+              >
+                Unlock
+              </button>
             </td>
           </tr>
         </tbody>
@@ -86,7 +198,7 @@
           last-item
           previous-item
         "
-        [items]="PostedArticlesList"
+        [items]="searchResults"
         [pageSize]="10"
         (changePage)="onChangePage($event)"
       >

@@ -68,4 +68,16 @@ export class LimitsAndUpgradeService extends DataService {
       postedArticle
     );
   }
+  UpdatePostedArticleLock(postedArticle: any) {
+    return this._http.post(
+      environment.BASE_URL + '/PostingLock',
+      postedArticle
+    );
+  }
+  SearchAdminArticles(article: any) {
+    return this._http.post(
+      environment.BASE_URL + '/SearchAdminArticles',
+      article
+    );
+  }
 }
