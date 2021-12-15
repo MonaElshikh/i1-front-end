@@ -9,8 +9,19 @@ import { AdminMembershipsComponent } from './Components/admin-memberships/admin-
 import { AdminTopNavComponent } from './Components/admin-top-nav/admin-top-nav.component';
 import { AdminEditProfileComponent } from './Components/admin-edit-profile/admin-edit-profile.component';
 import { AdminPostedArticlesComponent } from './Components/admin-posted-articles/admin-posted-articles.component';
+import { AdminInboxComponent } from './Components/admin-inbox/admin-inbox.component';
 @NgModule({
-  declarations: [AdminLoginComponent, AdminLeftMenuComponent, AdminHomeComponent, AdminLimitsComponent, AdminMembershipsComponent, AdminTopNavComponent, AdminEditProfileComponent, AdminPostedArticlesComponent],
+  declarations: [
+    AdminLoginComponent,
+    AdminLeftMenuComponent,
+    AdminHomeComponent,
+    AdminLimitsComponent,
+    AdminMembershipsComponent,
+    AdminTopNavComponent,
+    AdminEditProfileComponent,
+    AdminPostedArticlesComponent,
+    AdminInboxComponent,
+  ],
   imports: [SharedModule, RouterModule.forChild([])],
 })
 export class AdminModule {}

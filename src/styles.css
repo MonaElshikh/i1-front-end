@@ -25,6 +25,9 @@ hr {
 ::placeholder {
   font-size: 12px;
 }
+.wrapper-table {
+  overflow: auto;
+}
 .form-control {
   font-size: 14px;
 }

@@ -39,6 +39,7 @@ export class AdminLoginComponent implements OnInit {
             this.adminsObjsct.password
           );
           this.localStorage.setItem('isMain', this.adminsObjsct.isMain);
+          this.localStorage.setItem('id', this.adminsObjsct.id.toString());
           this.route.navigate(['/Admin-Home']);
         }
       },

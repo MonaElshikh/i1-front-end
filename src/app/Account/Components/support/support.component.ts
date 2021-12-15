@@ -1,5 +1,11 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  Inject,
+  OnDestroy,
+  OnInit,
+  PLATFORM_ID,
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { resourceLimits } from 'worker_threads';
@@ -8,7 +14,7 @@ import { SupportService } from '../../Services/support.service';
 @Component({
   selector: 'app-support',
   templateUrl: './support.component.html',
-  styleUrls: ['./support.component.css']
+  styleUrls: ['./support.component.css'],
 })
 export class SupportComponent implements OnInit, OnDestroy {
   //#region  DECLARATIONS
@@ -27,20 +33,26 @@ export class SupportComponent implements OnInit, OnDestroy {
   ShowTicketDetails = false;
   DataLoading = true;
   selected = [];
-  replyMeesage = "";
-  ProblemStatus = "";
-  searchText = "";
+  replyMeesage = '';
+  ProblemStatus = '';
+  searchText = '';
   //#endregion
   //#region  Events
-  constructor(private supportS: SupportService,
-    @Inject(PLATFORM_ID) private platformId: any) { }
+  constructor(
+    private supportS: SupportService,
+    @Inject(PLATFORM_ID) private platformId: any
+  ) {}
   ngOnInit(): void {
     this.profileId = +this.supportS.getProfileId();
     this.BindTicketsList();
   }
   ngOnDestroy() {
-    if (this.TicketMasterSubscription) { this.TicketMasterSubscription.unsubscribe; }
-    if (this.TicketDetailsSubscription) { this.TicketDetailsSubscription.unsubscribe; }
+    if (this.TicketMasterSubscription) {
+      this.TicketMasterSubscription.unsubscribe;
+    }
+    if (this.TicketDetailsSubscription) {
+      this.TicketDetailsSubscription.unsubscribe;
+    }
   }
   //#endregion
   //#region  Functions
@@ -53,22 +65,24 @@ export class SupportComponent implements OnInit, OnDestroy {
   }
   //bind tickets list
   async BindTicketsList() {
-    this.TicketMasterSubscription = (await this.supportS.getById(this.profileId))
-      .subscribe((result: any) => {
-        if (result) {
-          this.ticktesList = result;
-          this.DataLoading = false;
-          console.log("tickets>> " + this.ticktesList);
-        }
-      });
+    this.TicketMasterSubscription = (
+      await this.supportS.getById(this.profileId)
+    ).subscribe((result: any) => {
+      if (result) {
+        this.ticktesList = result;
+        this.DataLoading = false;
+        console.log('tickets>> ' + this.ticktesList);
+      }
+    });
   }
   async BindTicketDetails(id) {
-    this.TicketDetailsSubscription = (await this.supportS.GetTicketsDetials(id))
-      .subscribe((result: any) => {
-        if (result) {
-          this.ticktesDetailsList = result;
-        }
-      });
+    this.TicketDetailsSubscription = (
+      await this.supportS.GetTicketsDetials(id)
+    ).subscribe((result: any) => {
+      if (result) {
+        this.ticktesDetailsList = result;
+      }
+    });
   }
   //Open ticket Details
   OpenTicketDetails(ticket: appTicketMaster, RowIndex: number) {
@@ -77,7 +91,7 @@ export class SupportComponent implements OnInit, OnDestroy {
     this.ticketId = ticket.id;
     this.ProblemStatus = ticket.problemStatus;
     this.ShowTicketDetails = true;
-    console.log("ticket id>> " + this.ticketId);
+    console.log('ticket id>> ' + this.ticketId);
     this.BindTicketDetails(this.ticketId);
   }
   //Add new ticket
@@ -85,19 +99,20 @@ export class SupportComponent implements OnInit, OnDestroy {
     console.log(frm.value);
     const ticket = {
       UserId: this.profileId,
-      TypeOfProblem: frm.value["typeOfProblem"],
-      ProblemName: frm.value["Subject"],
-      UserComments: frm.value["problem"],
-      isAdmin: "0"
-    }
-    console.log("new ticket>> " + ticket);
-    this.TicketMasterSubscription = (await this.supportS.AddTicket(ticket))
-      .subscribe(() => {
-        this.BindTicketsList();
-        this.ShowNewTicket = false;
-        this.ShowTicketDetails = false;
-        this.ClearRowsStyle();
-      });
+      TypeOfProblem: frm.value['typeOfProblem'],
+      ProblemName: frm.value['Subject'],
+      UserComments: frm.value['problem'],
+      isAdmin: '0',
+    };
+    console.log('new ticket>> ' + ticket);
+    this.TicketMasterSubscription = (
+      await this.supportS.AddTicket(ticket)
+    ).subscribe(() => {
+      this.BindTicketsList();
+      this.ShowNewTicket = false;
+      this.ShowTicketDetails = false;
+      this.ClearRowsStyle();
+    });
   }
   //Add reply ticket
   async ReplyTicket() {
@@ -106,15 +121,16 @@ export class SupportComponent implements OnInit, OnDestroy {
       UserId: this.profileId,
       AdminComments: this.replyMeesage,
       ProblemStatus: this.ProblemStatus,
-      ProblemSolvingRate: "1",
-      UserComments: ""
+      ProblemSolvingRate: '1',
+      UserComments: '',
     };
-    this.TicketMasterSubscription = (await this.supportS.AddTicketReply(ticket))
-      .subscribe(() => {
-        this.replyMeesage = "";
-        this.messageRemainingChars = 0;
-        this.BindTicketDetails(this.ticketId);
-      });
+    this.TicketMasterSubscription = (
+      await this.supportS.AddTicketReply(ticket)
+    ).subscribe(() => {
+      this.replyMeesage = '';
+      this.messageRemainingChars = 0;
+      this.BindTicketDetails(this.ticketId);
+    });
   }
   ClearRowsStyle() {
     for (var i = 0; i < this.ticktesList.length; i++) {
@@ -124,17 +140,17 @@ export class SupportComponent implements OnInit, OnDestroy {
   ShowHideButtons(action: string) {
     this.ClearRowsStyle();
     switch (action) {
-      case "newticket":
+      case 'newticket':
         this.ShowNewTicket = true;
         this.ShowTicketDetails = false;
         break;
-      case "cancelnew":
+      case 'cancelnew':
         this.ShowNewTicket = false;
         this.subjectRemainingChars = 0;
         break;
-      case "cancelreply":
+      case 'cancelreply':
         this.ShowTicketDetails = false;
-        this.replyMeesage = "";
+        this.replyMeesage = '';
         this.messageRemainingChars = 0;
         break;
     }

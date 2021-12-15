@@ -25,6 +25,7 @@ import { UpgradeComponent } from './Account/Components/upgrade/upgrade.component
 import { WallComponent } from './Account/Components/wall/wall.component';
 import { AdminEditProfileComponent } from './Admin/Components/admin-edit-profile/admin-edit-profile.component';
 import { AdminHomeComponent } from './Admin/Components/admin-home/admin-home.component';
+import { AdminInboxComponent } from './Admin/Components/admin-inbox/admin-inbox.component';
 import { AdminLimitsComponent } from './Admin/Components/admin-limits/admin-limits.component';
 import { AdminLoginComponent } from './Admin/Components/admin-login/admin-login.component';
 import { AdminMembershipsComponent } from './Admin/Components/admin-memberships/admin-memberships.component';
@@ -319,7 +320,7 @@ const routes: Routes = [
   { path: 'Admin-Memberships', component: AdminMembershipsComponent },
   { path: 'Admin-EditProfile', component: AdminEditProfileComponent },
   { path: 'Admin-PostedArticles', component: AdminPostedArticlesComponent },
-
+  { path: 'Admin-Inbox', component: AdminInboxComponent },
 
   { path: 'Admin-Login', component: AdminLoginComponent },
   { path: 'Error', component: ErrorComponent },
