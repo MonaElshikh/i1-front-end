@@ -6,7 +6,7 @@ describe('QuotesSayingsByAuthorService', () => {
   let service: QuotesSayingsByAuthorService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ teardown: { destroyAfterEach: false } });
     service = TestBed.inject(QuotesSayingsByAuthorService);
   });
 

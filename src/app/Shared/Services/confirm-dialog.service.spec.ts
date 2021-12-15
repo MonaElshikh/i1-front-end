@@ -6,7 +6,7 @@ describe('ConfirmDialogService', () => {
   let service: ConfirmDialogService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ teardown: { destroyAfterEach: false } });
     service = TestBed.inject(ConfirmDialogService);
   });
 

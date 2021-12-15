@@ -8,8 +8,9 @@ describe('PasswordStrengthComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PasswordStrengthComponent ]
-    })
+    declarations: [PasswordStrengthComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

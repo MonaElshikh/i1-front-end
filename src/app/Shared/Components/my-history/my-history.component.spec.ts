@@ -8,8 +8,9 @@ describe('MyHistoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MyHistoryComponent ]
-    })
+    declarations: [MyHistoryComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

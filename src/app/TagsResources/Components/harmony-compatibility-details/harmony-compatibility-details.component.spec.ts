@@ -8,8 +8,9 @@ describe('HarmonyCompatibilityDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HarmonyCompatibilityDetailsComponent ]
-    })
+    declarations: [HarmonyCompatibilityDetailsComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

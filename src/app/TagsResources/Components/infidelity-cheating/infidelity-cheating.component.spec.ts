@@ -8,8 +8,9 @@ describe('InfidelityCheatingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InfidelityCheatingComponent ]
-    })
+    declarations: [InfidelityCheatingComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

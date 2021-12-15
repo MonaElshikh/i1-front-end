@@ -8,8 +8,9 @@ describe('AngleUpComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AngleUpComponent ]
-    })
+    declarations: [AngleUpComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

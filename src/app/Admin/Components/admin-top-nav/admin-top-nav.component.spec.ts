@@ -8,8 +8,9 @@ describe('AdminTopNavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminTopNavComponent ]
-    })
+    declarations: [AdminTopNavComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

@@ -8,8 +8,9 @@ describe('ExtrasExtrasComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExtrasExtrasComponent ]
-    })
+    declarations: [ExtrasExtrasComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

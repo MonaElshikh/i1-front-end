@@ -8,8 +8,9 @@ describe('CareerOpportunitiesDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CareerOpportunitiesDetailsComponent ]
-    })
+    declarations: [CareerOpportunitiesDetailsComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

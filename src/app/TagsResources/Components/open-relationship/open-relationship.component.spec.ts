@@ -8,8 +8,9 @@ describe('OpenRelationshipComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OpenRelationshipComponent ]
-    })
+    declarations: [OpenRelationshipComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

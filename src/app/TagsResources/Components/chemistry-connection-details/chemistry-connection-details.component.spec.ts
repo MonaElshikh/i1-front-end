@@ -8,8 +8,9 @@ describe('ChemistryConnectionDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChemistryConnectionDetailsComponent ]
-    })
+    declarations: [ChemistryConnectionDetailsComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

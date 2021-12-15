@@ -8,8 +8,9 @@ describe('TagesresoursesLeftmenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TagesresoursesLeftmenuComponent ]
-    })
+    declarations: [TagesresoursesLeftmenuComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

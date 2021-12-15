@@ -8,8 +8,9 @@ describe('RelationshipCommitmentDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RelationshipCommitmentDetailsComponent ]
-    })
+    declarations: [RelationshipCommitmentDetailsComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

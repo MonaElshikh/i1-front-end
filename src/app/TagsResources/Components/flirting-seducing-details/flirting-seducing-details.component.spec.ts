@@ -8,8 +8,9 @@ describe('FlirtingSeducingDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FlirtingSeducingDetailsComponent ]
-    })
+    declarations: [FlirtingSeducingDetailsComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

@@ -8,8 +8,9 @@ describe('GallreyViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GallreyViewComponent ]
-    })
+    declarations: [GallreyViewComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

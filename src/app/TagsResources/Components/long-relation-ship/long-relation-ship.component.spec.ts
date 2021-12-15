@@ -8,8 +8,9 @@ describe('LongRelationShipComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LongRelationShipComponent ]
-    })
+    declarations: [LongRelationShipComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

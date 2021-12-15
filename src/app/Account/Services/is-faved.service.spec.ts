@@ -6,7 +6,7 @@ describe('IsFavedService', () => {
   let service: IsFavedService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ teardown: { destroyAfterEach: false } });
     service = TestBed.inject(IsFavedService);
   });
 

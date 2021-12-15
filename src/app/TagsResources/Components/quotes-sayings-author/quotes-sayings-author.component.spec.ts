@@ -8,8 +8,9 @@ describe('QuotesSayingsAuthorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QuotesSayingsAuthorComponent ]
-    })
+    declarations: [QuotesSayingsAuthorComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

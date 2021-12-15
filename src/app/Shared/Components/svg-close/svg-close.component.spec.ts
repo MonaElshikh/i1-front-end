@@ -8,8 +8,9 @@ describe('SvgCloseComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SvgCloseComponent ]
-    })
+    declarations: [SvgCloseComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

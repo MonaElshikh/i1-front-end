@@ -8,8 +8,9 @@ describe('IdiomsProverbsDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IdiomsProverbsDetailsComponent ]
-    })
+    declarations: [IdiomsProverbsDetailsComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

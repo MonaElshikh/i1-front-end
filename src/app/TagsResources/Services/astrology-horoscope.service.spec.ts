@@ -6,7 +6,7 @@ describe('AstrologyHoroscopeService', () => {
   let service: AstrologyHoroscopeService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ teardown: { destroyAfterEach: false } });
     service = TestBed.inject(AstrologyHoroscopeService);
   });
 

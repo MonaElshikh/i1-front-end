@@ -8,8 +8,9 @@ describe('PostingsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostingsComponent ]
-    })
+    declarations: [PostingsComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

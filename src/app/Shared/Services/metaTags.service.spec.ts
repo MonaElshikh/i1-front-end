@@ -3,7 +3,7 @@ import { MetaTagslService } from 'Shared/Services/metaTags.service';
 describe('MetaTagslService', () => {
   let service: MetaTagslService;
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ teardown: { destroyAfterEach: false } });
     service = TestBed.inject(MetaTagslService);
   });
   it('should be created', () => {

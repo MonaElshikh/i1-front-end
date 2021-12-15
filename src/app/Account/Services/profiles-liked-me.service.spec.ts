@@ -6,7 +6,7 @@ describe('ProfilesLikedMeService', () => {
   let service: ProfilesLikedMeService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ teardown: { destroyAfterEach: false } });
     service = TestBed.inject(ProfilesLikedMeService);
   });
 

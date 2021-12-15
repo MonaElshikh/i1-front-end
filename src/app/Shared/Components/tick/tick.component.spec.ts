@@ -8,8 +8,9 @@ describe('TickComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TickComponent ]
-    })
+    declarations: [TickComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

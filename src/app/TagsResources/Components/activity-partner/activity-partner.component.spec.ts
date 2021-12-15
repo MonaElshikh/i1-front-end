@@ -8,8 +8,9 @@ describe('ActivityPartnerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ActivityPartnerComponent ]
-    })
+    declarations: [ActivityPartnerComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

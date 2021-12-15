@@ -8,8 +8,9 @@ describe('GaysLesbiansDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GaysLesbiansDetailsComponent ]
-    })
+    declarations: [GaysLesbiansDetailsComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

@@ -6,7 +6,7 @@ describe('AuthStatusService', () => {
   let service: AuthStatusService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ teardown: { destroyAfterEach: false } });
     service = TestBed.inject(AuthStatusService);
   });
 

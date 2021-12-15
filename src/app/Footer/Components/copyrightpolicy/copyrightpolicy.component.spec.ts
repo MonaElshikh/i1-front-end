@@ -8,8 +8,9 @@ describe('CopyrightpolicyComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CopyrightpolicyComponent ]
-    })
+    declarations: [CopyrightpolicyComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

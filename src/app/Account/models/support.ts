@@ -18,4 +18,5 @@ export interface appTicketDetailstbl {
   receiverId: number;
   body: string;
   replyDate: Date;
+  Ticket: appTicketMaster;
 }

@@ -8,8 +8,9 @@ describe('AstrologyHoroscopeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AstrologyHoroscopeComponent ]
-    })
+    declarations: [AstrologyHoroscopeComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

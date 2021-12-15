@@ -8,8 +8,9 @@ describe('SvgPostComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SvgPostComponent ]
-    })
+    declarations: [SvgPostComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

@@ -8,8 +8,9 @@ describe('CustomFieldsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomFieldsComponent ]
-    })
+    declarations: [CustomFieldsComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

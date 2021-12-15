@@ -8,8 +8,9 @@ describe('ShowPwComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShowPwComponent ]
-    })
+    declarations: [ShowPwComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

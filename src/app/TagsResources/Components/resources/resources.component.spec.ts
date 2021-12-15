@@ -8,8 +8,9 @@ describe('ResourcesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResourcesComponent ]
-    })
+    declarations: [ResourcesComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

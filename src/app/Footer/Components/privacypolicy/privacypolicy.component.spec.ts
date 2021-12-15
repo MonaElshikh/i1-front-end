@@ -8,8 +8,9 @@ describe('PrivacypolicyComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PrivacypolicyComponent ]
-    })
+    declarations: [PrivacypolicyComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

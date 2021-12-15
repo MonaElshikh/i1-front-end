@@ -8,8 +8,9 @@ describe('ShortRelationShipComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShortRelationShipComponent ]
-    })
+    declarations: [ShortRelationShipComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

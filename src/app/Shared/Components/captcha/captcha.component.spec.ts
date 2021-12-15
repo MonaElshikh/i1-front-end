@@ -8,8 +8,9 @@ describe('CaptchaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CaptchaComponent ]
-    })
+    declarations: [CaptchaComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

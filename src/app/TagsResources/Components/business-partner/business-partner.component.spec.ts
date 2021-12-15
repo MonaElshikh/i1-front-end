@@ -8,8 +8,9 @@ describe('BusinessPartnerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BusinessPartnerComponent ]
-    })
+    declarations: [BusinessPartnerComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

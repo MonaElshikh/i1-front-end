@@ -8,8 +8,9 @@ describe('CharsCounterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CharsCounterComponent ]
-    })
+    declarations: [CharsCounterComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

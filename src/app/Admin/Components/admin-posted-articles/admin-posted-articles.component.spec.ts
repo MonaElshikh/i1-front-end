@@ -8,8 +8,9 @@ describe('AdminPostedArticlesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminPostedArticlesComponent ]
-    })
+    declarations: [AdminPostedArticlesComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

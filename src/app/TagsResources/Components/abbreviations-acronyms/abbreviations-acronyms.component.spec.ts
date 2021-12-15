@@ -8,8 +8,9 @@ describe('AbbreviationsAcronymsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AbbreviationsAcronymsComponent ]
-    })
+    declarations: [AbbreviationsAcronymsComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

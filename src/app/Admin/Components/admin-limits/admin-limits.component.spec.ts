@@ -8,8 +8,9 @@ describe('AdminLimitsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminLimitsComponent ]
-    })
+    declarations: [AdminLimitsComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

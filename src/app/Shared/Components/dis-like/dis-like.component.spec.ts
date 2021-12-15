@@ -8,8 +8,9 @@ describe('DisLikeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DisLikeComponent ]
-    })
+    declarations: [DisLikeComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

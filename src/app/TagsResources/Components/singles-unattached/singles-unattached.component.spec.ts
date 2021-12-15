@@ -8,8 +8,9 @@ describe('SinglesUnattachedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SinglesUnattachedComponent ]
-    })
+    declarations: [SinglesUnattachedComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

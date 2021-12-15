@@ -8,8 +8,9 @@ describe('CookieuseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CookieuseComponent ]
-    })
+    declarations: [CookieuseComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

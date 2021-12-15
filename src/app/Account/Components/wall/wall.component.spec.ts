@@ -8,8 +8,9 @@ describe('WallComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WallComponent ]
-    })
+    declarations: [WallComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

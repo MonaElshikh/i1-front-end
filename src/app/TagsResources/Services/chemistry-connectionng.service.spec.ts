@@ -6,7 +6,7 @@ describe('ChemistryConnectionngService', () => {
   let service: ChemistryConnectionngService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ teardown: { destroyAfterEach: false } });
     service = TestBed.inject(ChemistryConnectionngService);
   });
 

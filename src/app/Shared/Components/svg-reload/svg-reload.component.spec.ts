@@ -8,8 +8,9 @@ describe('SvgReloadComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SvgReloadComponent ]
-    })
+    declarations: [SvgReloadComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

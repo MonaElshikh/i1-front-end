@@ -8,8 +8,9 @@ describe('AdminMembershipsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminMembershipsComponent ]
-    })
+    declarations: [AdminMembershipsComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

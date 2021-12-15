@@ -8,8 +8,9 @@ describe('VirtualRelationshipDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VirtualRelationshipDetailsComponent ]
-    })
+    declarations: [VirtualRelationshipDetailsComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

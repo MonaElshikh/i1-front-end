@@ -30,6 +30,8 @@ export class AdminInboxComponent implements OnInit, OnDestroy {
   ShowTicketDetails = false;
   ProblemStatus = '';
   replyMeesage = '';
+  users = '';
+  userName = '';
   problemRemainingChars = 0;
   subjectRemainingChars = 0;
   messageRemainingChars = 0;
@@ -62,6 +64,8 @@ export class AdminInboxComponent implements OnInit, OnDestroy {
   //Add new ticket
   async createTicket(frm: NgForm) {
     console.log(frm.value);
+    this.users = frm.value['users'].split(' ');
+    console.log(`users: ${this.users}`);
     const ticket = {
       // UserId: this.profileId,
       TypeOfProblem: frm.value['typeOfProblem'],
@@ -70,25 +74,30 @@ export class AdminInboxComponent implements OnInit, OnDestroy {
       isAdmin: '1',
     };
     console.log('new ticket>> ' + ticket);
-    this.subscription = (await this.supportS.AddTicket(ticket)).subscribe(
-      () => {
-        this.bindAdminTicketLists();
-        this.ShowNewTicket = false;
-        this.ShowTicketDetails = false;
-        this.clearRowsStyle();
-      }
-    );
+    if (frm.valid) {
+      this.subscription = (await this.supportS.AddTicket(ticket)).subscribe(
+        () => {
+          this.bindAdminTicketLists();
+          this.ShowNewTicket = false;
+          this.ShowTicketDetails = false;
+          this.clearRowsStyle();
+        }
+      );
+    } else {
+      console.log(`form not valid`);
+    }
   }
   //Add admin reply ticket
   async ReplyTicket() {
     const ticket = {
       Id: this.ticketId,
-      senderId: this.adminId,
-      receiverId: this.profileId,
-      body: this.replyMeesage,
+      AdminId: this.adminId,
+      UserId: this.profileId,
+      UserComments: this.replyMeesage,
       ProblemStatus: this.ProblemStatus,
       AdminComments: this.replyMeesage,
     };
+    console.log(`sent ticekt> ${ticket}`);
     this.subscription = (
       await this.supportS.AddAdminTicketReply(ticket)
     ).subscribe(() => {
@@ -104,6 +113,7 @@ export class AdminInboxComponent implements OnInit, OnDestroy {
     this.ticketId = ticket.id;
     this.profileId = ticket.userId;
     this.ProblemStatus = ticket.problemStatus;
+    this.userName = ticket.sname;
     this.ShowTicketDetails = true;
     console.log('ticket id>> ' + this.ticketId);
     this.bindTicketDetails(this.ticketId);

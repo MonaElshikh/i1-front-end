@@ -8,8 +8,9 @@ describe('AngleDownComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AngleDownComponent ]
-    })
+    declarations: [AngleDownComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

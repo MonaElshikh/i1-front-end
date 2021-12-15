@@ -6,7 +6,7 @@ describe('SinglesUnattachedService', () => {
   let service: SinglesUnattachedService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ teardown: { destroyAfterEach: false } });
     service = TestBed.inject(SinglesUnattachedService);
   });
 

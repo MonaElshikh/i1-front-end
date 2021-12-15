@@ -187,7 +187,7 @@
                   <label
                     class="whiteSpace"
                     style="position: relative; left: 43px; top: 4px"
-                    >Admin: {{ thread.body }}</label
+                    >You: {{ thread.body }}</label
                   >
                 </div>
               </div>
@@ -197,7 +197,9 @@
                 *ngIf="thread.senderId === profileId"
               >
                 <div class="col-md-11">
-                  <label class="whiteSpace">You: {{ thread.body }}</label>
+                  <label class="whiteSpace"
+                    >{{ userName }}: {{ thread.body }}</label
+                  >
                 </div>
                 <div class="col-md-1" style="position: relative">
                   <img
@@ -228,7 +230,16 @@
         <div class="card-body">
           <div class="row pt2">
             <div class="col-md-2">User(s):</div>
-            <div class="col-md-10"></div>
+            <div class="col-md-10">
+              <input
+                type="text"
+                name="users"
+                ngModel
+                #users="ngModel"
+                class="form-control"
+                required
+              />
+            </div>
           </div>
           <div class="row pt-2">
             <div class="col-md-2">Type of problem:</div>
@@ -289,7 +300,11 @@
           </div>
           <div class="row pt-2">
             <div class="col-md-11">
-              <button type="submit" class="btn btn-secondary float-right pr-2">
+              <button
+                type="submit"
+                [disabled]="!newTicketFrm.valid"
+                class="btn btn-secondary float-right pr-2"
+              >
                 Send
               </button>
             </div>
