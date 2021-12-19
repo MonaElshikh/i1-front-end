@@ -1,16 +1,9 @@
 import { isPlatformBrowser } from '@angular/common';
-import {
-  Component,
-  Inject,
-  OnDestroy,
-  OnInit,
-  PLATFORM_ID,
-} from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { ArticleDescriptionService } from 'Account/Services/article-description.service';
 import { Subscription } from 'rxjs';
 import { appPostedArticles } from 'Shared/models/LimitsAndUpgrade';
 import { LimitsAndUpgradeService } from 'Shared/Services/limits-upgrade.service';
-import { StringLiteralLike } from 'typescript';
 
 @Component({
   selector: 'app-admin-posted-articles',

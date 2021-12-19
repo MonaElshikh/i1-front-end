@@ -10,6 +10,8 @@ import { AdminTopNavComponent } from './Components/admin-top-nav/admin-top-nav.c
 import { AdminEditProfileComponent } from './Components/admin-edit-profile/admin-edit-profile.component';
 import { AdminPostedArticlesComponent } from './Components/admin-posted-articles/admin-posted-articles.component';
 import { AdminInboxComponent } from './Components/admin-inbox/admin-inbox.component';
+import { AdminArticleCommentsComponent } from './Components/admin-article-comments/admin-article-comments.component';
+import { AdminUpgradeComponent } from './Components/admin-upgrade/admin-upgrade.component';
 @NgModule({
   declarations: [
     AdminLoginComponent,
@@ -21,6 +23,8 @@ import { AdminInboxComponent } from './Components/admin-inbox/admin-inbox.compon
     AdminEditProfileComponent,
     AdminPostedArticlesComponent,
     AdminInboxComponent,
+    AdminArticleCommentsComponent,
+    AdminUpgradeComponent,
   ],
   imports: [SharedModule, RouterModule.forChild([])],
 })

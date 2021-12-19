@@ -4,28 +4,64 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { LocalstorageService } from 'Shared/Services/local-storage.service';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ArticleCommentsService extends DataService {
-  constructor(http: HttpClient, private _http: HttpClient,localStorage:LocalstorageService) {
-    super(http, environment.BASE_URL + '/ArticleComment',localStorage);
+  constructor(
+    http: HttpClient,
+    private _http: HttpClient,
+    localStorage: LocalstorageService
+  ) {
+    super(http, environment.BASE_URL + '/ArticleComment', localStorage);
   }
-  GetAllArticleComments(id:any){
-    return this._http.get(environment.BASE_URL + '/GetArticleComments'+ '/' + id)
+  GetAllArticleComments(id: any) {
+    return this._http.get(
+      environment.BASE_URL + '/GetArticleComments' + '/' + id
+    );
   }
-  AddArticleComment(Comment:any){
-    return this._http.post(environment.BASE_URL + '/AddArticleComment', Comment);
+  GetAdminArticlesComments() {
+    return this._http.get(environment.BASE_URL + '/AdminArticlesComments');
   }
-  UpdateArticleComments(comment:any) {
-    return this._http.post(environment.BASE_URL + '/UpdateArticleComment', comment);
+  UpdateArticleCommentReporting(articleComment: any) {
+    return this._http.post(
+      environment.BASE_URL + '/DeleteArticleComment',
+      articleComment
+    );
   }
-  DeleteArticleComments(comment:any) {
-    return this._http.post(environment.BASE_URL + '/DeleteArticleComment' , comment);
+  UpdateArticleCommentStatus(articleComment: any) {
+    return this._http.post(
+      environment.BASE_URL + '/AdminArticlesComments',
+      articleComment
+    );
   }
-  CheckArticleCommentLike(comment:any){
-    return this._http.post(environment.BASE_URL + '/IsArticleCommentLiked' , comment);
+  AddArticleComment(Comment: any) {
+    return this._http.post(
+      environment.BASE_URL + '/AddArticleComment',
+      Comment
+    );
   }
-  ArticleCommentLikeDisLike(comment:any){
-    return this._http.post(environment.BASE_URL + '/UpdateArticleCommentLike' , comment);
+  UpdateArticleComments(comment: any) {
+    return this._http.post(
+      environment.BASE_URL + '/UpdateArticleComment',
+      comment
+    );
+  }
+  DeleteArticleComments(id: any) {
+    return this._http.get(
+      environment.BASE_URL + '/DeleteArticleComment' + '/' + id
+    );
+  }
+
+  CheckArticleCommentLike(comment: any) {
+    return this._http.post(
+      environment.BASE_URL + '/IsArticleCommentLiked',
+      comment
+    );
+  }
+  ArticleCommentLikeDisLike(comment: any) {
+    return this._http.post(
+      environment.BASE_URL + '/UpdateArticleCommentLike',
+      comment
+    );
   }
 }

@@ -31,9 +31,12 @@ export interface appUpgrade {
   price: number;
   isUserCanceled: boolean;
   activationDate: Date;
+  expirationDate: Date;
   upgradeDate: Date;
   adminStatus: string;
   transactionId: string;
+  sname:string;
+  uName:string;
 }
 export interface appPaymentInfo {
   id: number;

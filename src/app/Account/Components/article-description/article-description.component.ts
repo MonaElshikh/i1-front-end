@@ -812,10 +812,12 @@ export class ArticleDescriptionComponent implements OnInit, OnDestroy {
   }
   DeleteComment(comment: appArticleComments) {
     console.log('comment Id>> ' + comment.id);
-    this.ArticleCommentsService.DeleteArticleComments(comment).subscribe(() => {
-      this.getArticleComments();
-      this.Toster.success('Deleted Successfuly');
-    }),
+    this.ArticleCommentsService.DeleteArticleComments(comment.id).subscribe(
+      () => {
+        this.getArticleComments();
+        this.Toster.success('Deleted Successfuly');
+      }
+    ),
       () => {
         this.Toster.error('Delete failed');
       };

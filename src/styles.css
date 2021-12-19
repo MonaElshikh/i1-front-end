@@ -28,6 +28,9 @@ hr {
 .wrapper-table {
   overflow: auto;
 }
+.btn-action {
+  width: 71px;
+}
 .form-control {
   font-size: 14px;
 }

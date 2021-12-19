@@ -23,6 +23,7 @@ import { ProfilesComponent } from './Account/Components/profiles/profiles.compon
 import { SettingsComponent } from './Account/Components/settings/settings.component';
 import { UpgradeComponent } from './Account/Components/upgrade/upgrade.component';
 import { WallComponent } from './Account/Components/wall/wall.component';
+import { AdminArticleCommentsComponent } from './Admin/Components/admin-article-comments/admin-article-comments.component';
 import { AdminEditProfileComponent } from './Admin/Components/admin-edit-profile/admin-edit-profile.component';
 import { AdminHomeComponent } from './Admin/Components/admin-home/admin-home.component';
 import { AdminInboxComponent } from './Admin/Components/admin-inbox/admin-inbox.component';
@@ -30,6 +31,7 @@ import { AdminLimitsComponent } from './Admin/Components/admin-limits/admin-limi
 import { AdminLoginComponent } from './Admin/Components/admin-login/admin-login.component';
 import { AdminMembershipsComponent } from './Admin/Components/admin-memberships/admin-memberships.component';
 import { AdminPostedArticlesComponent } from './Admin/Components/admin-posted-articles/admin-posted-articles.component';
+import { AdminUpgradeComponent } from './Admin/Components/admin-upgrade/admin-upgrade.component';
 import { AboutComponent } from './Footer/Components/about/about.component';
 import { AdvertisingComponent } from './Footer/Components/advertising/advertising.component';
 import { AnnouncementsComponent } from './Footer/Components/announcements/announcements.component';
@@ -320,6 +322,9 @@ const routes: Routes = [
   { path: 'Admin-Memberships', component: AdminMembershipsComponent },
   { path: 'Admin-EditProfile', component: AdminEditProfileComponent },
   { path: 'Admin-PostedArticles', component: AdminPostedArticlesComponent },
+  { path: 'Admin-ArticleComments', component: AdminArticleCommentsComponent },
+  { path: 'Admin-Upgrades', component: AdminUpgradeComponent },
+
   { path: 'Admin-Inbox', component: AdminInboxComponent },
 
   { path: 'Admin-Login', component: AdminLoginComponent },

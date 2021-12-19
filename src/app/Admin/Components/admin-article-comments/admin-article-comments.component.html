@@ -1,0 +1,154 @@
+<div class="row">
+  <div class="col-md-7"></div>
+  <div class="col-md-5">
+    <app-admin-top-nav></app-admin-top-nav>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <app-admin-left-menu></app-admin-left-menu>
+  </div>
+  <div class="col-md-9">
+    <h5 class="header-style">Articles Comments</h5>
+    <div class="row m-3">
+      <div class="col-md-3">
+        <p>
+          <span style="font-weight: bold">Comments:</span> ({{ listCount }})
+        </p>
+      </div>
+      <div class="col-md-9">
+        <select
+          class="form-control"
+          id="postingCategoriesOptions"
+          name="category"
+          (change)="changeSelection($event)"
+        >
+          <option>All Categories</option>
+          <option>Love & Romance</option>
+          <option>Friends & Acquaintances</option>
+          <option>Dating & Courtship</option>
+          <option>Hookups & Affairs</option>
+          <option>Infidelity & Cheating</option>
+          <option>Sex & Intimacy</option>
+          <option>Heartbreaks & Breakups</option>
+          <option>Marriage & Matrimony</option>
+          <option>Relationship & Commitment</option>
+          <option>Attraction & Crushes</option>
+          <option>Singles & Unattached</option>
+          <option>Flirting & Seducing</option>
+          <option>Harmony & Compatibility</option>
+          <option>Chemistry & Connection</option>
+          <option>Spouses & Couples</option>
+          <option>Gays & Lesbians</option>
+          <option>Extra & Extra</option>
+          <option>Entertainment</option>
+          <option>Lifestyle</option>
+          <option>Movies</option>
+          <option>Music</option>
+          <option>Others</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="table-responsive-sm wrapper-table">
+      <table class="table table-sm table-bordered !important">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">User</th>
+            <th scope="col">Category</th>
+            <th scope="col">Header</th>
+            <th scope="col">Comments</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Reporting</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of pageOfItems; index as i" class="cursor">
+            <td>{{ item.name }}</td>
+            <td>{{ item.cat_Name }}</td>
+            <td>{{ item.header }}</td>
+            <td *ngIf="!edits[i]">{{ item.comments.substr(0, 30) + "..." }}</td>
+            <td *ngIf="edits[i]">
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="item.comments"
+              />
+            </td>
+            <td>{{ item.timeCreated | date }}</td>
+            <td>{{ item.articleCommentStatus }}</td>
+            <td>{{ item.reportingAbused }}</td>
+
+            <td class="btn-action">
+              <button
+                class="btn btn-sm btn-secondary btn-action mb-2"
+                (click)="edits[i] = true"
+                *ngIf="!edits[i]"
+              >
+                Edit
+              </button>
+              <button
+                class="btn btn-sm btn-secondary btn-action mb-2"
+                *ngIf="!edits[i]"
+                (click)="articleCommentAction(item, 'delete')"
+              >
+                Delete
+              </button>
+              <button
+                class="btn btn-sm btn-secondary btn-action mb-2"
+                *ngIf="edits[i]"
+                (click)="edits[i] = false; articleCommentAction(item, 'update')"
+              >
+                Update
+              </button>
+              <button
+                class="btn btn-sm btn-secondary btn-action mb-2"
+                (click)="edits[i] = false"
+                *ngIf="edits[i]"
+              >
+                Cancel
+              </button>
+              <button
+                class="btn btn-sm btn-secondary btn-action mb-2"
+                (click)="articleCommentAction(item, 'active')"
+              >
+                {{
+                  item.articleCommentStatus === "Active" ? "InActive" : "Active"
+                }}
+              </button>
+              <button
+                class="btn btn-sm btn-secondary btn-action mb-2"
+                (click)="articleCommentAction(item, 'abuse')"
+              >
+                {{ item.reportingAbused === "Abused" ? "Unabuse" : "Abuse" }}
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="w-100 cursor d-flex align-items-center justify-content-center mb-4"
+    >
+      <jw-pagination
+        class="
+          pagination
+          w-100
+          pt-3
+          pb-0
+          page-item page-link
+          number-item
+          first-item
+          last-item
+          previous-item
+        "
+        [items]="mainList"
+        [pageSize]="10"
+        (changePage)="onChangePage($event)"
+      >
+      </jw-pagination>
+    </div>
+  </div>
+</div>

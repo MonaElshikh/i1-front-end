@@ -19,6 +19,7 @@
           name="category"
           [(ngModel)]="categoryParam"
         >
+          <option>All</option>
           <option>Love & Romance</option>
           <option>Friends & Acquaintances</option>
           <option>Dating & Courtship</option>
@@ -151,7 +152,7 @@
                 Reject
               </button>
               <button
-                *ngIf="article.reporting === 'Normal'"
+                *ngIf="article.reporting !== 'Abused'"
                 class="btn btn-sm btn-secondary btn-action mb-2"
                 (click)="UpdatePostedArticleReporting(article, 'Abused')"
               >

@@ -26,4 +26,10 @@ export class AdminService extends DataService {
   deleteAdmin(id: any) {
     return this._http.get(environment.BASE_URL + '/DeleteAdmin/' + id);
   }
+  getActiveUpgradesForAdmin() {
+    return this._http.get(environment.BASE_URL + '/AdminUpgrade');
+  }
+  requestUpgradeAdminAction(upgrade: any) {
+    return this._http.post(environment.BASE_URL + '/AdminUpgrade', upgrade);
+  }
 }

@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-md-7"></div>
+  <div class="col-md-5">
+    <app-admin-top-nav></app-admin-top-nav>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <app-admin-left-menu></app-admin-left-menu>
+  </div>
+  <div class="col-md-9">
+    <h5 class="header-style">Upgrades</h5>
+    <div class="table-responsive-sm wrapper-table">
+      <table class="table table-sm table-bordered !important">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Transaction Id</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Upgrade To</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Activation Date</th>
+            <th scope="col">Expiration Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of pageOfItems; index as i" class="cursor">
+            <td>{{ item.transactionId }}</td>
+            <td>{{ item.sname }}</td>
+            <td>{{ item.upgradeTo }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.period }}</td>
+            <td>{{ item.activationDate | date }}</td>
+            <td>{{ item.expirationDate | date }}</td>
+            <td>{{ item.adminStatus }}</td>
+            <td class="btn-action">
+              <button
+                *ngIf="item.adminStatus !== 'Approved'"
+                class="btn btn-sm btn-secondary btn-action mb-2"
+                (click)="adminUpgradeAction(item.id, 'Approved')"
+              >
+                Approve
+              </button>
+              <button
+                class="btn btn-sm btn-secondary btn-action mb-2"
+                (click)="adminUpgradeAction(item.id, 'Rejected')"
+              >
+                Reject
+              </button>
+              <button
+                class="btn btn-sm btn-secondary btn-action mb-2"
+                (click)="adminUpgradeAction(item.id, 'Canceled')"
+              >
+                Cancel
+              </button>
+              <button
+                class="btn btn-sm btn-secondary btn-action mb-2"
+                (click)="adminUpgradeAction(item.id, 'Removed')"
+              >
+                Remove
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="w-100 cursor d-flex align-items-center justify-content-center mb-4"
+    >
+      <jw-pagination
+        class="
+          pagination
+          w-100
+          pt-3
+          pb-0
+          page-item page-link
+          number-item
+          first-item
+          last-item
+          previous-item
+        "
+        [items]="upgradesList"
+        [pageSize]="10"
+        (changePage)="onChangePage($event)"
+      >
+      </jw-pagination>
+    </div>
+  </div>
+</div>
