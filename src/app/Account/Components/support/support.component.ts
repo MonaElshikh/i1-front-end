@@ -102,7 +102,7 @@ export class SupportComponent implements OnInit, OnDestroy {
       TypeOfProblem: frm.value['typeOfProblem'],
       ProblemName: frm.value['Subject'],
       UserComments: frm.value['problem'],
-      isAdmin: '0',
+      problemSolvingRate: '0', //this is isAdmin parameter
     };
     console.log('new ticket>> ' + ticket);
     this.TicketMasterSubscription = (

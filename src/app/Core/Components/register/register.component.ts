@@ -20,7 +20,7 @@ import { MetaTagslService } from 'Shared/Services/metaTags.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit, OnDestroy {
-  //#region Declarations 
+  //#region Declarations
   regForm: FormGroup;
   randomCode: string = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   isSignUp: Boolean = true;
@@ -75,15 +75,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
     if (this.ProfileSubscription) this.ProfileSubscription.unsubscribe();
     if (this.Subscription) this.Subscription.unsubscribe();
   }
-  // confirm() {
-  //   console.log("isAcountActivated> ", this.isAcountActivated);
-  //   if (!this.isAcountActivated) {
-  //     return false;
-  //   }
-  //   else {
-  //     return true;
-  //   }
-  // }
   //#endregion
   //#region Properties
   //register form fields getter properties
@@ -340,7 +331,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     console.log("ActivationCode>> ", activationForm.value["activationCode"]);
     console.log("this.registeredUserObject.validationKey>> ", this.registeredUserObject.validationKey);
     if (code === this.registeredUserObject.validationKey) {
-      //Update data  in register and profile tables 
+      //Update data  in register and profile tables
       this.Subscription = this.ProfileService.UpdateProfileStatusAfterRegister(this.registeredUserObject.id)
         .subscribe((result: any) => {
           if (result) {

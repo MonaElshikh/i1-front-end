@@ -4,17 +4,30 @@ import { DataService } from 'Shared/Services/data.service';
 import { environment } from '../../../environments/environment';
 import { LocalstorageService } from 'Shared/Services/local-storage.service';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GetProfileByUnameService extends DataService {
-  constructor(http: HttpClient,private _http:HttpClient,localStorage:LocalstorageService) {
-    super(http, environment.BASE_URL + "/GetProfileByUname",localStorage);
+  constructor(
+    http: HttpClient,
+    private _http: HttpClient,
+    localStorage: LocalstorageService
+  ) {
+    super(http, environment.BASE_URL + '/GetProfileByUname', localStorage);
   }
 
-  public CheckUniqueUsername(resource:any){
-    return this._http.post(environment.BASE_URL + "/CheckUniqueUsername",resource);
+  public CheckUniqueUsername(resource: any) {
+    return this._http.post(
+      environment.BASE_URL + '/CheckUniqueUsername',
+      resource
+    );
   }
-  public CHeckUniqueEmail(resource:any){
-    return this._http.post(environment.BASE_URL + "/CheckUniqueEmail",resource);
+  public CHeckUniqueEmail(resource: any) {
+    return this._http.post(
+      environment.BASE_URL + '/CheckUniqueEmail',
+      resource
+    );
+  }
+  getProfilesForTickets() {
+    return this._http.get(environment.BASE_URL + '/ProfilesForTickets');
   }
 }

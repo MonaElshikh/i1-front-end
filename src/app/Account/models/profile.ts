@@ -186,6 +186,11 @@ export interface appCheckUniqueUserNameEmail {
   isValid: number;
   isValidR: number;
 }
+export interface appProfilesForTickets {
+  id: number;
+  uName: string;
+  sname: string;
+}
 export interface appProfileBlock {
   abuseId: number;
   userId: string;
